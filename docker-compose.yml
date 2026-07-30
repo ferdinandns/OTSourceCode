@@ -1,0 +1,65 @@
+version: "3.8"
+
+services:
+  postgres:
+    image: postgres:17
+    container_name: wikijs-postgres
+    environment:
+      POSTGRES_DB: wiki
+      POSTGRES_USER: wikijs
+      POSTGRES_PASSWORD: wikijs123
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.17.13
+    container_name: elasticsearch7
+    environment:
+      - discovery.type=single-node
+      - cluster.name=wikijs-es
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - xpack.security.enabled=false    # easier Wiki.js integration
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - es7-data:/usr/share/elasticsearch/data
+    ports:
+      - "9200:9200"
+    restart: unless-stopped
+
+  wikijs:
+    image: requarks/wiki:latest
+    container_name: wikijs
+    depends_on:
+      - postgres
+      - elasticsearch
+    environment:
+      DB_TYPE: postgres
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_USER: wikijs
+      DB_PASS: wikijs123
+      DB_NAME: wiki
+    volumes:
+      # - ./themes:/wiki/client/themes
+      - ./custom-views/login.pug:/wiki/server/views/login.pug
+      - ./custom-views/register.pug:/wiki/server/views/register.pug
+      - ./custom-views/profile.pug:/wiki/server/views/profile.pug
+      - ./auth.js:/wiki/server/controllers/auth.js
+      - ./public:/wiki/data/public
+      - ./assets-local/img:/wiki/assets/public/img
+      # - ./assets-local/css:/wiki/assets/css
+      # Elasticsearch Search Provider
+      # SEARCH_PROVIDER: elasticsearch
+      # SEARCH_ELASTICSEARCH_HOST: http://elasticsearch7:9200
+    ports:
+      - "8080:3000"
+    restart: unless-stopped
+
+volumes:
+  postgres-data:
+  es7-data:

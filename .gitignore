@@ -1,0 +1,4 @@
+*.tar
+*.sql
+wikijs-assets-container/
+assets-local/
