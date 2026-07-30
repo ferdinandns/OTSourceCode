@@ -1,0 +1,184 @@
+/* AuditLogs.css */
+
+/* 1. Base / Light Mode Variables */
+.audit-container {
+    --main-bg: #ffffff;
+    --text-main: #1f2937;
+    --text-muted: #6b7280;
+    --border-color: #e5e7eb;
+    --element-bg: #ffffff;
+    --input-bg: #ffffff;
+    --hover-bg: #f3f4f6;
+    --th-bg: #f9fafb;
+    --accent-blue: #3b82f6;
+    --item-bg: #f8fafc;
+    
+    background-color: var(--main-bg);
+    color: var(--text-main);
+    padding: 24px;
+    font-family: system-ui, -apple-system, sans-serif;
+    border-radius: 8px;
+}
+
+/* 2. Global Dark Mode Overrides */
+html.dark .audit-container, 
+html[data-theme="dark"] .audit-container {
+    --main-bg: #121212;
+    --text-main: #ffffff;
+    --text-muted: #a0a0a0;
+    --border-color: #333333;
+    --element-bg: #1e1e1e;
+    --input-bg: #121212;
+    --hover-bg: #2a2a2a;
+    --th-bg: #1e1e1e;
+    --accent-blue: #3b82f6;
+    --item-bg: #242424;
+}
+
+/* Header & Controls */
+.header-section {
+    margin-bottom: 20px;
+}
+
+.controls-section {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.search-input {
+    padding: 10px 14px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background-color: var(--input-bg);
+    color: var(--text-main);
+    font-size: 0.95rem;
+    outline: none;
+    flex-grow: 1;
+    max-width: 500px;
+}
+
+.search-input:focus {
+    border-color: var(--accent-blue);
+}
+
+/* Scrollable Table Container */
+.table-wrapper {
+    max-height: 70vh;
+    overflow-y: auto; 
+    overflow-x: auto;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: var(--element-bg);
+}
+
+.audit-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+/* Sticky Headers */
+.audit-table th {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    padding: 14px 16px;
+    font-weight: 600;
+    color: var(--text-main);
+    background-color: var(--th-bg);
+    border-bottom: 2px solid var(--border-color);
+    white-space: nowrap;
+    box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.1);
+}
+
+.audit-table td {
+    padding: 16px;
+    vertical-align: top;
+    border-bottom: 1px solid var(--border-color);
+    background-color: var(--element-bg);
+}
+
+.audit-table tbody tr:hover td {
+    background-color: var(--hover-bg);
+}
+
+/* Nested Items List (The JSON Data) */
+.nested-items-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 300px; /* Ensures the column doesn't get too squished */
+}
+
+.nested-item {
+    background-color: var(--item-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.nested-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+}
+
+.qty-badge {
+    background-color: var(--accent-blue);
+    color: #ffffff;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.85rem;
+}
+
+.nested-item-desc {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 40px;
+    color: var(--text-muted);
+    font-style: italic;
+}
+/* --- Header & New Button Styles --- */
+.back-btn {
+    background: transparent;
+    border: none;
+    color: var(--accent-blue);
+    cursor: pointer;
+    font-weight: 600;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.95rem;
+}
+
+.back-btn:hover {
+    text-decoration: underline;
+}
+
+.inline-edit-btn {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-muted);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-top: 8px; /* Pushes it slightly below the Log ID */
+}
+
+.inline-edit-btn:hover {
+    border-color: var(--accent-blue);
+    color: var(--accent-blue);
+}

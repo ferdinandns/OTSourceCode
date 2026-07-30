@@ -1,0 +1,370 @@
+/* =========================================
+   1. THEME VARIABLES (LIGHT & DARK)
+   ========================================= */
+
+/* DEFAULT: Light Theme */
+/* =========================================
+   1. THEME VARIABLES (LIGHT & DARK)
+   ========================================= */
+
+/* DEFAULT: Light Theme */
+.wo-container {
+    --main-bg: #f8f9fa;
+    --text-main: #1f2937;
+    --text-muted: #6b7280;
+    --border-color: #e5e7eb;
+    --element-bg: #ffffff;
+    --input-bg: #ffffff;
+    --hover-bg: #f3f4f6;
+    --th-bg: #f9fafb;
+    --accent-blue: #2563eb;
+    --badge-bg: #eff6ff;
+    --badge-text: #2563eb;
+    --badge-border: #bfdbfe;
+}
+
+/* OVERRIDE: Black Theme (Listens to your DarkMode.jsx component) */
+/* This directly targets document.documentElement.classList.add("dark") */
+html.dark .wo-container, 
+html[data-theme="dark"] .wo-container {
+    --main-bg: #121212;
+    --text-main: #ffffff;
+    --text-muted: #a0a0a0;
+    --border-color: #333333;
+    --element-bg: #1e1e1e;
+    --input-bg: #121212;
+    --hover-bg: #2a2a2a;
+    --th-bg: #1e1e1e;
+    --accent-blue: #3b82f6;
+    --badge-bg: rgba(59, 130, 246, 0.15);
+    --badge-text: #60a5fa;
+    --badge-border: rgba(59, 130, 246, 0.3);
+}
+
+/* =========================================
+   2. STRUCTURAL STYLES
+   ========================================= */
+/* ... keep the rest of your CSS exactly the same below this point ... */
+
+
+/* =========================================
+   2. STRUCTURAL STYLES
+   ========================================= */
+
+.wo-container {
+    /* Padding to avoid your sidebar */
+    padding: 30px 30px 60px 60px; 
+    min-height: 100vh;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    
+    /* These now magically swap based on the theme! */
+    background-color: var(--main-bg); 
+    color: var(--text-main); 
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.wo-header { 
+    border-bottom: 1px solid var(--border-color); 
+    padding-bottom: 20px; 
+    margin-bottom: 30px; 
+}
+
+.wo-header h1, .wo-header h2 { 
+    margin: 0 0 8px 0; 
+    color: var(--text-main); 
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.wo-header p { 
+    color: var(--text-muted); 
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+/* --- SEARCH BAR --- */
+.wo-search-container { 
+    margin-bottom: 25px; 
+    display: flex; 
+}
+
+.wo-search-input {
+    flex: 1; 
+    max-width: 600px; 
+    padding: 12px 20px; 
+    border-radius: 6px;
+    border: 1px solid var(--border-color); 
+    background-color: var(--input-bg);
+    color: var(--text-main); 
+    font-size: 0.95rem; 
+    outline: none; 
+    transition: border-color 0.2s, box-shadow 0.2s, background-color 0.3s;
+}
+
+.wo-search-input:focus {
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* --- BADGES --- */
+.wo-badge { 
+    padding: 4px 10px; 
+    border-radius: 4px; 
+    font-size: 0.75rem; 
+    background-color: var(--badge-bg); 
+    color: var(--badge-text); 
+    font-weight: 600; 
+    border: 1px solid var(--badge-border);
+}
+
+/* --- TABLE STYLES --- */
+.wo-table-wrapper { 
+    overflow-x: auto; 
+    
+    /* NEW: Add vertical scrolling */
+    max-height: 60vh; /* Takes up 60% of the screen height */
+    overflow-y: auto; 
+    
+    border-radius: 8px; 
+    border: 1px solid var(--border-color); 
+    background-color: var(--element-bg);
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.wo-table { 
+    width: 100%; 
+    border-collapse: collapse; 
+}
+
+.wo-th { 
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: var(--th-bg); 
+    padding: 16px 20px; 
+    text-align: left; 
+    border-bottom: 2px solid var(--border-color); 
+    color: var(--text-muted); 
+    text-transform: uppercase; 
+    font-size: 0.75rem; 
+    font-weight: 600;
+    letter-spacing: 0.05em; 
+}
+
+.wo-td { 
+    padding: 16px 20px; 
+    border-bottom: 1px solid var(--border-color); 
+    font-size: 0.9rem;
+}
+
+.wo-tr-hover { 
+    transition: background-color 0.2s; 
+    cursor: pointer; 
+}
+
+.wo-tr-hover:hover { 
+    background-color: var(--hover-bg); 
+}
+
+.wo-table tbody tr:last-child .wo-td {
+    border-bottom: none;
+}
+
+/* --- FORMS AND INPUTS --- */
+.wo-input { 
+    width: 100%; 
+    padding: 8px 12px; 
+    border-radius: 4px; 
+    border: 1px solid var(--border-color); 
+    background-color: var(--input-bg); 
+    color: var(--text-main); 
+    outline: none; 
+    font-size: 0.9rem;
+    transition: border-color 0.2s, background-color 0.3s;
+}
+
+.wo-input:focus {
+    border-color: var(--accent-blue);
+}
+
+.wo-textarea {
+    width: 100%; 
+    min-width: 250px; /* Gives it a good starting width */
+    min-height: 60px; /* Starts at about 3 lines tall */
+    padding: 8px 12px; 
+    border-radius: 4px; 
+    border: 1px solid var(--border-color); 
+    background-color: var(--input-bg); 
+    color: var(--text-main); 
+    outline: none; 
+    font-size: 0.9rem;
+    font-family: inherit;
+    transition: border-color 0.2s, background-color 0.3s;
+    resize: vertical; /* Lets the user drag it taller, but not wider to protect the table layout */
+}
+
+.wo-textarea:focus {
+    border-color: var(--accent-blue);
+}
+
+/* --- BUTTONS --- */
+.wo-btn-primary { 
+    padding: 8px 16px; 
+    background-color: var(--accent-blue); 
+    color: white; 
+    border: none; 
+    border-radius: 4px; 
+    cursor: pointer; 
+    font-weight: 500; 
+    font-size: 0.85rem; 
+    transition: background-color 0.2s;
+}
+
+.wo-btn-primary:hover {
+    filter: brightness(0.9);
+}
+
+.wo-btn-success { 
+    padding: 10px 20px; 
+    background-color: #10b981; 
+    color: white; 
+    border: none; 
+    border-radius: 4px; 
+    cursor: pointer; 
+    font-weight: 600; 
+    font-size: 0.9rem;
+    transition: filter 0.2s;
+}
+
+.wo-btn-success:hover {
+    filter: brightness(0.9);
+}
+
+.wo-btn-success:disabled {
+    background-color: var(--text-muted);
+    cursor: not-allowed;
+}
+
+.wo-btn-cancel { 
+    padding: 10px 20px; 
+    background-color: transparent; 
+    color: var(--text-muted); 
+    border: 1px solid var(--border-color); 
+    border-radius: 4px; 
+    cursor: pointer; 
+    font-weight: 600; 
+    font-size: 0.9rem;
+    margin-right: 12px; 
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.wo-btn-cancel:hover {
+    background-color: var(--hover-bg);
+    color: var(--text-main);
+}
+
+/* Add this to your WorkOrderDashboard.css */
+.wo-btn-fill {
+    margin-left: 8px;
+    padding: 2px 6px;
+    font-size: 0.7rem;
+    background-color: var(--element-bg);
+    color: var(--accent-blue);
+    border: 1px solid var(--accent-blue);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.wo-btn-fill:hover:not(:disabled) {
+    background-color: var(--accent-blue);
+    color: white;
+}
+
+.wo-btn-fill:disabled {
+    border-color: var(--border-color);
+    color: var(--text-muted);
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+/* --- TABS / TOGGLE --- */
+.wo-tabs-container {
+    display: flex;
+    background-color: var(--input-bg);
+    padding: 6px;
+    border-radius: 8px;
+    width: fit-content;
+    margin-bottom: 20px;
+    border: 1px solid var(--border-color);
+}
+
+.wo-tab-btn {
+    padding: 10px 24px;
+    border: none;
+    background: transparent;
+    color: var(--text-muted);
+    font-weight: 600;
+    font-size: 0.9rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.wo-tab-btn:hover:not(.active) {
+    color: var(--text-main);
+}
+
+.wo-tab-btn.active {
+    background-color: var(--accent-blue);
+    color: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+}
+/* --- CONTROLS LAYOUT --- */
+.wo-controls-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 25px;
+}
+
+/* Override previous tab/search margins to let flexbox handle it */
+.wo-tabs-container {
+    margin-bottom: 0; 
+}
+.wo-search-container {
+    margin-bottom: 0;
+    flex: 1;
+    min-width: 280px;
+}
+
+.wo-date-picker {
+    display: flex;
+    gap: 10px;
+}
+
+.wo-select {
+    padding: 10px 16px;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    background-color: var(--input-bg);
+    color: var(--text-main);
+    font-size: 0.9rem;
+    font-weight: 500;
+    outline: none;
+    cursor: pointer;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.wo-select:focus {
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* --- SPECIFIC FIX FOR DATETIME INPUTS --- */
+input[type="datetime-local"].wo-input {
+    min-width: 210px; /* Forces the box to be wide enough for the full date and time */
+    width: 100%;      /* Ensures it fills the table cell nicely */
+}

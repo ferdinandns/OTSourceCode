@@ -1,0 +1,1176 @@
+ BatchRecord1: async (request, response) => {
+    const { area, start, finish } = request.query;
+    const queryGet = `
+        SELECT 
+            data_index AS x, 
+            CONVERT(data_format_0 USING utf8) AS BATCH,
+            DATE(FROM_UNIXTIME(\`time@timestamp\`) + INTERVAL 4 HOUR) AS label
+        FROM 
+            \`parammachine_saka\`.\`${area}\`
+        WHERE 
+            DATE(FROM_UNIXTIME(\`time@timestamp\`)) BETWEEN '${start}' AND '${finish}'
+        GROUP BY 
+            data_format_0
+        ORDER BY
+            label;
+    `;
+    
+
+    try {
+      const result = await new Promise((resolve, reject) => {
+        db3.query(queryGet, (err, result) => {
+          if (err) {
+            return reject(err);
+          }
+          resolve(result);
+        });
+      });
+      return response.status(200).send(result);
+    } catch (error) {
+      console.error(error);
+      return response.status(500).send("Database query failed");
+    }
+  },
+
+  BatchRecord1_DB2: async (request, response) => {
+    const { area, start, finish } = request.query;
+    const queryGet = `
+        SELECT 
+            data_index AS x, 
+            CONVERT(data_format_0 USING utf8) AS BATCH,
+            DATE(FROM_UNIXTIME(\`time@timestamp\`) + INTERVAL 4 HOUR) AS label
+        FROM 
+            \`ems_saka\`.\`${area}\`
+        WHERE 
+            DATE(FROM_UNIXTIME(\`time@timestamp\`)) BETWEEN '${start}' AND '${finish}'
+        GROUP BY 
+            data_format_0
+        ORDER BY
+            label;
+    `;
+
+    try {
+      const result = await new Promise((resolve, reject) => {
+        db2.query(queryGet, (err, result) => {
+          if (err) {
+            return reject(err);
+          }
+          resolve(result);
+        });
+      });
+      return response.status(200).send(result);
+    } catch (error) {
+      console.error(error);
+      return response.status(500).send("Database query failed");
+    }
+  },
+
+  BatchRecord3: async (request, response) => {
+    const { area, start, finish } = request.query;
+    const queryGet = `
+        SELECT 
+            data_index AS x, 
+            CONVERT(data_format_0 USING utf8) AS BATCH,
+            DATE(FROM_UNIXTIME(\`time@timestamp\`) + INTERVAL 4 HOUR) AS label
+        FROM 
+            \`parammachine_saka\`.\`${area}\`
+        WHERE 
+            DATE(FROM_UNIXTIME(\`time@timestamp\`)) BETWEEN '${start}' AND '${finish}'
+        GROUP BY 
+            data_format_0
+        ORDER BY
+            label;
+    `;
+    db2.query(queryGet, (err, result) => {
+      if (err) {
+        console.log(err);
+        return response.status(500).send("Database query failed");
+      }
+      return response.status(200).send(result);
+    });
+  },
+
+  SearchBatchRecord: async (request, response) => {
+    const { area, data } = request.query;
+    if (!area) {
+      return response.status(400).send("Missing required query parameters");
+    }
+
+    const getAllColumns = (area) => {
+      return new Promise((resolve, reject) => {
+        const query = `
+        SELECT COLUMN_NAME
+        FROM INFORMATION_SCHEMA.COLUMNS
+        WHERE TABLE_SCHEMA = 'ems_saka'
+        AND TABLE_NAME = ?
+        AND COLUMN_NAME NOT IN ('data_format_0', 'data_format_1')
+      `;
+        db2.query(query, [area], (err, results) => {
+          if (err) return reject(err);
+          const columns = results.map((result) => result.COLUMN_NAME);
+          resolve(columns);
+        });
+      });
+    };
+
+    const getColumnMappings = (area) => {
+      return new Promise((resolve, reject) => {
+        const query = `
+        SELECT data_format_index, comment
+        FROM \`${area}_format\`
+      `;
+        db2.query(query, (err, results) => {
+          if (err) return reject(err);
+          resolve(results);
+        });
+      });
+    };
+
+    try {
+      const columns = await getAllColumns(area);
+      const columnMappings = await getColumnMappings(area);
+
+      const mappedColumns = columns.map((col) => {
+        const match = col.match(/data_format_(\d+)/);
+        if (match) {
+          const index = parseInt(match[1], 10);
+          const mapping = columnMappings.find(
+            (mapping) => mapping.data_format_index === index
+          );
+          if (mapping) {
+            return `\`${col}\` AS \`${mapping.comment}\``;
+          }
+        }
+        return `\`${col}\``;
+      });
+
+      const queryGet = `
+      SELECT
+        ${mappedColumns.join(", ")},
+        CONVERT(\`data_format_0\` USING utf8) AS \` BATCH\`,
+        CONVERT(\`data_format_1\` USING utf8) AS \`PROCESS\`
+      FROM
+        \`ems_saka\`.\`${area}\`
+      WHERE
+        CONVERT(\`data_format_0\` USING utf8) LIKE ?
+      ORDER BY
+        DATE(FROM_UNIXTIME(\`time@timestamp\`)) ASC;
+    `;
+
+      db.query(queryGet, [`%${data}%`], (err, result) => {
+        if (err) {
+          console.log(err);
+          return response.status(500).send("Database query failed");
+        }
+        return response.status(200).send(result);
+      });
+    } catch (error) {
+      console.log(error);
+      return response.status(500).send("Database query failed");
+    }
+  },
+
+
+
+  ChillerGraph: async (request, response) => {
+    const { area, start, finish, chiller, komp } = request.query;
+    const queryGet = `SELECT
+    DATE_FORMAT(FROM_UNIXTIME(\`time@timestamp\`)+ INTERVAL 4 HOUR, '%Y-%m-%d %H:%i') AS label,
+    \`time@timestamp\`*1000 AS x,
+    data_format_0 AS y
+    FROM \`parammachine_saka\`.\`CMT-DB-Chiller-UTY_${area}${komp}${chiller}_data\`
+    WHERE
+    DATE_FORMAT(FROM_UNIXTIME(\`time@timestamp\`)+ INTERVAL 4 HOUR, '%Y-%m-%d') BETWEEN '${start}' AND '${finish}'
+    ORDER BY
+    \`time@timestamp\`;`;
+
+    // console.log(queryGet);
+    // ada perubahan di bagian from -> si db CHILLER jadi Chiller.
+    db3.query(queryGet, (err, result) => {
+      return response.status(200).send(result);
+    });
+  },
+
+ChillerGraph: async (request, response) => {
+    const { area, start, finish, chiller, komp } = request.query;
+    const queryGet = `
+      SELECT
+          DATE_FORMAT(FROM_UNIXTIME(\`time@timestamp\`) + INTERVAL 4 HOUR, '%Y-%m-%d %H:%i') AS label,
+          \`time@timestamp\` * 1000 AS x,
+          data_format_0 AS y
+      FROM
+          \`test\`.\`CMT-DB-Chiller-UTY_${area}${komp}${chiller}_data\`
+      WHERE
+          DATE_FORMAT(FROM_UNIXTIME(\`time@timestamp\`) + INTERVAL 4 HOUR, '%Y-%m-%d') BETWEEN '${start}' AND '${finish}'
+      UNION ALL
+      SELECT
+          DATE_FORMAT(FROM_UNIXTIME(\`time@timestamp\`) + INTERVAL 4 HOUR, '%Y-%m-%d %H:%i') AS label,
+          \`time@timestamp\` * 1000 AS x,
+          data_format_0 AS y
+      FROM
+          \`parammachine_saka\`.\`CMT-DB-Chiller-UTY2_${area}${komp}${chiller}_data\`
+      WHERE
+          DATE_FORMAT(FROM_UNIXTIME(\`time@timestamp\`) + INTERVAL 4 HOUR, '%Y-%m-%d') BETWEEN '${start}' AND '${finish}'
+      ORDER BY
+          x;
+    `;
+    
+    console.log(queryGet);
+    db3.query(queryGet, (err, result) => {
+      if (err) {
+        return response.status(500).send(err);
+      }
+      return response.status(200).send(result);
+    });
+  },
+
+  ChillerGraph: async (request, response) => {
+    const { area, start, finish, chiller, komp } = request.query;
+
+    const areaFormatted = area.replace(/-/g, '_');
+
+    const queryGet = `
+            SELECT
+                DATE_FORMAT(FROM_UNIXTIME(\`time@timestamp\`) + INTERVAL 4 HOUR, '%Y-%m-%d %H:%i') AS label,
+                \`time@timestamp\` * 1000 AS x,
+                data_format_0 AS y
+            FROM
+                \`newdb\`.\`${areaFormatted}${komp}${chiller}_data\`
+            WHERE
+                DATE_FORMAT(FROM_UNIXTIME(\`time@timestamp\`) + INTERVAL 4 HOUR, '%Y-%m-%d') BETWEEN '${start}' AND '${finish}'
+
+            UNION ALL
+
+            SELECT
+                DATE_FORMAT(FROM_UNIXTIME(\`time@timestamp\`) + INTERVAL 4 HOUR, '%Y-%m-%d %H:%i') AS label,
+                \`time@timestamp\` * 1000 AS x,
+                data_format_0 AS y
+            FROM
+                \`parammachine_saka\`.\`CMT-DB-Chiller-UTY2_${area}${komp}${chiller}_data\`
+            WHERE
+                DATE_FORMAT(FROM_UNIXTIME(\`time@timestamp\`) + INTERVAL 4 HOUR, '%Y-%m-%d') BETWEEN '${start}' AND '${finish}'
+
+            ORDER BY
+                x;
+        `;
+    
+    console.log(queryGet);
+    db3.query(queryGet, (err, result) => {
+      if (err) {
+        return response.status(500).send(err);
+      }
+      return response.status(200).send(result);
+    });
+  },
+
+  console.log(fetchquery);
+
+  ChillerStatus: async (request, response) => {
+    const { start, finish, chiller, komp } = request.query;
+
+    const queryGet = `SELECT
+    DATE_FORMAT(FROM_UNIXTIME(a.\`time@timestamp\`)+ INTERVAL 4 HOUR, '%Y-%m-%d %H:%i:%s') AS time,
+      case
+      when a.data_format_0 = 0 then "OFF"
+      when a.data_format_0 = 1 then "ON"
+      end AS 'Alarm_Chiller',
+      case
+      when a1.data_format_0 = 0 then "OFF"
+      when a1.data_format_0 = 1 then "ON"
+      end as "Status_Chiller",
+       case
+      when f.data_format_0 = 0 then "OFF"
+          when f.data_format_0 = 1 then "ON"
+    end as "Fan_Kondensor",
+      case
+      when d.data_format_0 = 0 then "OFF"
+          when d.data_format_0 = 1 then "ON"
+    end AS 'Status_Kompresor'
+  From
+      \`parammachine_saka\`.\`CMT-DB-Chiller-UTY2_R-AlarmCH${chiller}_data\` AS a
+  LEFT JOIN
+      \`parammachine_saka\`.\`CMT-DB-Chiller-UTY2_R-StatusCH${chiller}_data\` AS a1
+    ON
+      DATE_FORMAT(FROM_UNIXTIME(a.\`time@timestamp\`), '%Y-%m-%d %H:%i') = DATE_FORMAT(FROM_UNIXTIME(a1.\`time@timestamp\`), '%Y-%m-%d %H:%i')
+  LEFT JOIN
+      \`parammachine_saka\`.\`CMT-DB-Chiller-UTY2_H-StatFanKondCH${chiller}_data\` AS f
+    ON
+      DATE_FORMAT(FROM_UNIXTIME(a.\`time@timestamp\`), '%Y-%m-%d %H:%i') = DATE_FORMAT(FROM_UNIXTIME(f.\`time@timestamp\`), '%Y-%m-%d %H:%i')
+  LEFT JOIN
+      \`parammachine_saka\`.\`CMT-DB-Chiller-UTY2_R-Status${komp}${chiller}_data\` AS d
+    ON
+      DATE_FORMAT(FROM_UNIXTIME(a.\`time@timestamp\`), '%Y-%m-%d %H:%i') = DATE_FORMAT(FROM_UNIXTIME(d.\`time@timestamp\`), '%Y-%m-%d %H:%i')
+  WHERE 
+  DATE_FORMAT(FROM_UNIXTIME(a.\`time@timestamp\`)+ INTERVAL 4 HOUR, '%Y-%m-%d') BETWEEN '${start}' AND '${finish}'
+      group by a.data_index
+      order by DATE_FORMAT(FROM_UNIXTIME(a.\`time@timestamp\`), '%Y-%m-%d %H:%i:%s');`;
+    console.log(queryGet);
+    db3.query(queryGet, (err, result) => {
+      return response.status(200).send(result);
+    });
+  },
+
+
+  SearchPMARecord3: async (request, response) => {
+    const { data } = request.query;
+    const area = "cMT-GEA-L3_EBR_PMA_L3_data"; // Static value
+
+    const getAllColumns = () => {
+      return new Promise((resolve, reject) => {
+        const query = 
+        SELECT COLUMN_NAME
+        FROM INFORMATION_SCHEMA.COLUMNS
+        WHERE TABLE_SCHEMA = 'parammachine_saka'
+        AND TABLE_NAME = ?
+        AND COLUMN_NAME NOT IN ('data_format_0', 'data_format_1')
+      ;
+        db.query(query, [area], (err, results) => {
+          if (err) return reject(err);
+          const columns = results.map((result) => result.COLUMN_NAME);
+          resolve(columns);
+        });
+      });
+    };
+
+    const getColumnMappings = () => {
+      return new Promise((resolve, reject) => {
+        const query = 
+        SELECT data_format_index, comment
+        FROM \${area}_format\
+      ;
+        db.query(query, (err, results) => {
+          if (err) return reject(err);
+          resolve(results);
+        });
+      });
+    };
+
+    try {
+      const columns = await getAllColumns();
+      const columnMappings = await getColumnMappings();
+
+      const mappedColumns = columns.map((col) => {
+        const match = col.match(/data_format_(\d+)/);
+        if (match) {
+          const index = parseInt(match[1], 10);
+          const mapping = columnMappings.find(
+            (mapping) => mapping.data_format_index === index
+          );
+          if (mapping) {
+            return \${col}\ AS \${mapping.comment}\`;
+          }
+        }
+        return \${col}\`;
+      });
+
+      const queryGet = 
+      SELECT
+        ${mappedColumns.join(", ")},
+        CONVERT(\data_format_0\ USING utf8) AS \BATCH\,
+        CONVERT(\data_format_1\ USING utf8) AS \PROCESS\
+      FROM
+        \parammachine_saka\.\${area}\
+      WHERE
+        CONVERT(\data_format_0\ USING utf8) LIKE ?
+      ORDER BY
+        DATE(FROM_UNIXTIME(\time@timestamp\)) ASC;
+    ;
+      db.query(queryGet, [%${data}%], (err, result) => {
+        if (err) {
+          console.log(err);
+          return response.status(500).send("Database query failed");
+        }
+        return response.status(200).send(result);
+      });
+    } catch (error) {
+      console.log(error);
+      return response.status(500).send("Database query failed");
+    }
+  },
+
+
+  HM1Report: async (request, response) => {
+  const { tanggal, shift } = request.query;
+
+  if (!tanggal || !shift) {
+    return response.status(400).send({ error: 'Tanggal dan shift harus diisi' });
+  }
+
+  let queryGet = '';
+
+  if (shift === '1') {
+    queryGet = `
+      SELECT
+        FROM_UNIXTIME(\`time@timestamp\`) AS waktu,
+        \`time@timestamp\` AS raw_timestamp,
+        data_format_0 AS y
+      FROM \`parammachine_saka\`.\`mezanine.tengah_runn_HM1_data\`
+      WHERE
+        FROM_UNIXTIME(\`time@timestamp\`) BETWEEN '${tanggal} 06:30:00' AND '${tanggal} 15:00:00'
+        AND data_format_0 = 0
+      ORDER BY \`time@timestamp\`
+    `;
+  } else if (shift === '2') {
+    queryGet = `
+      SELECT
+        FROM_UNIXTIME(\`time@timestamp\`) AS waktu,
+        \`time@timestamp\` AS raw_timestamp,
+        data_format_0 AS y
+      FROM \`parammachine_saka\`.\`mezanine.tengah_runn_HM1_data\`
+      WHERE
+        FROM_UNIXTIME(\`time@timestamp\`) BETWEEN '${tanggal} 15:00:00' AND '${tanggal} 23:00:00'
+        AND data_format_0 = 0
+      ORDER BY \`time@timestamp\`
+    `;
+  } else if (shift === '3') {
+    queryGet = `
+      SELECT
+        FROM_UNIXTIME(\`time@timestamp\`) AS waktu,
+        \`time@timestamp\` AS raw_timestamp,
+        data_format_0 AS y
+      FROM \`parammachine_saka\`.\`mezanine.tengah_runn_HM1_data\`
+      WHERE
+        (
+          FROM_UNIXTIME(\`time@timestamp\`) BETWEEN '${tanggal} 23:00:00' AND '${tanggal} 00:00:00'
+          OR
+          FROM_UNIXTIME(\`time@timestamp\`) BETWEEN '${tanggal} 00:00:00' AND '${tanggal} 06:30:00'
+        )
+        AND data_format_0 = 0
+      ORDER BY \`time@timestamp\`
+    `;
+  } else {
+    return response.status(400).send({ error: 'Shift tidak valid' });
+  }
+
+  console.log('Query:\n', queryGet);
+
+  db3.query(queryGet, (err, result) => {
+    if (err) {
+      console.error('Database query error:', err);
+      return response.status(500).send({ error: 'Database query error' });
+    }
+
+    const grouped = [];
+    let currentGroup = null;
+    let prevTime = null;
+    let id = 1;
+
+    for (let row of result) {
+      const currentTime = new Date(row.waktu);
+
+      if (!currentGroup || (prevTime && (currentTime - prevTime) > 60000)) {
+        if (currentGroup) {
+          grouped.push({
+            id: id++,
+            start: currentGroup.start.toTimeString().slice(0, 5),  // HH:mm
+            finish: currentGroup.finish.toTimeString().slice(0, 5),
+            total_minutes: Math.round((currentGroup.finish - currentGroup.start) / 60000)
+          });
+        }
+        currentGroup = {
+          start: currentTime,
+          finish: currentTime
+        };
+      } else {
+        currentGroup.finish = currentTime;
+      }
+
+      prevTime = currentTime;
+    }
+
+    // Push last group
+    if (currentGroup) {
+      grouped.push({
+        id: id++,
+        start: currentGroup.start.toTimeString().slice(0, 5),  // HH:mm
+        finish: currentGroup.finish.toTimeString().slice(0, 5),
+        total_minutes: Math.round((currentGroup.finish - currentGroup.start) / 60000)
+      });
+    }
+
+    // Filter minimal 3 menit
+    const filtered = grouped.filter(item => item.total_minutes >= 3);
+
+    return response.status(200).send(filtered);
+  });
+},
+
+HM1Report: async (request, response) => {
+    const { tanggal, shift } = request.query;
+
+    if (!tanggal || !shift) {
+      return response.status(400).send({ error: 'Tanggal dan shift harus diisi' });
+    }
+
+    let queryGet = '';
+
+    if (shift === '1') {
+      queryGet = `
+        SELECT
+          FROM_UNIXTIME(\`time@timestamp\`) AS waktu,
+          \`time@timestamp\` AS raw_timestamp,
+          data_format_0 AS y
+        FROM \`parammachine_saka\`.\`mezanine.tengah_runn_HM1_data\`
+        WHERE
+          FROM_UNIXTIME(\`time@timestamp\`) BETWEEN '${tanggal} 06:30:00' AND '${tanggal} 15:00:00'
+          AND data_format_0 = 0
+        ORDER BY \`time@timestamp\`
+      `;
+    } else if (shift === '2') {
+      queryGet = `
+        SELECT
+          FROM_UNIXTIME(\`time@timestamp\`) AS waktu,
+          \`time@timestamp\` AS raw_timestamp,
+          data_format_0 AS y
+        FROM \`parammachine_saka\`.\`mezanine.tengah_runn_HM1_data\`
+        WHERE
+          FROM_UNIXTIME(\`time@timestamp\`) BETWEEN '${tanggal} 15:00:00' AND '${tanggal} 23:00:00'
+          AND data_format_0 = 0
+        ORDER BY \`time@timestamp\`
+      `;
+    } else if (shift === '3') {
+      queryGet = `
+        SELECT
+          FROM_UNIXTIME(\`time@timestamp\`) AS waktu,
+          \`time@timestamp\` AS raw_timestamp,
+          data_format_0 AS y
+        FROM \`parammachine_saka\`.\`mezanine.tengah_runn_HM1_data\`
+        WHERE
+          (
+            FROM_UNIXTIME(\`time@timestamp\`) BETWEEN '${tanggal} 23:00:00' AND '${tanggal} 00:00:00'
+            OR
+            FROM_UNIXTIME(\`time@timestamp\`) BETWEEN '${tanggal} 00:00:00' AND '${tanggal} 06:30:00'
+          )
+          AND data_format_0 = 0
+        ORDER BY \`time@timestamp\`
+      `;
+    } else {
+      return response.status(400).send({ error: 'Shift tidak valid' });
+    }
+
+    //console.log('Query:\n', queryGet);
+
+    db3.query(queryGet, (err, result) => {
+      if (err) {
+        console.error('Database query error:', err);
+        return response.status(500).send({ error: 'Database query error' });
+      }
+
+      const grouped = [];
+      let currentGroup = null;
+      let prevTime = null;
+      let id = 1;
+
+      for (let row of result) {
+        const currentTime = new Date(row.waktu);
+
+        if (!currentGroup || (prevTime && (currentTime - prevTime) > 60000)) {
+          if (currentGroup) {
+            grouped.push({
+              id: id++,
+              start: currentGroup.start.toTimeString().slice(0, 5),  // HH:mm
+              finish: currentGroup.finish.toTimeString().slice(0, 5),
+              total_minutes: Math.round((currentGroup.finish - currentGroup.start) / 60000)
+            });
+          }
+          currentGroup = {
+            start: currentTime,
+            finish: currentTime
+          };
+        } else {
+          currentGroup.finish = currentTime;
+        }
+
+        prevTime = currentTime;
+      }
+
+      // Push last group
+      if (currentGroup) {
+        grouped.push({
+          id: id++,
+          start: currentGroup.start.toTimeString().slice(0, 5),  // HH:mm
+          finish: currentGroup.finish.toTimeString().slice(0, 5),
+          total_minutes: Math.round((currentGroup.finish - currentGroup.start) / 60000)
+        });
+      }
+
+      // Filter minimal 3 menit
+      const filtered = grouped.filter(item => item.total_minutes >= 3);
+
+      return response.status(200).send(filtered);
+    });
+  },
+
+  HM1Report: async (request, response) => {
+  const { tanggal, shift } = request.query;
+
+  if (!tanggal || !shift) {
+    return response.status(400).send({ error: 'Tanggal dan shift harus diisi' });
+  }
+
+  // Cek apakah data tanggal dan shift sudah ada (dengan DATE(start_time))
+  const checkExistQuery = `
+    SELECT 1 FROM Downtime_Mesin_HM1_A
+    WHERE DATE(start) = ? AND shift = ?
+    LIMIT 1
+  `;
+
+  db3.query(checkExistQuery, [tanggal, shift], (err, existResult) => {
+    if (err) {
+      console.error('Database check error:', err);
+      return response.status(500).send({ error: 'Database check error' });
+    }
+
+    if (existResult.length > 0) {
+      return response.status(200).send([]);  // Sudah ada, kirim data kosong
+    }
+
+    // Query data dari parammachine
+    let queryGet = '';
+
+    if (shift === '1') {
+      queryGet = `
+        SELECT
+          FROM_UNIXTIME(\`time@timestamp\`) AS waktu,
+          \`time@timestamp\` AS raw_timestamp,
+          data_format_0 AS y
+        FROM \`parammachine_saka\`.\`mezanine.tengah_runn_HM1_data\`
+        WHERE
+          FROM_UNIXTIME(\`time@timestamp\`) BETWEEN '${tanggal} 06:30:00' AND '${tanggal} 15:00:00'
+          AND data_format_0 = 0
+        ORDER BY \`time@timestamp\`
+      `;
+    } else if (shift === '2') {
+      queryGet = `
+        SELECT
+          FROM_UNIXTIME(\`time@timestamp\`) AS waktu,
+          \`time@timestamp\` AS raw_timestamp,
+          data_format_0 AS y
+        FROM \`parammachine_saka\`.\`mezanine.tengah_runn_HM1_data\`
+        WHERE
+          FROM_UNIXTIME(\`time@timestamp\`) BETWEEN '${tanggal} 15:00:00' AND '${tanggal} 23:00:00'
+          AND data_format_0 = 0
+        ORDER BY \`time@timestamp\`
+      `;
+    } else if (shift === '3') {
+      queryGet = `
+        SELECT
+          FROM_UNIXTIME(\`time@timestamp\`) AS waktu,
+          \`time@timestamp\` AS raw_timestamp,
+          data_format_0 AS y
+        FROM \`parammachine_saka\`.\`mezanine.tengah_runn_HM1_data\`
+        WHERE (
+          FROM_UNIXTIME(\`time@timestamp\`) BETWEEN '${tanggal} 23:00:00' AND '${tanggal} 23:59:59'
+          OR
+          FROM_UNIXTIME(\`time@timestamp\`) BETWEEN DATE_ADD('${tanggal}', INTERVAL 1 DAY) AND DATE_ADD('${tanggal}', INTERVAL 1 DAY) + INTERVAL 6 HOUR + INTERVAL 30 MINUTE
+        )
+        AND data_format_0 = 0
+        ORDER BY \`time@timestamp\`
+      `;
+    } else {
+      return response.status(400).send({ error: 'Shift tidak valid' });
+    }
+
+    db3.query(queryGet, (err, result) => {
+      if (err) {
+        console.error('Database query error:', err);
+        return response.status(500).send({ error: 'Database query error' });
+      }
+
+      const grouped = [];
+      let currentGroup = null;
+      let prevTime = null;
+
+      for (let row of result) {
+        const currentTime = new Date(row.waktu);
+
+        if (!currentGroup || (prevTime && (currentTime - prevTime) > 60000)) {
+          if (currentGroup) {
+            grouped.push({
+              start: currentGroup.start.toISOString().slice(0, 16).replace('T', ' '),
+              finish: currentGroup.finish.toISOString().slice(0, 16).replace('T', ' '),
+              total_minutes: Math.round((currentGroup.finish - currentGroup.start) / 60000)
+            });
+          }
+          currentGroup = {
+            start: currentTime,
+            finish: currentTime
+          };
+        } else {
+          currentGroup.finish = currentTime;
+        }
+
+        prevTime = currentTime;
+      }
+
+      if (currentGroup) {
+        grouped.push({
+          start: currentGroup.start.toISOString().slice(0, 16).replace('T', ' '),
+          finish: currentGroup.finish.toISOString().slice(0, 16).replace('T', ' '),
+          total_minutes: Math.round((currentGroup.finish - currentGroup.start) / 60000)
+        });
+      }
+
+      const filtered = grouped.filter(item => item.total_minutes >= 3);
+
+      if (filtered.length === 0) {
+        return response.status(200).send([]); // Tidak ada durasi cukup panjang
+      }
+
+      const insertValues = filtered.map(item => [
+        parseInt(shift),
+        item.start,
+        item.finish,
+        item.total_minutes
+      ]);
+
+      const insertQuery = `
+        INSERT INTO Downtime_Mesin_HM1_A (shift, start, finish, total_menit)
+        VALUES ?
+      `;
+
+      db3.query(insertQuery, [insertValues], (insertErr) => {
+        if (insertErr) {
+          console.error('Insert error:', insertErr);
+          return response.status(500).send({ error: 'Insert error' });
+        }
+
+        return response.status(200).send(filtered); // Kirim ke frontend
+      });
+    });
+  });
+},
+
+
+fetchVibrate: async (request, response) => {
+  const start = request.query.start;
+  const finish = request.query.finish;
+  const table = request.query.machine;
+
+  const query = `
+    SELECT COALESCE(\`data_index\`, 0) as 'id', \`time@timestamp\` as 'time', \`data_format_0\`
+    FROM \`${table}\`
+    WHERE \`time@timestamp\` BETWEEN '${start}' AND '${finish}'
+  `;
+
+  // Jalankan query ke dua database
+  db1.query(query, (err1, result1) => {
+    if (err1) return response.status(500).send({ error: 'DB1 error', detail: err1 });
+
+    db2.query(query, (err2, result2) => {
+      if (err2) return response.status(500).send({ error: 'DB2 error', detail: err2 });
+
+      // Gabungkan hasil dari kedua DB
+      const combined = [...result1, ...result2];
+
+      return response.status(200).send(combined);
+    });
+  });
+}
+
+
+HM1InsertDowntimeWithSubRows: async (req, res) => {
+    const { id, subRows } = req.body;
+
+    console.log(id);
+    if (!Array.isArray(subRows) || subRows.length === 0) {
+      return res
+        .status(400)
+        .send({ error: "Data subRows kosong atau tidak valid" });
+    }
+
+    // Validasi dan parsing ID
+    const parsedId = Number(id);
+    if (!parsedId || isNaN(parsedId)) {
+      return res.status(400).send({ error: "ID tidak valid" });
+    }
+
+    const insertQuery = `
+    INSERT INTO Downtime_Mesin
+    (shift, start, finish, total_menit, mesin, downtime_type, detail, user, submit_date, keterangan)
+    VALUES ?
+  `;
+
+    try {
+      const deleteQuery = `DELETE FROM Downtime_Mesin WHERE id = ?`;
+      // Step 1: Hapus data lama
+      console.log(id);
+      db3.query(deleteQuery, [id], (deleteErr) => {
+        if (deleteErr) {
+          return res.status(500).send({ error: "Gagal hapus data lama" });
+        }
+
+        // Step 2: Siapkan data baru untuk insert
+        const values = subRows.map((item) => {
+          const fullStart = `${item.tanggal} ${item.start}`;
+          const fullFinish = `${item.tanggal} ${item.finish}`;
+
+          return [
+            item.shift,
+            fullStart,
+            fullFinish,
+            item.total_menit,
+            item.mesin || item.area,
+            item.downtime_type,
+            item.detail || item.downtime_detail,
+            item.user || item.username,
+            item.submit_date || item.submitted_at,
+            item.keterangan || "",
+          ];
+        });
+
+        // Step 3: Insert data baru
+        db3.query(insertQuery, [values], (insertErr) => {
+          if (insertErr) {
+            console.error("Insert error:", insertErr);
+            return res.status(500).send({ error: "Gagal insert data baru" });
+          }
+
+          return res.status(200).send({
+            success: true,
+            message: "Data berhasil diganti dengan sub-row baru",
+          });
+        });
+      });
+    } catch (error) {
+      console.error("Server error:", error);
+      return res.status(500).send({ error: "Terjadi kesalahan di server" });
+    }
+  },
+
+SearchPMARecord3: async (request, response) => {
+    const { data } = request.query;
+    const area = "cMT-GEA-L3_EBR_PMA_L3_data"; // Static value
+
+    const getAllColumns = () => {
+      return new Promise((resolve, reject) => {
+        const query = `
+          SELECT COLUMN_NAME
+          FROM INFORMATION_SCHEMA.COLUMNS
+          WHERE TABLE_SCHEMA = 'parammachine_saka'
+          AND TABLE_NAME = ?
+          AND COLUMN_NAME NOT IN ('data_format_0', 'data_format_1', 'time@timestamp')
+        `;
+        db.query(query, [area], (err, results) => {
+          if (err) return reject(err);
+          const columns = results.map((result) => result.COLUMN_NAME);
+          resolve(columns);
+        });
+      });
+    };
+
+    const getColumnMappings = () => {
+      return new Promise((resolve, reject) => {
+        const query = `
+          SELECT data_format_index, comment
+          FROM \`${area}_format\`
+        `;
+        db.query(query, (err, results) => {
+          if (err) return reject(err);
+          resolve(results);
+        });
+      });
+    };
+
+    try {
+      const columns = await getAllColumns();
+      const columnMappings = await getColumnMappings();
+
+      // Pisahkan data_index dari kolom lainnya
+      const dataIndexCol = "`data_index`";
+      const mappedColumns = columns
+        .filter((col) => col !== "data_index")
+        .map((col) => {
+          const match = col.match(/data_format_(\d+)/);
+          if (match) {
+            const index = parseInt(match[1], 10);
+            const mapping = columnMappings.find(
+              (mapping) => mapping.data_format_index === index
+            );
+            if (mapping) {
+              return `\`${col}\` AS \`${mapping.comment}\``;
+            }
+          }
+          return `\`${col}\``;
+        });
+
+      const queryGet = `
+        SELECT
+          ${dataIndexCol},
+          DATE_FORMAT(
+            FROM_UNIXTIME(FLOOR(\`time@timestamp\`)),
+            '%Y-%m-%d %H:%i'
+          ) AS \`time@timestamp\`,
+          ${mappedColumns.join(", ")},
+          CONVERT(\`data_format_0\` USING utf8) AS \`BATCH\`,
+          CONVERT(\`data_format_1\` USING utf8) AS \`PROCESS\`
+        FROM
+          \`parammachine_saka\`.\`${area}\`
+        WHERE
+          CONVERT(\`data_format_0\` USING utf8) LIKE ?
+        ORDER BY
+          \`time@timestamp\` ASC;
+      `;
+
+      db.query(queryGet, [`%${data}%`], (err, result) => {
+        if (err) {
+          console.log(err);
+          return response.status(500).send("Database query failed");
+        }
+        return response.status(200).send(result);
+      });
+    } catch (error) {
+      console.log(error);
+      return response.status(500).send("Database query failed");
+    }
+  },
+
+
+  SearchPMARecord1: async (request, response) => {
+    const { data } = request.query;
+    const area = "cMT-FHDGEA1_EBR_PMA_data"; // Static value
+
+    const getAllColumns = () => {
+      return new Promise((resolve, reject) => {
+        const query = `
+        SELECT COLUMN_NAME
+        FROM INFORMATION_SCHEMA.COLUMNS
+        WHERE TABLE_SCHEMA = 'ems_saka'
+        AND TABLE_NAME = ?
+        AND COLUMN_NAME NOT IN ('data_format_0', 'data_format_1')
+      `;
+        db2.query(query, [area], (err, results) => {
+          if (err) return reject(err);
+          const columns = results.map((result) => result.COLUMN_NAME);
+          resolve(columns);
+        });
+      });
+    };
+
+    const getColumnMappings = () => {
+      return new Promise((resolve, reject) => {
+        const query = `
+        SELECT data_format_index, comment
+        FROM \`${area}_format\`
+      `;
+        db2.query(query, (err, results) => {
+          if (err) return reject(err);
+          resolve(results);
+        });
+      });
+    };
+
+    try {
+      const columns = await getAllColumns();
+      const columnMappings = await getColumnMappings();
+
+      const mappedColumns = columns.map((col) => {
+        const match = col.match(/data_format_(\d+)/);
+        if (match) {
+          const index = parseInt(match[1], 10);
+          const mapping = columnMappings.find(
+            (mapping) => mapping.data_format_index === index
+          );
+          if (mapping) {
+            return `\`${col}\` AS \`${mapping.comment}\``;
+          }
+        }
+        return `\`${col}\``;
+      });
+
+      const queryGet = `
+      SELECT
+        ${mappedColumns.join(", ")},
+        CONVERT(\`data_format_0\` USING utf8) AS \`BATCH\`,
+        CONVERT(\`data_format_1\` USING utf8) AS \`PROCESS\`
+      FROM
+        \`ems_saka\`.\`${area}\`
+      WHERE
+        CONVERT(\`data_format_0\` USING utf8) LIKE ?
+      ORDER BY
+        DATE(FROM_UNIXTIME(\`time@timestamp\`)) ASC;
+    `;
+
+      db.query(queryGet, [`%${data}%`], (err, result) => {
+        if (err) {
+          console.log(err);
+          return response.status(500).send("Database query failed");
+        }
+        return response.status(200).send(result);
+      });
+    } catch (error) {
+      console.log(error);
+      return response.status(500).send("Database query failed");
+    }
+  },
+
+  SearchWetmillRecord3: async (request, response) => {
+    const { data } = request.query;
+    const area = "cMT-GEA-L3_EBR_WETMILL_data"; // Static value
+
+    const getAllColumns = () => {
+      return new Promise((resolve, reject) => {
+        const query = `
+        SELECT COLUMN_NAME
+        FROM INFORMATION_SCHEMA.COLUMNS
+        WHERE TABLE_SCHEMA = 'parammachine_saka'
+        AND TABLE_NAME = ?
+        AND COLUMN_NAME NOT IN ('data_format_0')
+      `;
+        db.query(query, [area], (err, results) => {
+          if (err) return reject(err);
+          const columns = results.map((result) => result.COLUMN_NAME);
+          resolve(columns);
+        });
+      });
+    };
+
+    const getColumnMappings = () => {
+      return new Promise((resolve, reject) => {
+        const query = `
+        SELECT data_format_index, comment
+        FROM \`${area}_format\`
+      `;
+        db.query(query, (err, results) => {
+          if (err) return reject(err);
+          resolve(results);
+        });
+      });
+    };
+
+    try {
+      const columns = await getAllColumns();
+      const columnMappings = await getColumnMappings();
+
+      const mappedColumns = columns.map((col) => {
+        const match = col.match(/data_format_(\d+)/);
+        if (match) {
+          const index = parseInt(match[1], 10);
+          const mapping = columnMappings.find(
+            (mapping) => mapping.data_format_index === index
+          );
+          if (mapping) {
+            return `\`${col}\` AS \`${mapping.comment}\``;
+          }
+        }
+        return `\`${col}\``;
+      });
+
+      const queryGet = `
+      SELECT
+        ${mappedColumns.join(", ")},
+        CONVERT(\`data_format_0\` USING utf8) AS \`PROSES\`
+        FROM
+        \`parammachine_saka\`.\`${area}\`
+      WHERE
+        CONVERT(\`data_format_0\` USING utf8) LIKE ?
+      ORDER BY
+        DATE(FROM_UNIXTIME(\`time@timestamp\`)) ASC;
+    `;
+      db.query(queryGet, [`%${data}%`], (err, result) => {
+        if (err) {
+          console.log(err);
+          return response.status(500).send("Database query failed");
+        }
+        return response.status(200).send(result);
+      });
+    } catch (error) {
+      console.log(error);
+      return response.status(500).send("Database query failed");
+    }
+  },
+
+  SearchWetMillRecord1: async (request, response) => {
+    const { data } = request.query;
+    const area = "cMT-FHDGEA1_EBR_Wetmill_data"; // Static value
+
+    const getAllColumns = () => {
+      return new Promise((resolve, reject) => {
+        const query = `
+        SELECT COLUMN_NAME
+        FROM INFORMATION_SCHEMA.COLUMNS
+        WHERE TABLE_SCHEMA = 'ems_saka'
+        AND TABLE_NAME = ?
+        AND COLUMN_NAME NOT IN ('data_format_0', 'data_format_1')
+      `;
+        db2.query(query, [area], (err, results) => {
+          if (err) return reject(err);
+          const columns = results.map((result) => result.COLUMN_NAME);
+          resolve(columns);
+        });
+      });
+    };
+
+    const getColumnMappings = () => {
+      return new Promise((resolve, reject) => {
+        const query = `
+        SELECT data_format_index, comment
+        FROM \`${area}_format\`
+      `;
+        db2.query(query, (err, results) => {
+          if (err) return reject(err);
+          resolve(results);
+        });
+      });
+    };
+
+    try {
+      const columns = await getAllColumns();
+      const columnMappings = await getColumnMappings();
+
+      const mappedColumns = columns.map((col) => {
+        const match = col.match(/data_format_(\d+)/);
+        if (match) {
+          const index = parseInt(match[1], 10);
+          const mapping = columnMappings.find(
+            (mapping) => mapping.data_format_index === index
+          );
+          if (mapping) {
+            return `\`${col}\` AS \`${mapping.comment}\``;
+          }
+        }
+        return `\`${col}\``;
+      });
+
+      const queryGet = `
+      SELECT
+        ${mappedColumns.join(", ")},
+        CONVERT(\`data_format_0\` USING utf8) AS \`BATCH\`,
+        CONVERT(\`data_format_1\` USING utf8) AS \`PROCESS\`
+      FROM
+        \`ems_saka\`.\`${area}\`
+      WHERE
+        CONVERT(\`data_format_0\` USING utf8) LIKE ?
+      ORDER BY
+        DATE(FROM_UNIXTIME(\`time@timestamp\`)) ASC;
+    `;
+
+      db2.query(queryGet, [`%${data}%`], (err, result) => {
+        if (err) {
+          console.log(err);
+          return response.status(500).send("Database query failed");
+        }
+        return response.status(200).send(result);
+      });
+    } catch (error) {
+      console.log(error);
+      return response.status(500).send("Database query failed");
+    }
+  },
+
+  ${pmaArea}\`.data_index AS PMA_INDEX,
+
+
+
+
+   LogData: async (req, res) => {
+    const queryData = `SELECT * FROM parammachine_saka.Log_Data_Login`;
+    console.log(queryData);
+
+    db3.query(queryData, (err, result) => {
+      if (err) {
+        return res.status(500).send({ error: "Database error", detail: err });
+      }
+      return res.status(200).send(result);
+    });
+  },

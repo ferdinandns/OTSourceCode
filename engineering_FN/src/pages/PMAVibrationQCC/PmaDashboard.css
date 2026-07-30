@@ -1,0 +1,310 @@
+/* --- DARK MODE VARIABLES (From your snippet) --- */
+.log-form-container {
+    --main-bg: #ffffff;
+    --text-main: #1f2937;
+    --text-muted: #6b7280;
+    --border-color: #d1d5db;
+    --element-bg: #ffffff; 
+    --input-bg: #ffffff;
+    --hover-bg: #f3f4f6;
+    --accent-blue: #3b82f6;
+    --warning-red: #ef4444; /* Added for alarms */
+}
+  
+html.dark .log-form-container, 
+html[data-theme="dark"] .log-form-container {
+    --main-bg: #121212;
+    --text-main: #ffffff;
+    --text-muted: #a0a0a0;
+    --border-color: #333333;
+    --element-bg: #1e1e1e;
+    --input-bg: #121212;
+    --hover-bg: #2a2a2a;
+    --accent-blue: #3b82f6;
+    --warning-red: #ef4444;
+}
+
+/* --- BASE STYLES --- */
+.pma-dashboard-wrapper {
+    /* 1. Force full width and override any global form max-widths */
+    width: 100%;
+    max-width: none !important; 
+    box-sizing: border-box; /* Ensures padding doesn't push it off-screen */
+
+    /* 2. Keep the rest the same */
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    background-color: var(--main-bg);
+    color: var(--text-main);
+    min-height: 100vh;
+    padding: 24px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* --- HEADER --- */
+.dashboard-header-card {
+    background-color: var(--element-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin-bottom: 24px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05); /* Very subtle shadow */
+}
+
+.dashboard-title {
+    margin: 0 0 4px 0;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.dashboard-subtitle {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 14px;
+}
+
+/* --- TABS --- */
+.dashboard-tabs {
+    display: flex;
+    gap: 8px;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 24px;
+    padding-bottom: 1px;
+}
+
+.tab-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 14px;
+    font-weight: 600;
+    padding: 12px 20px;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+}
+
+.tab-icon {
+    font-size: 16px;
+}
+
+.tab-btn:hover {
+    color: var(--text-main);
+    background-color: var(--hover-bg);
+    border-radius: 6px 6px 0 0;
+}
+
+.tab-btn.active {
+    color: var(--accent-blue);
+    border-bottom: 3px solid var(--accent-blue);
+}
+
+/* --- CONTENT GRID --- */
+.home-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+/* --- CARDS --- */
+.card {
+    background-color: var(--element-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 24px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.card-title {
+    margin: 0 0 20px 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+/* Image Section */
+.image-placeholder {
+    width: 100%;
+    height: 350px;
+    background-color: var(--input-bg);
+    border: 1px dashed var(--border-color);
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-muted);
+}
+
+/* Metrics List */
+.metrics-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.metric-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 8px;
+    border-bottom: 1px solid var(--border-color);
+    transition: background-color 0.2s;
+}
+
+.metric-row:hover {
+    background-color: var(--hover-bg);
+    border-radius: 4px;
+}
+
+.metric-row.borderless {
+    border-bottom: none;
+}
+
+.metric-label {
+    color: var(--text-muted);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.metric-value {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.metric-value.highlight {
+    font-size: 16px;
+    color: var(--accent-blue);
+}
+
+.metric-value.warning {
+    color: var(--warning-red);
+}
+
+/* Status Pills */
+.status-pill {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: var(--hover-bg);
+    padding: 4px 12px;
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+}
+
+.status-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.status-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+/* Placeholders */
+.placeholder-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+    color: var(--text-muted);
+}
+/* --- LEVEL PAGES & CHARTS --- */
+.level-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.level-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-muted);
+    margin: 0 0 8px 0;
+    letter-spacing: 0.5px;
+}
+
+.chart-card {
+    padding: 16px;
+}
+
+/* --- DIAGNOSA TABLE --- */
+.table-card {
+    padding: 0;
+    overflow: hidden;
+}
+
+.diagnosa-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.diagnosa-table th, .diagnosa-table td {
+    padding: 12px 24px;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-main);
+}
+
+.diagnosa-table th {
+    background-color: var(--hover-bg);
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+.diagnosa-table td.bold {
+    font-weight: 700;
+}
+
+.diagnosa-table tr:last-child td {
+    border-bottom: none;
+}
+/* --- CONTROLS BAR --- */
+.dashboard-controls {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 24px;
+    padding: 16px 24px;
+}
+
+.control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.control-group label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.modern-input {
+    background-color: var(--input-bg);
+    color: var(--text-main);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.modern-input:focus {
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+/* Fixes the dark calendar icon in some browsers when in dark mode */
+html.dark .modern-input::-webkit-calendar-picker-indicator, 
+html[data-theme="dark"] .modern-input::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}

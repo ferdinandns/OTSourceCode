@@ -1,0 +1,115 @@
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  darkMode: 'class',
+  theme: {
+    extend: {
+      fontFamily: {
+        DMSans: ['DM Sans', 'serif'],
+        poppins: ['Poppins', 'sans-serif'],
+      },
+      minHeight: {
+        'dvh': '100dvh',
+      },
+      screens: {
+        '2xsm': '375px',
+        xsm: '425px',
+      },
+      colors: {
+        background: "rgba(var(--color-background))",
+        background2: "rgba(var(--color-background2))",
+        border: "rgba(var(--color-border))",
+        border2: "rgba(var(--color-border2))",
+        card: "rgba(var(--color-card))",
+        cardb: "rgba(var(--color-cardb))",
+        cardc: "rgba(var(--color-cardc))",
+        card2: "rgba(var(--color-card2))",
+        lingkaran: "rgba(var(--color-lingkaran))",
+        tombol: "rgba(var(--color-tombol))",
+
+        text: "rgba(var(--color-text))",
+        text2: "rgba(var(--color-text2))",      
+
+        cta: "rgba(var(--color-cta))",
+        ctactive: "rgba(var(--color-ctactive))",
+        ctatext: "rgba(var(--color-ctatext))",
+        acttext: "rgba(var(--color-acttext))",
+        hvrr: "rgba(var(--color-hvrr))",
+        cobabg: "rgba(var(--color-cobabg))",
+        coba: "rgba(var(--color-coba))",
+
+        primary: "#000000",
+        secondary: "#FFFFFF",
+        hijau: '#009900',
+        showTombol: '#14ADD6',
+        createTombol: '#1D8CF8',
+        deleteTombol: '#FF0000',
+        hijau2: '#008000',
+        hitam2: '#1C1C1C',
+        baseclr: '#11121A',
+        hoverclr: '#222533',
+        accentclr: '#5E63FF',
+        boxdark: '#24303F',
+        primaryp: '#3C50E0',
+        stroke: '#E2E8F0',
+        strokedark: '#2E3A47',
+        primaryy: '#3C50E0',
+        textclr: '#E6E6Ef',
+        contoh: '#292929',
+        kotakMerah: '#f76650',
+        bdrMerah: '#f97a67',
+        contoh1: '#363636',
+        meta: {
+          1: '#DC3545',
+          2: '#EFF2F7',
+          3: '#10B981',
+          4: '#313D4A',
+          5: '#259AE6',
+          6: '#FFBA00',
+          7: '#FF6766',
+          8: '#F0950C',
+          9: '#E5E7EB',
+          10: '#0FADCF',
+        },
+        pageError: {
+          50: '#eff6ff',
+          100: '#dbeafe',
+          200: '#bfdbfe',
+          300: '#93c5fd',
+          400: '#60a5fa',
+          500: '#3b82f6',
+          600: '#2563eb',
+          700: '#1d4ed8',
+          800: '#1e40af',
+          900: '#1e3a8a',
+        },
+      },
+      container: {
+        center: true,
+        padding: {
+          DEFAULT: "1rem",
+          sm: "2rem",
+          lg: "4rem",
+          xl: "5rem",
+          "2xl": "6rem"
+        }
+      },
+      spacing: {
+        4.5: '1.125rem',
+        5.5: '1.375rem',
+        6.5: '1.625rem',
+        7.5: '1.875rem',
+        8.5: '2.125rem',
+        9.5: '2.375rem',
+        10.5: '2.625rem'
+      },
+      boxShadow: {
+        default: '0px 8px 13px -3px rgba(0, 0, 0, 0.07)',
+        buatcard: '0px 6px 8px 0px rgba(0, 0, 0, 0.25)',
+        2: '0px 1px 4px rgba(0, 0, 0, 0.12)',
+      },
+    },
+  },
+  plugins: [],
+};
+

@@ -1,0 +1,17 @@
+/* Base styling for all blue racks */
+.rack-group rect {
+    fill: #3b82f6; /* Standard blue */
+    transition: all 0.3s ease;
+}
+
+/* The pulsing animation for the active rack */
+.highlight-pulse rect {
+    fill: #ef4444 !important; /* Turns bright red */
+    animation: pulse-ring 1.5s infinite;
+}
+
+@keyframes pulse-ring {
+    0% { filter: drop-shadow(0 0 0 rgba(239, 68, 68, 0.7)); }
+    70% { filter: drop-shadow(0 0 15px rgba(239, 68, 68, 0)); }
+    100% { filter: drop-shadow(0 0 0 rgba(239, 68, 68, 0)); }
+}

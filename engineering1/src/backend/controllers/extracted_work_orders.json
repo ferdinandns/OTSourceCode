@@ -1,0 +1,5674 @@
+[
+    {
+        "PWO_Number": "PWO-373227",
+        "Asset_Number": "CKR-02-03-010-010-020",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Bulanan Chopper GEA PMA",
+        "Area": "ILE3",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Periksa tekanan air seal chopper, standar 0.5bar",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Cleaning pre filter water chiller chopper",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "30",
+                "Task": "Setelah pencucian, periksa seal chopper terhadap kebocoran",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "40",
+                "Task": "Periksa seal chopper, bersihkan semua kotoran dan sisa produk yang menempel pada permukaan seal, ganti jika diperlukan",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "50",
+                "Task": "Periksa apakah terdapat air atau debu sisa produk pada seal chopper",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "60",
+                "Task": "Cek motor chopper (koneksi & tahanan)",
+                "Technician": "",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 1
+    },
+    {
+        "PWO_Number": "PWO-373228",
+        "Asset_Number": "CKR-02-03-010-010-030",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Bulanan Agitator GEA PMA",
+        "Area": "ILE3",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Periksa bagian luar container dari tanda- tanda kerusakan, bagian yang kendur dan kabel grounding",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Periksa bagian dalam container terhadap tanda-tanda kerusakan atau goresan terhadap kerusakan",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "30",
+                "Task": "Periksa bagian dudukan container/platform, pastikan tidak ada kerusakan",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "40",
+                "Task": "Periksa permukaan imepeler, jauhkan dari benda-benda asing pada bagian bawah impeler",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "50",
+                "Task": "Setelah pencucian, periksa seal impeler dari kebocoran",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "60",
+                "Task": "Cek gap baling-baling (ukur menggunakan filler).",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "70",
+                "Task": "Periksa seal impeller, pastikan seal dalam keadaan bersih dan kering",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "80",
+                "Task": "Periksa seal impeller, bersihkan semua kotoran dan sisa produk yang menempel pada permukaan seal, ganti jika diperlukan",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "90",
+                "Task": "Periksa impeller shaft",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "100",
+                "Task": "Periksa bearing motor terhadap bunyi, panas, serta getaran. Ganti bearing jika diperlukan",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "110",
+                "Task": "Periksa dan bersihkan mekanisme safety interlock, periksa sistem berfungsi dengan baik",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "120",
+                "Task": "Periksa tekanan air seal impeler standart 0.5 bar",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 2
+    },
+    {
+        "PWO_Number": "PWO-373228",
+        "Asset_Number": "Unknown",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Bulanan Agitator GEA PMA",
+        "Area": "Unknown",
+        "Operations": [
+            {
+                "Step": "130",
+                "Task": "Periksa saluran air seal imepller, pastikan tekanan udara antara 0.4 - 0.7 bar ganti filter jika ditemukan kerusakan",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "140",
+                "Task": "Periksa fungsi hoist impeler, pastikan selang dapat mengulur dan menarik saat dioperasikan",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "150",
+                "Task": "Periksa pelumas pada hoist impeller, jika berada pada level LOW tambahkan dengan oli SAE 10",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "160",
+                "Task": "Periksa kabel hoist impeler",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "170",
+                "Task": "Ganti oli geabox, gunakan oli Trbol 800/200 atau yang setara",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 3
+    },
+    {
+        "PWO_Number": "PWO-373229",
+        "Asset_Number": "CKR-02-03-010-010-040",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan 2 Bulanan Inflatable Seal PMA",
+        "Area": "ILE3",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Ganti inflatable seal",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Periksa dan kencangkan koneksi selang pneumatik",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "30",
+                "Task": "Pastikan tekanan udara ada di 3 bar",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 4
+    },
+    {
+        "PWO_Number": "PWO-373230",
+        "Asset_Number": "CKR-02-03-010-030-020",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan 2 Bulanan Inflatable Seal Wetmillma",
+        "Area": "ILE3",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Ganti inflatable seal",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Periksa dan kencangkan koneksi selang pneumatik",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "30",
+                "Task": "Pastikan tekanan udara ada di 3 bar",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 5
+    },
+    {
+        "PWO_Number": "PWO-373231",
+        "Asset_Number": "CKR-02-03-010-040-010",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan 2 Bulanan Filter FBD",
+        "Area": "ILE3",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Periksa pergerakan as silinder",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Periksa pengunci sensor posisi silinder",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "30",
+                "Task": "Periksa Seal silinder",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "40",
+                "Task": "Periksa Seal silinder pengunci",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "50",
+                "Task": "Periksa Seal valve",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "60",
+                "Task": "Pastikan tekanan udara ada di 3 bar",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "70",
+                "Task": "Periksa pressure gauge pastikan tidak ada kebocoran",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "80",
+                "Task": "Periksa dan kencangkan koneksi selang pneumatik",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "90",
+                "Task": "Periksa selang seal filter",
+                "Technician": "",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "100",
+                "Task": "Periksa Inflatable seal",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "110",
+                "Task": "Pastikan tekanan udara Inflatable seal ada di 3 bar",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 6
+    },
+    {
+        "PWO_Number": "PWO-373231",
+        "Asset_Number": "Unknown",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan 2 Bulanan Filter FBD",
+        "Area": "Unknown",
+        "Operations": [],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 7
+    },
+    {
+        "PWO_Number": "PWO-373232",
+        "Asset_Number": "CKR-02-03-010-040-020-Cylinder",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan 2 Bulanan Cylinder Discharge FBD",
+        "Area": "ILE3",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Cek seal o-ring, ganti bila kondisi sudah rusak",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Periksa pergerakan silinder",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "30",
+                "Task": "Periksa dan kencangkan koneksi selang pneumatik",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "40",
+                "Task": "Periksa pengunci Sensor posisi pada silinder",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "50",
+                "Task": "Bersihkan area silinder",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 8
+    },
+    {
+        "PWO_Number": "PWO-373233",
+        "Asset_Number": "CKR-02-03-010-050-010",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan 2 Bulanan Filter EPH",
+        "Area": "ILE3",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "pengecekan filter EPH, pastikan filter dalam keadaan bersih",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 9
+    },
+    {
+        "PWO_Number": "PWO-373234",
+        "Asset_Number": "CKR-02-03-020-010-030",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan 2 Bulanan Gearbox Tumbler",
+        "Area": "ILE3",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Pemeriksaan bearing gearbox, Cek bunyi dan putaran bearing",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Lakukan Pelumasan pada gearbox",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 10
+    },
+    {
+        "PWO_Number": "PWO-373235",
+        "Asset_Number": "CKR-02-03-020-010-040",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan 2 Bulanan Lifting Device Tumbler",
+        "Area": "ILE3",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Pemeriksaan motor & gearbox lifting",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Pemeriksaan visual struktur lifting",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "30",
+                "Task": "Cek baut & pin pengunci",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "40",
+                "Task": "Cek sensor safety dan limit switch",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 11
+    },
+    {
+        "PWO_Number": "PWO-373236",
+        "Asset_Number": "CKR-02-03-030-010-230",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan 3 Bulanan Operator Terminal",
+        "Area": "ILE3",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Membersihkan layar monitor, keyboard, dan CPU dari debu",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Cek kondisi kabel power & LAN (tidak longgar / terkelupas)",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "30",
+                "Task": "Pastikan sistem menyala normal",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 12
+    },
+    {
+        "PWO_Number": "PWO-373237",
+        "Asset_Number": "CKR-02-03-030-010-240",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan 3 Bulanan Main Panel",
+        "Area": "ILE3",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Melakukan pengecekan relay sensor",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Melakukan pengecekan kondisi kabel dan terminal",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "30",
+                "Task": "Melakukan pengecekan MCB",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 13
+    },
+    {
+        "PWO_Number": "PWO-373238",
+        "Asset_Number": "CKR-02-03-030-060",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Bin Lifter",
+        "Area": "ILE3",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Cek kondisi belt bin lifter",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Cek sensor bin lifter",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "30",
+                "Task": "Cleaning area bin lifter",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 14
+    },
+    {
+        "PWO_Number": "PWO-373239",
+        "Asset_Number": "CKR-02-03-040-010-020",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Main Hole Tablet Coating",
+        "Area": "ILE3",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Pengecekan Gap manhole terhadap drum pastikan tidak bergesekan",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "pengecekan seal teflon pintu pastikan tidak bergesekan",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "30",
+                "Task": "pengecekan baut pengunci seal teflon pastikan tidak slek",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 15
+    },
+    {
+        "PWO_Number": "PWO-373240",
+        "Asset_Number": "CKR-02-03-040-010-030",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Main Panel Tablet Coating Bosch",
+        "Area": "ILE3",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Pastikan jalur tidak bocor, mampet dan berkerak",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 16
+    },
+    {
+        "PWO_Number": "PWO-373241",
+        "Asset_Number": "CKR-02-03-040-010-040",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Pompa Peristaltik Tablet Coating Bocsh",
+        "Area": "ILE3",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Default Operation for Work Order",
+                "Technician": "",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 17
+    },
+    {
+        "PWO_Number": "PWO-373242",
+        "Asset_Number": "CKR-02-03-040-010-050",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Nozzle Spray Tablet Coating Bosch",
+        "Area": "ILE3",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Pastikan jalur tidak bocor, mampet dan berkerak",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 18
+    },
+    {
+        "PWO_Number": "PWO-373243",
+        "Asset_Number": "CKR-02-03-040-020-010",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Main Panel Mixer Coating",
+        "Area": "ILE3",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Pengecekan panel pastikan bersih dan sirkulasi udara berfungsi",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "pengecekan kekencangan baut/socket/pengunci skun",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 19
+    },
+    {
+        "PWO_Number": "PWO-373244",
+        "Asset_Number": "CKR-02-03-040-020-020",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Tanki Mixing Coating Solution Mixer",
+        "Area": "ILE3",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Periksa tombol Emergency, Start dan Stop",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Periksa Timer",
+                "Technician": "",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "30",
+                "Task": "Periksa dan kencangkan kabel Grounding",
+                "Technician": "",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "40",
+                "Task": "Periksa Coupling motor",
+                "Technician": "",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "50",
+                "Task": "Periksa baut pengikat baling-baling",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "60",
+                "Task": "Periksa Body mixing tank",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "70",
+                "Task": "Periksa gasket sambungan pipa",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 20
+    },
+    {
+        "PWO_Number": "PWO-373245",
+        "Asset_Number": "CKR-02-03-080-010-010",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Coating Solution Mixer 3 bulan",
+        "Area": "ILE3",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Periksa tombol Emergency",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Periksa tombol Start",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "30",
+                "Task": "Periksa tombol Stop",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "40",
+                "Task": "Periksa Timmer",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "50",
+                "Task": "Periksa dan kencangkan kabel Grounding",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "60",
+                "Task": "Periksa Coupling motor",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "70",
+                "Task": "Periksa baut pengikat baling-baling",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "80",
+                "Task": "Periksa Body mixing tank",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "90",
+                "Task": "Periksa gasket sambungan pipa",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 21
+    },
+    {
+        "PWO_Number": "PWO-373246",
+        "Asset_Number": "CKR-02-03-040-020-030",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Motor Binder Coating Solution Mixer",
+        "Area": "ILE3",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Cek kondisi motor binder pastikan putaran dan getaran dalam kondisi normal",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 22
+    },
+    {
+        "PWO_Number": "PWO-373247",
+        "Asset_Number": "CKR-02-03-100-010-010",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Binder Solution Mixer 3 bulan",
+        "Area": "ILE3",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Periksa tombol Emergency",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Periksa tombol Start",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "30",
+                "Task": "Periksa tombol Stop",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "40",
+                "Task": "Periksa Timmer",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "50",
+                "Task": "Periksa dan kencangkan kabel Grounding",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "60",
+                "Task": "Periksa Coupling motor",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "70",
+                "Task": "Periksa baut pengikat baling-baling",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "80",
+                "Task": "Periksa Body mixing tank",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "90",
+                "Task": "Periksa gasket sambungan pipa",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 23
+    },
+    {
+        "PWO_Number": "PWO-373248",
+        "Asset_Number": "CKR-02-03-050-010",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Sortir Tekma 6 bulan",
+        "Area": "ILE3",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Periksa Emergency Stop Switch, Pastikan Berfungsi dengan BaikPeriksa Emergency Stop Switch, Pastikan Berfungsi dengan Baik",
+                "Technician": "/",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Periksa Baut Cover Body Mesin, Pastikan dalam Keadaan Kencang",
+                "Technician": "/",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "30",
+                "Task": "Periksa Belt, Pastikan Permukaan dalam Keadaan Baik",
+                "Technician": "/",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "40",
+                "Task": "Periksa Drive Shaft, Pastikan Berfungsi dengan Baik",
+                "Technician": "/",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "50",
+                "Task": "Periksa Bantalan Drive Shaft, Pastikan dalam Keadaan Baik",
+                "Technician": "/",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "60",
+                "Task": "Periksa Motor, Pastikan Berfungsi dengan Baik",
+                "Technician": "/",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "70",
+                "Task": "Periksa Sweeper, Pastikan dalam Kondisi Baik",
+                "Technician": "/",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "80",
+                "Task": "Periksa Box Panel, Pastikan Berfungsi dengan Baik",
+                "Technician": "/",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 24
+    },
+    {
+        "PWO_Number": "PWO-373248",
+        "Asset_Number": "Unknown",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Sortir Tekma 6 bulan",
+        "Area": "Unknown",
+        "Operations": [],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 25
+    },
+    {
+        "PWO_Number": "PWO-373249",
+        "Asset_Number": "CKR-02-03-060-010-010",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Product Infeed HM",
+        "Area": "ILE3",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "periksa roller excentric",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 26
+    },
+    {
+        "PWO_Number": "PWO-373250",
+        "Asset_Number": "CKR-02-03-060-010-020",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Vibrator Sorting Disc HM",
+        "Area": "ILE3",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Periksa permukaan yang kontak dengan produk",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Periksa penampungan tablet patah",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 27
+    },
+    {
+        "PWO_Number": "PWO-373251",
+        "Asset_Number": "CKR-02-03-060-010-030",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Product Feeding HM",
+        "Area": "ILE3",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Periksa product feeding unit",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Periksa O ring penarik foil, pastikan tidak rusak, aus, dan rata",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "30",
+                "Task": "periksa pegas penarik foil",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "40",
+                "Task": "periksa kekencangan tooth belt",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 28
+    },
+    {
+        "PWO_Number": "PWO-373252",
+        "Asset_Number": "CKR-02-03-060-010-040",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Product Separation HM",
+        "Area": "ILE3",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Cek visual roller ejector",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Cek sensor ejector",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 29
+    },
+    {
+        "PWO_Number": "PWO-373253",
+        "Asset_Number": "CKR-02-03-060-010-050",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Sealing Roller Unit HM",
+        "Area": "ILE3",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Periksa lensa sensor eye mark dan sambungan foil, pastikan tidak kotor atau sobek",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Periksa permukaan gear penggerak, berikan pelumas secukupnya dan tidak ada permukaan yang aus dan patah",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "30",
+                "Task": "Periksa sealing guiding disc, pastikan tidak rusak dan berikan pelumas secukupnya",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "40",
+                "Task": "Periksa slip ring, pastikan berfungsi baik dan tidak ada kotoran",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "50",
+                "Task": "periksa bearing sealing roller, pastikan putaran lancar",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "60",
+                "Task": "lakukan zero position",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 30
+    },
+    {
+        "PWO_Number": "PWO-373254",
+        "Asset_Number": "CKR-02-03-060-010-080",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Discharge Container L HM",
+        "Area": "ILE3",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Pastikan container bersih dan sensor berfungsi",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 31
+    },
+    {
+        "PWO_Number": "PWO-373255",
+        "Asset_Number": "CKR-02-03-060-010-090",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Discharge Container R HM",
+        "Area": "ILE3",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Pastikan container bersih dan sensor berfungsi",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 32
+    },
+    {
+        "PWO_Number": "PWO-373256",
+        "Asset_Number": "CKR-02-03-060-010-100",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Main Panel HM",
+        "Area": "ILE3",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Periksa jalur udara, pastikan berfungsi dengan baik",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "periksa filter ventilasi panel utama, pastikan dalam keadaan bersih",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "30",
+                "Task": "Release electrical residual current",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "40",
+                "Task": "periksa foil brake, lakukan test fungsi",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "50",
+                "Task": "Periksa battery UPS, pastikan berfungsi dengan baik",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 33
+    },
+    {
+        "PWO_Number": "PWO-373257",
+        "Asset_Number": "CKR-02-03-110-010-010",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Ink Jet Printer",
+        "Area": "ILE3",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Periksa filter keong",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Pastikan nozzle print head bersih dari tinta",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 34
+    },
+    {
+        "PWO_Number": "PWO-373258",
+        "Asset_Number": "CKR-02-03-110-020-020",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Ink Jet Printer",
+        "Area": "ILE3",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Periksa filter keong",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Pastikan nozzle print head bersih dari tinta",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 35
+    },
+    {
+        "PWO_Number": "PWO-373277",
+        "Asset_Number": "CKR-02-03-110-020-030",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Ink Jet Printer",
+        "Area": "ILE3",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Periksa filter keong",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Pastikan nozzle print head bersih dari tinta",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 36
+    },
+    {
+        "PWO_Number": "PWO-373278",
+        "Asset_Number": "CKR-02-03-120-010-010",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Feeding Unit CC",
+        "Area": "ILE3",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Cek pergerakan silinder, pastikan tidak tersendat",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 37
+    },
+    {
+        "PWO_Number": "PWO-373279",
+        "Asset_Number": "CKR-02-03-120-010-020",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Heating Unit CC",
+        "Area": "ILE3",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Ukur restistan heater, pastikan tidak putus atau short",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Cleaning area heater",
+                "Technician": "",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 38
+    },
+    {
+        "PWO_Number": "PWO-373280",
+        "Asset_Number": "CKR-02-03-130-010-010",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Feeding Unit CC",
+        "Area": "ILE3",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Cek pergerakan silinder, pastikan tidak tersendat",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 39
+    },
+    {
+        "PWO_Number": "PWO-373281",
+        "Asset_Number": "CKR-02-03-130-010-020",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Heating Unit CC",
+        "Area": "ILE3",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Ukur restistan heater, pastikan tidak putus atau short",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Cleaning area heater",
+                "Technician": "",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 40
+    },
+    {
+        "PWO_Number": "PWO-373282",
+        "Asset_Number": "CKR-02-03-070-010-010",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Ink Jet Printer",
+        "Area": "ILE3",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Periksa filter keong",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Pastikan nozzle print head bersih dari tinta",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 41
+    },
+    {
+        "PWO_Number": "PWO-373283",
+        "Asset_Number": "CKR-02-03-070-010-020",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Ink Jet Printer",
+        "Area": "ILE3",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Periksa filter keong",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Pastikan nozzle print head bersih dari tinta",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 42
+    },
+    {
+        "PWO_Number": "PWO-373284",
+        "Asset_Number": "CKR-02-03-070-010-030",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Ink Jet Printer",
+        "Area": "ILE3",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Periksa filter keong",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Pastikan nozzle print head bersih dari tinta",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 43
+    },
+    {
+        "PWO_Number": "PWO-373285",
+        "Asset_Number": "CKR-02-03-070-020-010",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Check Weigher Ishida",
+        "Area": "ILE3",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Perawatan Check Weigher Ishida",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 44
+    },
+    {
+        "PWO_Number": "PWO-373286",
+        "Asset_Number": "CKR-02-03-070-020-020",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Check Weigher Ishida",
+        "Area": "ILE3",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Perawatan Check Weigher Ishida",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 45
+    },
+    {
+        "PWO_Number": "PWO-373287",
+        "Asset_Number": "CKR-02-03-070-030-010",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Conveyor Tersier",
+        "Area": "ILE3",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Perawatan Conveyor Tersier",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 46
+    },
+    {
+        "PWO_Number": "PWO-373288",
+        "Asset_Number": "CKR-02-03-070-030-020",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Conveyor Tersier",
+        "Area": "ILE3",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Perawatan Conveyor Tersier",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 47
+    },
+    {
+        "PWO_Number": "PWO-373289",
+        "Asset_Number": "CKR-02-03-070-040-010",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Bestpack Carton Sealer",
+        "Area": "ILE3",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Default Operation for Work Order",
+                "Technician": "",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 48
+    },
+    {
+        "PWO_Number": "PWO-373290",
+        "Asset_Number": "CKR-02-03-070-040-020",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Bestpack Carton Sealer",
+        "Area": "ILE3",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Perawatan Bestpack Carton Sealer",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 49
+    },
+    {
+        "PWO_Number": "PWO-373291",
+        "Asset_Number": "CKR-02-03-070-050-010",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Timbangan Master Box",
+        "Area": "ILE3",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Perawatan Timbangan MB.",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 50
+    },
+    {
+        "PWO_Number": "PWO-373292",
+        "Asset_Number": "CKR-02-03-070-050-020",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Timbangan Master Box",
+        "Area": "ILE3",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Perawatan Timbangan MB.",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 51
+    },
+    {
+        "PWO_Number": "PWO-373293",
+        "Asset_Number": "CKR-02-02-010-010-010",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan 3 Bulanan Bowl FBD",
+        "Area": "ILE2",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Ganti lampu mesin FBD",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Periksa wadah produk sampel",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "30",
+                "Task": "Periksa roda dan pengunci roda",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "40",
+                "Task": "Periksa sensor posisi bowl kontainer",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 52
+    },
+    {
+        "PWO_Number": "PWO-373294",
+        "Asset_Number": "CKR-02-02-010-010-020",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan 3 Bulanan Main Panel FBD",
+        "Area": "ILE2",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Cek emergency stop",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Cek sambungan kabel",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "30",
+                "Task": "Cleaning area panel",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 53
+    },
+    {
+        "PWO_Number": "PWO-373295",
+        "Asset_Number": "CKR-02-02-010-010-030",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan 2 Bulanan Filter FBD",
+        "Area": "ILE2",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Periksa pergerakan as silinder",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Periksa pengunci sensor posisi silinder",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "30",
+                "Task": "Periksa Seal silinder",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "40",
+                "Task": "Periksa Seal silinder pengunci",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "50",
+                "Task": "Periksa Seal valve",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "60",
+                "Task": "Pastikan tekanan udara ada di 3 bar",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "70",
+                "Task": "Periksa pressure gauge pastikan tidak ada kebocoran",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "80",
+                "Task": "Periksa dan kencangkan koneksi selang pneumatik",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "90",
+                "Task": "Periksa selang seal filter",
+                "Technician": "",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "100",
+                "Task": "Periksa Inflatable seal",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "110",
+                "Task": "Pastikan tekanan udara Inflatable seal ada di 3 bar",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 54
+    },
+    {
+        "PWO_Number": "PWO-373295",
+        "Asset_Number": "Unknown",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan 2 Bulanan Filter FBD",
+        "Area": "Unknown",
+        "Operations": [],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 55
+    },
+    {
+        "PWO_Number": "PWO-373296",
+        "Asset_Number": "CKR-02-02-010-020-010",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Main Panel Super Mixer",
+        "Area": "ILE2",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Default Operation for Work Order",
+                "Technician": "",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 56
+    },
+    {
+        "PWO_Number": "PWO-373297",
+        "Asset_Number": "CKR-02-02-010-020-020",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Motor Super Mixer",
+        "Area": "ILE2",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Default Operation for Work Order",
+                "Technician": "",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 57
+    },
+    {
+        "PWO_Number": "PWO-373298",
+        "Asset_Number": "CKR-02-02-010-030",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan DryMill 2 bulan",
+        "Area": "ILE2",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Periksa emergency stop",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Periksa sensor posisi screen",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "30",
+                "Task": "Periksa agitator",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "40",
+                "Task": "Periksa screen",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "50",
+                "Task": "Periksa pengunci filter",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "60",
+                "Task": "Periksa lipseal",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 58
+    },
+    {
+        "PWO_Number": "PWO-373299",
+        "Asset_Number": "CKR-02-02-030-020",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Bin Lifter",
+        "Area": "ILE2",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Cek kondisi belt bin lifter",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Cek sensor bin lifter",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "30",
+                "Task": "Cleaning area bin lifter",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 59
+    },
+    {
+        "PWO_Number": "PWO-373300",
+        "Asset_Number": "CKR-02-02-020-010-010",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan 3 Bulanan Main Panel Tumbler",
+        "Area": "ILE2",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Cek konektor kabel",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Cleaning area panel",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 60
+    },
+    {
+        "PWO_Number": "PWO-373301",
+        "Asset_Number": "CKR-02-02-020-010-020",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan 3 Bulanan Main Motor Tumbler",
+        "Area": "ILE2",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Cek kondisi main motor tumbler, pastikan putaran dan getaran dalam kondisi baik",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 61
+    },
+    {
+        "PWO_Number": "PWO-373302",
+        "Asset_Number": "CKR-02-02-020-010-030",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan 2 Bulanan Gearbox Tumbler",
+        "Area": "ILE2",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Pemeriksaan bearing gearbox, Cek bunyi dan putaran bearing",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Lakukan Pelumasan pada gearbox",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 62
+    },
+    {
+        "PWO_Number": "PWO-373303",
+        "Asset_Number": "CKR-02-02-020-010-040",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan 2 Bulanan Lifting Device Tumbler",
+        "Area": "ILE2",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Pemeriksaan motor & gearbox lifting",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Pemeriksaan visual struktur lifting",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "30",
+                "Task": "Cek baut & pin pengunci",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "40",
+                "Task": "Cek sensor safety dan limit switch",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 63
+    },
+    {
+        "PWO_Number": "PWO-373304",
+        "Asset_Number": "CKR-02-02-030-010",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Mesin Cetak JCMCO",
+        "Area": "ILE2",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "cek kondisi cam track bagian atas dan bawah pastikan tidak ada aus",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "cek kondisi oil pump lubrikasi",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "30",
+                "Task": "cek kondisi roller",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "40",
+                "Task": "cek kondisi belt motor penggerak",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "50",
+                "Task": "cek jalur sirkulasi oli",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "60",
+                "Task": "cleaning area cooling cooler",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "70",
+                "Task": "cek level oli dan kondisi oli mesin",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "80",
+                "Task": "cek main panel",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 64
+    },
+    {
+        "PWO_Number": "PWO-373305",
+        "Asset_Number": "CKR-02-02-040-010-010",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Lifter Feeder",
+        "Area": "ILE2",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "pengecekan mur dan baut pengunci",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "cek pulley motor penggerak",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "30",
+                "Task": "cek belt lifter",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "40",
+                "Task": "cek kebersihan unit mekanisme",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 65
+    },
+    {
+        "PWO_Number": "PWO-373306",
+        "Asset_Number": "CKR-02-02-040-010-020",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Hopper",
+        "Area": "ILE2",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "pengecekan kebersihan unit hopper",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "pengecekan pengunci vibrator hopper",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "30",
+                "Task": "pengecekan sensor hopper",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 66
+    },
+    {
+        "PWO_Number": "PWO-373307",
+        "Asset_Number": "CKR-02-02-040-030-010",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Lifter Feeder",
+        "Area": "ILE2",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "pengecekan mur dan baut pengunci",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "cek pulley motor penggerak",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "30",
+                "Task": "cek belt lifter",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "40",
+                "Task": "cek kebersihan unit mekanisme",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 67
+    },
+    {
+        "PWO_Number": "PWO-373308",
+        "Asset_Number": "CKR-02-02-040-040-020",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Label Inserter",
+        "Area": "ILE2",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Cek fungsi label inserter dan pastikan bersih",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 68
+    },
+    {
+        "PWO_Number": "PWO-373309",
+        "Asset_Number": "CKR-02-02-070-010-010",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Product Infeed HM",
+        "Area": "ILE2",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "periksa roller excentric",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 69
+    },
+    {
+        "PWO_Number": "PWO-373311",
+        "Asset_Number": "CKR-02-02-070-010-020",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Vibrator Sorting Disc HM",
+        "Area": "ILE3",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Periksa permukaan yang kontak dengan produk",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Periksa penampungan tablet patah",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 70
+    },
+    {
+        "PWO_Number": "PWO-373312",
+        "Asset_Number": "CKR-02-02-070-010-030",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Product Feeding HM",
+        "Area": "ILE2",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Periksa product feeding unit",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Periksa O ring penarik foil, pastikan tidak rusak, aus, dan rata",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "30",
+                "Task": "periksa pegas penarik foil",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "40",
+                "Task": "periksa kekencangan tooth belt",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 71
+    },
+    {
+        "PWO_Number": "PWO-373313",
+        "Asset_Number": "CKR-02-02-070-010-040",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Product Separation HM",
+        "Area": "ILE2",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Cek visual roller ejector",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Cek sensor ejector",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 72
+    },
+    {
+        "PWO_Number": "PWO-373314",
+        "Asset_Number": "CKR-02-02-070-010-050",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Sealing Roller Unit HM",
+        "Area": "ILE2",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Periksa lensa sensor eye mark dan sambungan foil, pastikan tidak kotor atau sobek",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Periksa permukaan gear penggerak, berikan pelumas secukupnya dan tidak ada permukaan yang aus dan patah",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "30",
+                "Task": "Periksa sealing guiding disc, pastikan tidak rusak dan berikan pelumas secukupnya",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "40",
+                "Task": "Periksa slip ring, pastikan berfungsi baik dan tidak ada kotoran",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "50",
+                "Task": "periksa bearing sealing roller, pastikan putaran lancar",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "60",
+                "Task": "lakukan zero position",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 73
+    },
+    {
+        "PWO_Number": "PWO-373315",
+        "Asset_Number": "CKR-02-02-070-010-080",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Discharge Container L HM",
+        "Area": "ILE2",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Pastikan container bersih dan sensor berfungsi",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 74
+    },
+    {
+        "PWO_Number": "PWO-373316",
+        "Asset_Number": "CKR-02-02-070-010-090",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Discharge Container R HM",
+        "Area": "ILE2",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Pastikan container bersih dan sensor berfungsi",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 75
+    },
+    {
+        "PWO_Number": "PWO-373317",
+        "Asset_Number": "CKR-02-02-070-010-100",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Main Panel HM",
+        "Area": "ILE2",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Periksa jalur udara, pastikan berfungsi dengan baik",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "periksa filter ventilasi panel utama, pastikan dalam keadaan bersih",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "30",
+                "Task": "Release electrical residual current",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "40",
+                "Task": "periksa foil brake, lakukan test fungsi",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "50",
+                "Task": "Periksa battery UPS, pastikan berfungsi dengan baik",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 76
+    },
+    {
+        "PWO_Number": "PWO-373318",
+        "Asset_Number": "CKR-02-01-060-020-010",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Ink Jet Printer",
+        "Area": "ILE2",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Periksa filter keong",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Pastikan nozzle print head bersih dari tinta",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 77
+    },
+    {
+        "PWO_Number": "PWO-373319",
+        "Asset_Number": "CKR-02-01-060-020-020",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Ink Jet Printer",
+        "Area": "ILE2",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Periksa filter keong",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Pastikan nozzle print head bersih dari tinta",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 78
+    },
+    {
+        "PWO_Number": "PWO-373320",
+        "Asset_Number": "CKR-02-02-050-010-010",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Omega Printer",
+        "Area": "ILE2",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Pengecekan dudukan printer omega",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Bersihkan area pada printer",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "30",
+                "Task": "Pengecekan hasil printer, pastikan sudah ok",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 79
+    },
+    {
+        "PWO_Number": "PWO-373321",
+        "Asset_Number": "CKR-02-02-050-010-020",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Omega Printer",
+        "Area": "ILE2",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Pengecekan dudukan printer omega",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Bersihkan area pada printer",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "30",
+                "Task": "Pengecekan hasil printer, pastikan sudah ok",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 80
+    },
+    {
+        "PWO_Number": "PWO-373322",
+        "Asset_Number": "CKR-02-02-080-010-010",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Ink Jet Printer",
+        "Area": "ILE2",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Periksa filter keong",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Pastikan nozzle print head bersih dari tinta",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 81
+    },
+    {
+        "PWO_Number": "PWO-373323",
+        "Asset_Number": "CKR-02-02-080-010-020",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Ink Jet Printer",
+        "Area": "ILE2",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Periksa filter keong",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Pastikan nozzle print head bersih dari tinta",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 82
+    },
+    {
+        "PWO_Number": "PWO-373324",
+        "Asset_Number": "CKR-02-01-010-010-010",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan 3 Bulan Part Suction RM",
+        "Area": "ActivityType",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Periksa kekencangan kisi-kisi pengaman filter pada tutup container dan lubang keluar produk. Pastikan terpasang dengan benar",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Periksa sambungan dan socket kabel, pastikan terpasang dengan tepat",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "30",
+                "Task": "Periksa dan kencangkan koneksi selang pneumatik",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "40",
+                "Task": "Bersihkan Hepa filter",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "50",
+                "Task": "Periksa pergerakan valve raw material",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 83
+    },
+    {
+        "PWO_Number": "PWO-373325",
+        "Asset_Number": "CKR-02-01-010-010-020",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Bulanan Chopper GEA PMA",
+        "Area": "ILE1",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Periksa tekanan air seal chopper, standar 0.5bar",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Cleaning pre filter water chiller chopper",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "30",
+                "Task": "Setelah pencucian, periksa seal chopper terhadap kebocoran",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "40",
+                "Task": "Periksa seal chopper, bersihkan semua kotoran dan sisa produk yang menempel pada permukaan seal, ganti jika diperlukan",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "50",
+                "Task": "Periksa apakah terdapat air atau debu sisa produk pada seal chopper",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "60",
+                "Task": "Cek motor chopper (koneksi & tahanan)",
+                "Technician": "",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 84
+    },
+    {
+        "PWO_Number": "PWO-373326",
+        "Asset_Number": "CKR-02-01-010-010-030",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Bulanan Agitator GEA PMA",
+        "Area": "ILE1",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Periksa bagian luar container dari tanda- tanda kerusakan, bagian yang kendur dan kabel grounding",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Periksa bagian dalam container terhadap tanda-tanda kerusakan atau goresan terhadap kerusakan",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "30",
+                "Task": "Periksa bagian dudukan container/platform, pastikan tidak ada kerusakan",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "40",
+                "Task": "Periksa permukaan imepeler, jauhkan dari benda-benda asing pada bagian bawah impeler",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "50",
+                "Task": "Setelah pencucian, periksa seal impeler dari kebocoran",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "60",
+                "Task": "Cek gap baling-baling (ukur menggunakan filler).",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "70",
+                "Task": "Periksa seal impeller, pastikan seal dalam keadaan bersih dan kering",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "80",
+                "Task": "Periksa seal impeller, bersihkan semua kotoran dan sisa produk yang menempel pada permukaan seal, ganti jika diperlukan",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "90",
+                "Task": "Periksa impeller shaft",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "100",
+                "Task": "Periksa bearing motor terhadap bunyi, panas, serta getaran. Ganti bearing jika diperlukan",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "110",
+                "Task": "Periksa dan bersihkan mekanisme safety interlock, periksa sistem berfungsi dengan baik",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "120",
+                "Task": "Periksa tekanan air seal impeler standart 0.5 bar",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 85
+    },
+    {
+        "PWO_Number": "PWO-373326",
+        "Asset_Number": "Unknown",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Bulanan Agitator GEA PMA",
+        "Area": "Unknown",
+        "Operations": [
+            {
+                "Step": "130",
+                "Task": "Periksa saluran air seal imepller, pastikan tekanan udara antara 0.4 - 0.7 bar ganti filter jika ditemukan kerusakan",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "140",
+                "Task": "Periksa fungsi hoist impeler, pastikan selang dapat mengulur dan menarik saat dioperasikan",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "150",
+                "Task": "Periksa pelumas pada hoist impeller, jika berada pada level LOW tambahkan dengan oli SAE 10",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "160",
+                "Task": "Periksa kabel hoist impeler",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "170",
+                "Task": "Ganti oli geabox, gunakan oli Trbol 800/200 atau yang setara",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 86
+    },
+    {
+        "PWO_Number": "PWO-373327",
+        "Asset_Number": "CKR-02-01-010-040-010",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan 2 Bulanan Filter FBD",
+        "Area": "ILE1",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Periksa pergerakan as silinder",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Periksa pengunci sensor posisi silinder",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "30",
+                "Task": "Periksa Seal silinder",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "40",
+                "Task": "Periksa Seal silinder pengunci",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "50",
+                "Task": "Periksa Seal valve",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "60",
+                "Task": "Pastikan tekanan udara ada di 3 bar",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "70",
+                "Task": "Periksa pressure gauge pastikan tidak ada kebocoran",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "80",
+                "Task": "Periksa dan kencangkan koneksi selang pneumatik",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "90",
+                "Task": "Periksa selang seal filter",
+                "Technician": "",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "100",
+                "Task": "Periksa Inflatable seal",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "110",
+                "Task": "Pastikan tekanan udara Inflatable seal ada di 3 bar",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 87
+    },
+    {
+        "PWO_Number": "PWO-373327",
+        "Asset_Number": "Unknown",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan 2 Bulanan Filter FBD",
+        "Area": "Unknown",
+        "Operations": [],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 88
+    },
+    {
+        "PWO_Number": "PWO-373328",
+        "Asset_Number": "CKR-02-01-010-040-020-Cylinder",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan 2 Bulanan Cylinder Discharge FBD",
+        "Area": "ILE1",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Cek seal o-ring, ganti bila kondisi sudah rusak",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Periksa pergerakan silinder",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "30",
+                "Task": "Periksa dan kencangkan koneksi selang pneumatik",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "40",
+                "Task": "Periksa pengunci Sensor posisi pada silinder",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "50",
+                "Task": "Bersihkan area silinder",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 89
+    },
+    {
+        "PWO_Number": "PWO-373329",
+        "Asset_Number": "CKR-02-01-010-040-030",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan 3 Bulanan Bowl FBD",
+        "Area": "ILE1",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Ganti lampu mesin FBD",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Periksa wadah produk sampel",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "30",
+                "Task": "Periksa roda dan pengunci roda",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "40",
+                "Task": "Periksa sensor posisi bowl kontainer",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 90
+    },
+    {
+        "PWO_Number": "PWO-373330",
+        "Asset_Number": "CKR-02-01-020-010-010",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan 2 Bulanan Gearbox Tumbler",
+        "Area": "ILE1",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Pemeriksaan bearing gearbox, Cek bunyi dan putaran bearing",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Lakukan Pelumasan pada gearbox",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 91
+    },
+    {
+        "PWO_Number": "PWO-373331",
+        "Asset_Number": "CKR-02-01-020-010-020",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan 2 Bulanan Lifting Device Tumbler",
+        "Area": "ILE1",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Pemeriksaan motor & gearbox lifting",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Pemeriksaan visual struktur lifting",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "30",
+                "Task": "Cek baut & pin pengunci",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "40",
+                "Task": "Cek sensor safety dan limit switch",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 92
+    },
+    {
+        "PWO_Number": "PWO-373332",
+        "Asset_Number": "CKR-02-01-030-020",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Deduster 3 bulan",
+        "Area": "ILE1",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Periksa emergency switch",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Periksa main switch",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "30",
+                "Task": "Kencangkan baut pengikat tower",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "40",
+                "Task": "Periksa seal glass",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "50",
+                "Task": "Periksa sambungan screen deduster",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "60",
+                "Task": "Periksa drive vibrator",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "70",
+                "Task": "Periksa mounting vibrator",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "80",
+                "Task": "periksa pengunci roda",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "90",
+                "Task": "Periksa terminal kabel",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "100",
+                "Task": "Kencangkan kabel grounding",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "110",
+                "Task": "Kencangkan fitting selang dust collector",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 93
+    },
+    {
+        "PWO_Number": "PWO-373333",
+        "Asset_Number": "CKR-02-01-030-030",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Deduster 3 bulan",
+        "Area": "ILE1",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Periksa emergency switch",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Periksa main switch",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "30",
+                "Task": "Kencangkan baut pengikat tower",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "40",
+                "Task": "Periksa seal glass",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "50",
+                "Task": "Periksa sambungan screen deduster",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "60",
+                "Task": "Periksa drive vibrator",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "70",
+                "Task": "Periksa mounting vibrator",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "80",
+                "Task": "periksa pengunci roda",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "90",
+                "Task": "Periksa terminal kabel",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "100",
+                "Task": "Kencangkan kabel grounding",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "110",
+                "Task": "Kencangkan fitting selang dust collector",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 94
+    },
+    {
+        "PWO_Number": "PWO-373334",
+        "Asset_Number": "CKR-02-01-030-040",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Metal Detector 3 bulan",
+        "Area": "ILE1",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Periksa emergency switch",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Periksa main switch",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "30",
+                "Task": "Periksa actuator gate valve",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "40",
+                "Task": "Peiksa sensor metal",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "50",
+                "Task": "Periksa terminal sambungan kabel pada panel",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "60",
+                "Task": "Periksa sambungan soket actuator gate valve",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "70",
+                "Task": "Periksa seluncuran tablet",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "80",
+                "Task": "Periksa pengunci roda",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "90",
+                "Task": "Kencangkan kabel grounding",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 95
+    },
+    {
+        "PWO_Number": "PWO-373335",
+        "Asset_Number": "CKR-02-01-030-050",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Metal Detector 3 bulan",
+        "Area": "ILE1",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Periksa emergency switch",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Periksa main switch",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "30",
+                "Task": "Periksa actuator gate valve",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "40",
+                "Task": "Peiksa sensor metal",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "50",
+                "Task": "Periksa terminal sambungan kabel pada panel",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "60",
+                "Task": "Periksa sambungan soket actuator gate valve",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "70",
+                "Task": "Periksa seluncuran tablet",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "80",
+                "Task": "Periksa pengunci roda",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "90",
+                "Task": "Kencangkan kabel grounding",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 96
+    },
+    {
+        "PWO_Number": "PWO-373336",
+        "Asset_Number": "CKR-02-01-040-010-010",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Product Infeed HM",
+        "Area": "ILE1",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "periksa roller excentric",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 97
+    },
+    {
+        "PWO_Number": "PWO-373337",
+        "Asset_Number": "CKR-02-01-040-010-020",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Vibrator Sorting Disc HM",
+        "Area": "ILE1",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Periksa permukaan yang kontak dengan produk",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Periksa penampungan tablet patah",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 98
+    },
+    {
+        "PWO_Number": "PWO-373338",
+        "Asset_Number": "CKR-02-01-040-010-030",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Product Feeding HM",
+        "Area": "ILE1",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Periksa product feeding unit",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Periksa O ring penarik foil, pastikan tidak rusak, aus, dan rata",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "30",
+                "Task": "periksa pegas penarik foil",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "40",
+                "Task": "periksa kekencangan tooth belt",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 99
+    },
+    {
+        "PWO_Number": "PWO-373339",
+        "Asset_Number": "CKR-02-01-040-010-040",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Product Separation HM",
+        "Area": "ILE1",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Cek visual roller ejector",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Cek sensor ejector",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 100
+    },
+    {
+        "PWO_Number": "PWO-373340",
+        "Asset_Number": "CKR-02-01-040-010-050",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Sealing Roller Unit HM",
+        "Area": "ILE1",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Periksa lensa sensor eye mark dan sambungan foil, pastikan tidak kotor atau sobek",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Periksa permukaan gear penggerak, berikan pelumas secukupnya dan tidak ada permukaan yang aus dan patah",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "30",
+                "Task": "Periksa sealing guiding disc, pastikan tidak rusak dan berikan pelumas secukupnya",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "40",
+                "Task": "Periksa slip ring, pastikan berfungsi baik dan tidak ada kotoran",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "50",
+                "Task": "periksa bearing sealing roller, pastikan putaran lancar",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "60",
+                "Task": "lakukan zero position",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 101
+    },
+    {
+        "PWO_Number": "PWO-373341",
+        "Asset_Number": "CKR-02-01-040-010-060",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Cutting Modul HM",
+        "Area": "ILE1",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Pengecekan cutting vertikal",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "pengecekan belt dan pulley penggerak",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "30",
+                "Task": "Pelumasan pulley penggerak",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 102
+    },
+    {
+        "PWO_Number": "PWO-373342",
+        "Asset_Number": "CKR-02-01-040-010-070",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Cross Cutting Modul HM",
+        "Area": "ILE1",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Pengecekan ketajaman pisau manual dengan strip",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "cleaning area cross cutting",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 103
+    },
+    {
+        "PWO_Number": "PWO-373343",
+        "Asset_Number": "CKR-02-01-040-010-080",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Discharge Container L HM",
+        "Area": "ILE1",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Pastikan container bersih dan sensor berfungsi",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 104
+    },
+    {
+        "PWO_Number": "PWO-373344",
+        "Asset_Number": "CKR-02-01-040-010-090",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Discharge Container R HM",
+        "Area": "ILE1",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Pastikan container bersih dan sensor berfungsi",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 105
+    },
+    {
+        "PWO_Number": "PWO-373345",
+        "Asset_Number": "CKR-02-01-070-010-010",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Ink Jet Printer",
+        "Area": "ILE1",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Periksa filter keong",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Pastikan nozzle print head bersih dari tinta",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 106
+    },
+    {
+        "PWO_Number": "PWO-373346",
+        "Asset_Number": "CKR-02-01-070-010-020",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Ink Jet Printer",
+        "Area": "ILE1",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Periksa filter keong",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Pastikan nozzle print head bersih dari tinta",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 107
+    },
+    {
+        "PWO_Number": "PWO-373347",
+        "Asset_Number": "CKR-02-01-070-010-030",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Ink Jet Printer",
+        "Area": "ILE1",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Periksa filter keong",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Pastikan nozzle print head bersih dari tinta",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 108
+    },
+    {
+        "PWO_Number": "PWO-373348",
+        "Asset_Number": "CKR-02-01-040-010-100",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Main Panel HM",
+        "Area": "ILE1",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Periksa jalur udara, pastikan berfungsi dengan baik",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "periksa filter ventilasi panel utama, pastikan dalam keadaan bersih",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "30",
+                "Task": "Release electrical residual current",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "40",
+                "Task": "periksa foil brake, lakukan test fungsi",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "50",
+                "Task": "Periksa battery UPS, pastikan berfungsi dengan baik",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 109
+    },
+    {
+        "PWO_Number": "PWO-373349",
+        "Asset_Number": "CKR-02-01-080-010-010",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Product Infeed HM",
+        "Area": "ILE1",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "periksa roller excentric",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 110
+    },
+    {
+        "PWO_Number": "PWO-373350",
+        "Asset_Number": "CKR-02-01-080-010-020",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Vibrator Sorting Disc HM",
+        "Area": "ILE1",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Periksa permukaan yang kontak dengan produk",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Periksa penampungan tablet patah",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 111
+    },
+    {
+        "PWO_Number": "PWO-373351",
+        "Asset_Number": "CKR-02-01-080-010-030",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Product Feeding HM",
+        "Area": "ILE1",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Periksa product feeding unit",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Periksa O ring penarik foil, pastikan tidak rusak, aus, dan rata",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "30",
+                "Task": "periksa pegas penarik foil",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "40",
+                "Task": "periksa kekencangan tooth belt",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 112
+    },
+    {
+        "PWO_Number": "PWO-373352",
+        "Asset_Number": "CKR-02-01-080-010-040",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Product Separation HM",
+        "Area": "ILE1",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Cek visual roller ejector",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Cek sensor ejector",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 113
+    },
+    {
+        "PWO_Number": "PWO-373353",
+        "Asset_Number": "CKR-02-01-080-010-050",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Sealing Roller Unit HM",
+        "Area": "ILE1",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Periksa lensa sensor eye mark dan sambungan foil, pastikan tidak kotor atau sobek",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Periksa permukaan gear penggerak, berikan pelumas secukupnya dan tidak ada permukaan yang aus dan patah",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "30",
+                "Task": "Periksa sealing guiding disc, pastikan tidak rusak dan berikan pelumas secukupnya",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "40",
+                "Task": "Periksa slip ring, pastikan berfungsi baik dan tidak ada kotoran",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "50",
+                "Task": "periksa bearing sealing roller, pastikan putaran lancar",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "60",
+                "Task": "lakukan zero position",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 114
+    },
+    {
+        "PWO_Number": "PWO-373354",
+        "Asset_Number": "CKR-02-01-080-010-080",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Discharge Container L HM",
+        "Area": "ILE1",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Pastikan container bersih dan sensor berfungsi",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 115
+    },
+    {
+        "PWO_Number": "PWO-373355",
+        "Asset_Number": "CKR-02-01-080-010-090",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Discharge Container R HM",
+        "Area": "ILE1",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Pastikan container bersih dan sensor berfungsi",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 116
+    },
+    {
+        "PWO_Number": "PWO-373356",
+        "Asset_Number": "CKR-02-01-080-010-100",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Main Panel HM",
+        "Area": "ILE1",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Periksa jalur udara, pastikan berfungsi dengan baik",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "periksa filter ventilasi panel utama, pastikan dalam keadaan bersih",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "30",
+                "Task": "Release electrical residual current",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "40",
+                "Task": "periksa foil brake, lakukan test fungsi",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "50",
+                "Task": "Periksa battery UPS, pastikan berfungsi dengan baik",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 117
+    },
+    {
+        "PWO_Number": "PWO-373357",
+        "Asset_Number": "CKR-02-01-080-110-010",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Ink Jet Printer",
+        "Area": "ILE1",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Periksa filter keong",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Pastikan nozzle print head bersih dari tinta",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 118
+    },
+    {
+        "PWO_Number": "PWO-373358",
+        "Asset_Number": "CKR-02-01-080-110-020",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Ink Jet Printer",
+        "Area": "ActivityType",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Periksa filter keong",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Pastikan nozzle print head bersih dari tinta",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 119
+    },
+    {
+        "PWO_Number": "PWO-373359",
+        "Asset_Number": "CKR-02-01-080-110-030",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Ink Jet Printer",
+        "Area": "ILE1",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Periksa filter keong",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Pastikan nozzle print head bersih dari tinta",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 120
+    },
+    {
+        "PWO_Number": "PWO-373360",
+        "Asset_Number": "CKR-02-01-090-010",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Bin Lifter",
+        "Area": "ILE1",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Cek kondisi belt bin lifter",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Cek sensor bin lifter",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "30",
+                "Task": "Cleaning area bin lifter",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 121
+    },
+    {
+        "PWO_Number": "PWO-373361",
+        "Asset_Number": "CKR-02-01-050-010-010",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Feeding Unit CM",
+        "Area": "ILE1",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Cek silinder push in",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Cek silinder finger block, pastikan tidak tersendat",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 122
+    },
+    {
+        "PWO_Number": "PWO-373362",
+        "Asset_Number": "CKR-02-01-050-010-020",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Drive Unit CM",
+        "Area": "ILE1",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Periksa kekencangan dan permukaan belt conveyor",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Periksa kekencangan tooth belt",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 123
+    },
+    {
+        "PWO_Number": "PWO-373363",
+        "Asset_Number": "CKR-02-01-050-010-030",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Heating Unit CM",
+        "Area": "ILE1",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "periksa dan bersihkan permukaan heater",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "periksa dan bersihkan silinder penggerak heater",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 124
+    },
+    {
+        "PWO_Number": "PWO-373364",
+        "Asset_Number": "CKR-02-01-050-010-040",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Sealing Unit CM",
+        "Area": "ILE1",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "periksa dan bersihkan permukaan sealing",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Periksa kekencangan tooth belt sealing",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "30",
+                "Task": "Periksa dan bersihkan permukaan lensa sensor optic",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "40",
+                "Task": "Berikan pelumasan gear secukupnya",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 125
+    },
+    {
+        "PWO_Number": "PWO-373365",
+        "Asset_Number": "CKR-02-01-050-010-050",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Bucket Unit CM",
+        "Area": "ILE1",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Cek area toothbelt bucket",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Cek visual gigi bucket wheel PTFE, pastikan tidak ada yang rompes",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 126
+    },
+    {
+        "PWO_Number": "PWO-373366",
+        "Asset_Number": "CKR-02-01-050-010-060",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Cutting CM",
+        "Area": "ILE1",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "periksa dan bersihkan pisau potong, pastikan berfungsi dengan baik",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Cek belt cutting, pastikan gigi tidak rompes",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "30",
+                "Task": "Berikan pelumasan pada cam track push unit cutting station",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "40",
+                "Task": "periksa dan bersihkan permukaan sensor cam",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "50",
+                "Task": "berikan pelumasan pada guide push unit",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "60",
+                "Task": "berikan pelumasan pada guide pemisah kaft",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "70",
+                "Task": "berikan pelumasan pada guide cutter kanan dan kiri",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "80",
+                "Task": "berikan pelumasan pada guide kaft stopper",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 127
+    },
+    {
+        "PWO_Number": "PWO-373367",
+        "Asset_Number": "CKR-02-01-050-010-080",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Conveyor CM",
+        "Area": "ILE1",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "cek visual belt conveyor, pastikan belt tidak robek/putus",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Lakukan trial jalan conveyor",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 128
+    },
+    {
+        "PWO_Number": "PWO-373368",
+        "Asset_Number": "CKR-02-01-050-010-090",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Main Panel CM",
+        "Area": "ILE1",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Periksa Emergency Stop Switch, pastikan berfungsi dengan baik",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Periksa safety guarding, pastikan terpasang dengan baik",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "30",
+                "Task": "periksa air compress regulator, kuras penampungan air dan bersihkan filter",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "40",
+                "Task": "periksa dan bersihkan fan elektrik kabinet dan filter ventilasi",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 129
+    },
+    {
+        "PWO_Number": "PWO-373369",
+        "Asset_Number": "CKR-02-01-050-020-010",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Feeding Unit CM",
+        "Area": "ILE1",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Cek silinder push in",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Cek silinder finger block, pastikan tidak tersendat",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 130
+    },
+    {
+        "PWO_Number": "PWO-373370",
+        "Asset_Number": "CKR-02-01-050-020-020",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Drive Unit CM",
+        "Area": "ILE1",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Periksa kekencangan dan permukaan belt conveyor",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Periksa kekencangan tooth belt",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 131
+    },
+    {
+        "PWO_Number": "PWO-373371",
+        "Asset_Number": "CKR-02-01-050-020-030",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Heating Unit CM",
+        "Area": "ILE1",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "periksa dan bersihkan permukaan heater",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "periksa dan bersihkan silinder penggerak heater",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 132
+    },
+    {
+        "PWO_Number": "PWO-373372",
+        "Asset_Number": "CKR-02-01-050-020-040",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Sealing Unit CM",
+        "Area": "ILE1",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "periksa dan bersihkan permukaan sealing",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Periksa kekencangan tooth belt sealing",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "30",
+                "Task": "Periksa dan bersihkan permukaan lensa sensor optic",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "40",
+                "Task": "Berikan pelumasan gear secukupnya",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 133
+    },
+    {
+        "PWO_Number": "PWO-373373",
+        "Asset_Number": "CKR-02-01-050-020-050",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Bucket Unit CM",
+        "Area": "ILE1",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Cek area toothbelt bucket",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Cek visual gigi bucket wheel PTFE, pastikan tidak ada yang rompes",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 134
+    },
+    {
+        "PWO_Number": "PWO-373374",
+        "Asset_Number": "CKR-02-01-050-020-060",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Cutting CM",
+        "Area": "ILE1",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "periksa dan bersihkan pisau potong, pastikan berfungsi dengan baik",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Cek belt cutting, pastikan gigi tidak rompes",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "30",
+                "Task": "Berikan pelumasan pada cam track push unit cutting station",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "40",
+                "Task": "periksa dan bersihkan permukaan sensor cam",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "50",
+                "Task": "berikan pelumasan pada guide push unit",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "60",
+                "Task": "berikan pelumasan pada guide pemisah kaft",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "70",
+                "Task": "berikan pelumasan pada guide cutter kanan dan kiri",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "80",
+                "Task": "berikan pelumasan pada guide kaft stopper",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 135
+    },
+    {
+        "PWO_Number": "PWO-373375",
+        "Asset_Number": "CKR-02-01-050-020-070",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Transfer Unit CM",
+        "Area": "ILE1",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "periksa dan bersihkan suction pad, pastikan berfungsi dengan baik",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "berikan pelumasan pada bearing housing & joint rod swivel arm",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "30",
+                "Task": "berikan pelumasan pada cam transfer unit",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "40",
+                "Task": "periksa dan bersihkan filter & selang pada vacuum unit",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 136
+    },
+    {
+        "PWO_Number": "PWO-373376",
+        "Asset_Number": "CKR-02-01-050-020-080",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Conveyor CM",
+        "Area": "ILE1",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "cek visual belt conveyor, pastikan belt tidak robek/putus",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Lakukan trial jalan conveyor",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 137
+    },
+    {
+        "PWO_Number": "PWO-373377",
+        "Asset_Number": "CKR-02-01-050-020-090",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Main Panel CM",
+        "Area": "ILE1",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Periksa Emergency Stop Switch, pastikan berfungsi dengan baik",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Periksa safety guarding, pastikan terpasang dengan baik",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "30",
+                "Task": "periksa air compress regulator, kuras penampungan air dan bersihkan filter",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "40",
+                "Task": "periksa dan bersihkan fan elektrik kabinet dan filter ventilasi",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 138
+    },
+    {
+        "PWO_Number": "PWO-373378",
+        "Asset_Number": "CKR-02-01-050-030-010",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Feeding Unit CM",
+        "Area": "ILE1",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Cek silinder push in",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Cek silinder finger block, pastikan tidak tersendat",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 139
+    },
+    {
+        "PWO_Number": "PWO-373379",
+        "Asset_Number": "CKR-02-01-050-030-030",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Heating Unit CM",
+        "Area": "ILE1",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "periksa dan bersihkan permukaan heater",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "periksa dan bersihkan silinder penggerak heater",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 140
+    },
+    {
+        "PWO_Number": "PWO-373380",
+        "Asset_Number": "CKR-02-01-050-030-040",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Sealing Unit CM",
+        "Area": "ILE1",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "periksa dan bersihkan permukaan sealing",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Periksa kekencangan tooth belt sealing",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "30",
+                "Task": "Periksa dan bersihkan permukaan lensa sensor optic",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "40",
+                "Task": "Berikan pelumasan gear secukupnya",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 141
+    },
+    {
+        "PWO_Number": "PWO-373381",
+        "Asset_Number": "CKR-02-01-050-030-050",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Bucket Unit CM",
+        "Area": "ILE1",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Cek area toothbelt bucket",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Cek visual gigi bucket wheel PTFE, pastikan tidak ada yang rompes",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 142
+    },
+    {
+        "PWO_Number": "PWO-373382",
+        "Asset_Number": "CKR-02-01-050-030-060",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Cutting CM",
+        "Area": "ILE1",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "periksa dan bersihkan pisau potong, pastikan berfungsi dengan baik",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Cek belt cutting, pastikan gigi tidak rompes",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "30",
+                "Task": "Berikan pelumasan pada cam track push unit cutting station",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "40",
+                "Task": "periksa dan bersihkan permukaan sensor cam",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "50",
+                "Task": "berikan pelumasan pada guide push unit",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "60",
+                "Task": "berikan pelumasan pada guide pemisah kaft",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "70",
+                "Task": "berikan pelumasan pada guide cutter kanan dan kiri",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "80",
+                "Task": "berikan pelumasan pada guide kaft stopper",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 143
+    },
+    {
+        "PWO_Number": "PWO-373383",
+        "Asset_Number": "CKR-02-01-050-030-070",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Transfer Unit CM",
+        "Area": "ILE1",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "periksa dan bersihkan suction pad, pastikan berfungsi dengan baik",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "berikan pelumasan pada bearing housing & joint rod swivel arm",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "30",
+                "Task": "berikan pelumasan pada cam transfer unit",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "40",
+                "Task": "periksa dan bersihkan filter & selang pada vacuum unit",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 144
+    },
+    {
+        "PWO_Number": "PWO-373384",
+        "Asset_Number": "CKR-02-01-050-030-080",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Conveyor CM",
+        "Area": "ILE1",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "cek visual belt conveyor, pastikan belt tidak robek/putus",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Lakukan trial jalan conveyor",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 145
+    },
+    {
+        "PWO_Number": "PWO-373385",
+        "Asset_Number": "CKR-02-01-050-040-010",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Feeding Unit CM",
+        "Area": "ILE1",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Cek silinder push in",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Cek silinder finger block, pastikan tidak tersendat",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 146
+    },
+    {
+        "PWO_Number": "PWO-373386",
+        "Asset_Number": "CKR-02-01-050-040-030",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Heating Unit CM",
+        "Area": "ILE1",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "periksa dan bersihkan permukaan heater",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "periksa dan bersihkan silinder penggerak heater",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 147
+    },
+    {
+        "PWO_Number": "PWO-373387",
+        "Asset_Number": "CKR-02-01-050-040-040",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Sealing Unit CM",
+        "Area": "ILE1",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "periksa dan bersihkan permukaan sealing",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Periksa kekencangan tooth belt sealing",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "30",
+                "Task": "Periksa dan bersihkan permukaan lensa sensor optic",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "40",
+                "Task": "Berikan pelumasan gear secukupnya",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 148
+    },
+    {
+        "PWO_Number": "PWO-373388",
+        "Asset_Number": "CKR-02-01-050-040-050",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Bucket Unit CM",
+        "Area": "ILE1",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Cek area toothbelt bucket",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Cek visual gigi bucket wheel PTFE, pastikan tidak ada yang rompes",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 149
+    },
+    {
+        "PWO_Number": "PWO-373389",
+        "Asset_Number": "CKR-02-01-050-040-060",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Cutting CM",
+        "Area": "ILE1",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "periksa dan bersihkan pisau potong, pastikan berfungsi dengan baik",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Cek belt cutting, pastikan gigi tidak rompes",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "30",
+                "Task": "Berikan pelumasan pada cam track push unit cutting station",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "40",
+                "Task": "periksa dan bersihkan permukaan sensor cam",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "50",
+                "Task": "berikan pelumasan pada guide push unit",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "60",
+                "Task": "berikan pelumasan pada guide pemisah kaft",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "70",
+                "Task": "berikan pelumasan pada guide cutter kanan dan kiri",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "80",
+                "Task": "berikan pelumasan pada guide kaft stopper",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 150
+    },
+    {
+        "PWO_Number": "PWO-373390",
+        "Asset_Number": "CKR-02-01-050-040-070",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Transfer Unit CM",
+        "Area": "ILE1",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "periksa dan bersihkan suction pad, pastikan berfungsi dengan baik",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "berikan pelumasan pada bearing housing & joint rod swivel arm",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "30",
+                "Task": "berikan pelumasan pada cam transfer unit",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "40",
+                "Task": "periksa dan bersihkan filter & selang pada vacuum unit",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 151
+    },
+    {
+        "PWO_Number": "PWO-373391",
+        "Asset_Number": "CKR-02-01-050-050-010",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Feeding Unit CM",
+        "Area": "ILE1",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Cek silinder push in",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Cek silinder finger block, pastikan tidak tersendat",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 152
+    },
+    {
+        "PWO_Number": "PWO-373392",
+        "Asset_Number": "CKR-02-01-050-050-030",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Heating Unit CM",
+        "Area": "ILE1",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "periksa dan bersihkan permukaan heater",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "periksa dan bersihkan silinder penggerak heater",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 153
+    },
+    {
+        "PWO_Number": "PWO-373393",
+        "Asset_Number": "CKR-02-01-050-050-040",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Sealing Unit CM",
+        "Area": "ILE1",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "periksa dan bersihkan permukaan sealing",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Periksa kekencangan tooth belt sealing",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "30",
+                "Task": "Periksa dan bersihkan permukaan lensa sensor optic",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "40",
+                "Task": "Berikan pelumasan gear secukupnya",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 154
+    },
+    {
+        "PWO_Number": "PWO-373394",
+        "Asset_Number": "CKR-02-01-050-050-050",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Bucket Unit CM",
+        "Area": "ILE1",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Cek area toothbelt bucket",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Cek visual gigi bucket wheel PTFE, pastikan tidak ada yang rompes",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 155
+    },
+    {
+        "PWO_Number": "PWO-373395",
+        "Asset_Number": "CKR-02-01-050-050-060",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Cutting CM",
+        "Area": "ILE1",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "periksa dan bersihkan pisau potong, pastikan berfungsi dengan baik",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Cek belt cutting, pastikan gigi tidak rompes",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "30",
+                "Task": "Berikan pelumasan pada cam track push unit cutting station",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "40",
+                "Task": "periksa dan bersihkan permukaan sensor cam",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "50",
+                "Task": "berikan pelumasan pada guide push unit",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "60",
+                "Task": "berikan pelumasan pada guide pemisah kaft",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "70",
+                "Task": "berikan pelumasan pada guide cutter kanan dan kiri",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "80",
+                "Task": "berikan pelumasan pada guide kaft stopper",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 156
+    },
+    {
+        "PWO_Number": "PWO-373396",
+        "Asset_Number": "CKR-02-01-050-050-070",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Transfer Unit CM",
+        "Area": "ILE1",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "periksa dan bersihkan suction pad, pastikan berfungsi dengan baik",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "berikan pelumasan pada bearing housing & joint rod swivel arm",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "30",
+                "Task": "berikan pelumasan pada cam transfer unit",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "40",
+                "Task": "periksa dan bersihkan filter & selang pada vacuum unit",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 157
+    },
+    {
+        "PWO_Number": "PWO-373397",
+        "Asset_Number": "CKR-02-01-050-060-050",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Sealing Unit CC",
+        "Area": "ILE1",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Pelumasan pada area gear sealing",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Cleaning area sealing unit",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 158
+    },
+    {
+        "PWO_Number": "PWO-373398",
+        "Asset_Number": "CKR-02-01-050-110-010",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Ink Jet Printer",
+        "Area": "ILE1",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Periksa filter keong",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Pastikan nozzle print head bersih dari tinta",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 159
+    },
+    {
+        "PWO_Number": "PWO-373399",
+        "Asset_Number": "CKR-02-01-050-110-020",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Ink Jet Printer",
+        "Area": "ILE1",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Periksa filter keong",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Pastikan nozzle print head bersih dari tinta",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 160
+    },
+    {
+        "PWO_Number": "PWO-373400",
+        "Asset_Number": "CKR-02-01-050-110-030",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Ink Jet Printer",
+        "Area": "ILE1",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Periksa filter keong",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Pastikan nozzle print head bersih dari tinta",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 161
+    },
+    {
+        "PWO_Number": "PWO-373401",
+        "Asset_Number": "CKR-02-01-050-110-040",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Ink Jet Printer",
+        "Area": "ILE1",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Periksa filter keong",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "Pastikan nozzle print head bersih dari tinta",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 162
+    },
+    {
+        "PWO_Number": "PWO-373402",
+        "Asset_Number": "CKR-04-01-010-LifterSKF-19-A1",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Lifter SKF-19-A1",
+        "Area": "LOGC",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "pengecekan & lubrikasi rantai conveyor",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "pengecekan & lubrikasi dengan grease di area roller penggerak",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "30",
+                "Task": "pengecekan safety device",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "40",
+                "Task": "pengecekan oli rel lifter pastikan terisi",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 163
+    },
+    {
+        "PWO_Number": "PWO-373403",
+        "Asset_Number": "CKR-04-01-020",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Reachtruck FN966908",
+        "Area": "LOGC",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "pengecekan roda pastikan tidak gompal",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "20",
+                "Task": "pengecekan & pelumasan shaft , roller , rantai penggerak",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "30",
+                "Task": "pengecekan safety device",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "40",
+                "Task": "pengecekan oli hidrolik dan transmisi pastikan terisi dibatas max dan tidak ada bocor",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "50",
+                "Task": "pengecekan baterai pastikan aki tidak drop",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "60",
+                "Task": "pengecekan semua tombol pastikan sesuai dengan fungsinya",
+                "Technician": "MTC /",
+                "status": "",
+                "note": ""
+            },
+            {
+                "Step": "70",
+                "Task": "pengecekan brake",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 164
+    },
+    {
+        "PWO_Number": "PWO-373404",
+        "Asset_Number": "CKR-04-01-030",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Palet Mover",
+        "Area": "LOGC",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Perawatan Palet Mover",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 165
+    },
+    {
+        "PWO_Number": "PWO-373405",
+        "Asset_Number": "CKR-04-01-040",
+        "Schedule_Date": "2026-04-15",
+        "Description": "Perawatan Palet Mover",
+        "Area": "LOGC",
+        "Operations": [
+            {
+                "Step": "10",
+                "Task": "Perawatan Palet Mover",
+                "Technician": "MTC",
+                "status": "",
+                "note": ""
+            }
+        ],
+        "Source_File": "WO PM APR 2026.pdf",
+        "Page": 166
+    }
+]

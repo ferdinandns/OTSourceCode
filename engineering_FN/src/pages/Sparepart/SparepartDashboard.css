@@ -1,0 +1,557 @@
+/* InventoryTable.css */
+
+/* 1. Base / Light Mode Variables */
+.inventory-container {
+    --main-bg: #ffffff;
+    --text-main: #1f2937;
+    --text-muted: #6b7280;
+    --border-color: #e5e7eb;
+    --element-bg: #ffffff;
+    --input-bg: #ffffff;
+    --hover-bg: #f3f4f6;
+    --th-bg: #f9fafb;
+    --accent-blue: #3b82f6;
+    
+    background-color: var(--main-bg);
+    color: var(--text-main);
+    padding: 24px;
+    font-family: system-ui, -apple-system, sans-serif;
+    border-radius: 8px;
+}
+
+/* 2. Global Dark Mode Overrides */
+html.dark .inventory-container, 
+html[data-theme="dark"] .inventory-container {
+    --main-bg: #121212;
+    --text-main: #ffffff;
+    --text-muted: #a0a0a0;
+    --border-color: #333333;
+    --element-bg: #1e1e1e;
+    --input-bg: #121212;
+    --hover-bg: #2a2a2a;
+    --th-bg: #1e1e1e;
+    --accent-blue: #3b82f6;
+}
+
+/* Header & Controls */
+.header-section {
+    margin-bottom: 20px;
+}
+
+.controls-section {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.search-input, .type-select {
+    padding: 10px 14px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background-color: var(--input-bg);
+    color: var(--text-main);
+    font-size: 0.95rem;
+    outline: none;
+}
+
+.search-input:focus, .type-select:focus {
+    border-color: var(--accent-blue);
+}
+
+.search-input {
+    flex-grow: 1;
+    max-width: 400px;
+}
+
+/* 3. The Scrollable Container */
+.table-wrapper {
+    max-height: 65vh; /* Prevents the page from scrolling, only the table scrolls */
+    overflow-y: auto; 
+    overflow-x: auto;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: var(--element-bg);
+}
+
+.inventory-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+/* 4. Sticky Headers */
+.inventory-table th {
+    position: sticky;
+    top: 0; /* Sticks to the top of the .table-wrapper */
+    z-index: 10; /* Ensures headers stay above the scrolling rows */
+    padding: 14px 16px;
+    font-weight: 600;
+    color: var(--text-main);
+    background-color: var(--th-bg);
+    border-bottom: 2px solid var(--border-color);
+    white-space: nowrap;
+    box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.1); /* Adds a tiny shadow when scrolling */
+}
+
+.inventory-table td {
+    padding: 14px 16px;
+    vertical-align: top;
+    border-bottom: 1px solid var(--border-color);
+    background-color: var(--element-bg);
+}
+
+.inventory-table tbody tr:hover td {
+    background-color: var(--hover-bg);
+}
+
+.description-subtext {
+    font-size: 0.85em;
+    color: var(--text-muted);
+    margin-top: 4px;
+    line-height: 1.4;
+}
+
+/* Stock Status Colors */
+.stock-low {
+    color: #ef4444; 
+    font-weight: 700;
+}
+
+.stock-ok {
+    color: #10b981; 
+    font-weight: 700;
+}
+
+/* --- Date Filter Styles --- */
+.date-filters-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: center;
+    background-color: var(--element-bg);
+    padding: 12px 16px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.filter-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.filter-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+.date-input, .date-select {
+    padding: 8px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background-color: var(--input-bg);
+    color: var(--text-main);
+    font-size: 0.9rem;
+    outline: none;
+}
+
+.date-input:focus, .date-select:focus {
+    border-color: var(--accent-blue);
+}
+
+.date-input:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background-color: var(--hover-bg);
+}
+
+/* Toggle Switch Styles */
+.toggle-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: auto; /* Pushes the toggle to the right side */
+    padding-left: 16px;
+    border-left: 1px solid var(--border-color);
+}
+
+.toggle-checkbox {
+    accent-color: var(--accent-blue);
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+/* --- Edit Mode Styles --- */
+.edit-mode-toggle {
+    background-color: transparent;
+    color: var(--text-muted);
+    border: 1px solid var(--border-color);
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.edit-mode-toggle.active {
+    background-color: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+    border-color: #ef4444;
+}
+
+.table-input {
+    width: 100%;
+    padding: 6px 8px;
+    border: 1px solid var(--accent-blue);
+    border-radius: 4px;
+    background-color: var(--input-bg);
+    color: var(--text-main);
+    font-size: 0.9rem;
+    outline: none;
+}
+
+.action-btn {
+    padding: 6px 12px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+.save-btn {
+    background-color: #10b981;
+    color: white;
+    margin-right: 8px;
+}
+
+.cancel-btn {
+    background-color: var(--hover-bg);
+    color: var(--text-main);
+    border: 1px solid var(--border-color);
+}
+
+.edit-btn {
+    background-color: var(--element-bg);
+    color: var(--accent-blue);
+    border: 1px solid var(--accent-blue);
+}
+
+/* --- Reorder Row Colors --- */
+
+/* Light Mode */
+.inventory-table tbody tr.reorder-row td {
+    background-color: #fee2e2; /* Very light red */
+}
+.inventory-table tbody tr.reorder-row:hover td {
+    background-color: #fecaca; /* Slightly darker red on hover */
+}
+
+/* Dark Mode Overrides */
+html.dark .inventory-table tbody tr.reorder-row td,
+html[data-theme="dark"] .inventory-table tbody tr.reorder-row td {
+    background-color: rgba(239, 68, 68, 0.15); /* Subtle dark red tint */
+}
+html.dark .inventory-table tbody tr.reorder-row:hover td,
+html[data-theme="dark"] .inventory-table tbody tr.reorder-row:hover td {
+    background-color: rgba(239, 68, 68, 0.25);
+}
+
+/* --- Reorder Filter Toggle --- */
+.reorder-toggle-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: 16px;
+    padding-left: 16px;
+    border-left: 1px solid var(--border-color);
+}
+
+.reorder-checkbox {
+    accent-color: #ef4444; /* Makes the checkbox red to match the theme */
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+/* --- Non Inventory --- */
+
+/* --- Tabs Navigation Styles --- */
+/* --- Tabs Navigation Styles --- */
+.tabs-container {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 0;
+    
+    /* THE FIX: Explicitly hide the vertical scroll */
+    overflow-x: auto;
+    overflow-y: hidden; 
+    
+    /* Hides the scrollbar visually in Firefox */
+    scrollbar-width: none; 
+}
+
+/* THE FIX: Hides the scrollbar visually in Chrome/Edge/Safari */
+.tabs-container::-webkit-scrollbar {
+    display: none;
+}
+
+.tab-button {
+    padding: 10px 20px;
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    transition: all 0.2s ease;
+    
+    /* THE FIX: These 3 lines force the blue border to sit above the grey line */
+    margin-bottom: -2px; 
+    position: relative; 
+    z-index: 1; 
+}
+
+.tab-button:hover {
+    color: var(--text-main);
+    background-color: var(--hover-bg);
+    border-radius: 6px 6px 0 0;
+}
+
+.tab-button.active {
+    color: var(--accent-blue);
+    border-bottom-color: var(--accent-blue);
+}
+
+/* --- Master Wrapper Styles --- */
+
+/* --- 1. Master Wrapper Variables (Light Mode Default) --- */
+.dashboard-wrapper {
+    --wrap-text: #1f2937;         /* Dark grey text for light mode */
+    --wrap-text-muted: #6b7280;   /* Medium grey for inactive tabs */
+    --wrap-hover: #f3f4f6;        /* Light grey hover block */
+    --wrap-border: #e5e7eb;       /* Light border line */
+    --wrap-accent: #3b82f6;       /* Blue active line */
+
+    background-color: transparent;
+    min-height: 100vh;
+    padding: 24px; 
+}
+
+/* --- 2. Master Wrapper Variables (Dark Mode Overrides) --- */
+html.dark .dashboard-wrapper, 
+html[data-theme="dark"] .dashboard-wrapper {
+    --wrap-text: #ffffff;         /* White text for dark mode */
+    --wrap-text-muted: #9ca3af;   /* Lighter grey for inactive tabs */
+    --wrap-hover: rgba(255, 255, 255, 0.05); /* Subtle bright overlay */
+    --wrap-border: #333333;       /* Dark border line */
+}
+
+
+/* --- 3. Master Tabs Styles --- */
+.master-tabs-container {
+    display: flex;
+    gap: 8px; 
+    margin-bottom: 24px;
+    border-bottom: 2px solid var(--wrap-border); 
+    padding: 0;
+}
+
+.master-tab-btn {
+    background: transparent;
+    border: none;
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--wrap-text-muted); 
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+    margin-bottom: -2px; 
+    display: flex;
+    align-items: center;
+    gap: 8px; 
+}
+
+/* The Hover State */
+.master-tab-btn:hover {
+    color: var(--wrap-text);
+    background-color: var(--wrap-hover);
+    border-radius: 8px 8px 0 0;
+}
+
+/* The Active (Clicked) State */
+.master-tab-btn.active {
+    color: var(--wrap-accent);
+    border-bottom-color: var(--wrap-accent);
+}
+
+
+/* --- 4. Content Area Styles --- */
+/* --- Mapping Image Viewer Modal (Lightbox) --- */
+
+.map-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.85); /* Deep dark background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Forces it to sit above headers, sticky tables, and everything else */
+    backdrop-filter: blur(4px); /* Optional: Adds a nice blur to the background app */
+}
+
+.map-modal-content {
+    position: relative;
+    max-width: 90vw;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.map-modal-image {
+    max-width: 100%;
+    max-height: 85vh;
+    object-fit: contain; /* Ensures the image never stretches weirdly */
+    border-radius: 4px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.map-modal-close {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 2rem;
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.2s;
+}
+
+.map-modal-close:hover {
+    color: #ef4444; /* Turns red when they hover over the X */
+}
+
+/* MapLightbox.css */
+
+.lightbox-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 99999;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Top Toolbar for Zoom & Close */
+.lightbox-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, transparent 100%);
+    z-index: 10;
+}
+
+.lightbox-title {
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+.lightbox-controls {
+    display: flex;
+    gap: 16px;
+}
+
+.lb-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    border-radius: 6px;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.2s;
+}
+
+.lb-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.lb-close {
+    background: #dc2626;
+    border-color: #ef4444;
+}
+
+.lb-close:hover {
+    background: #b91c1c;
+}
+
+/* Image Viewer Area */
+.lightbox-workspace {
+    position: relative;
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Contains the scroll area */
+}
+
+/* Arrow Navigation */
+.lb-nav-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    color: white;
+    font-size: 2rem;
+    padding: 16px 20px;
+    cursor: pointer;
+    z-index: 10;
+    border-radius: 8px;
+    transition: all 0.2s;
+}
+
+.lb-nav-arrow:hover {
+    background: rgba(0, 0, 0, 0.8);
+    border-color: white;
+}
+
+.lb-prev { left: 24px; }
+.lb-next { right: 24px; }
+
+/* The Zoom Magic */
+.lightbox-scroll-area {
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Automatically adds scrollbars when image is zoomed */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.lightbox-image {
+    /* Uses a CSS variable passed from React */
+    width: calc(100% * var(--zoom-level)); 
+    max-height: calc(100% * var(--zoom-level));
+    object-fit: contain;
+    transition: width 0.2s ease, max-height 0.2s ease;
+}
