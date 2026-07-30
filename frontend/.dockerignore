@@ -1,0 +1,28 @@
+node_modules/
+
+dist/
+dist-ssr/
+
+# File environment
+.env
+.env.*
+!.env.example
+
+# Git
+.git
+.gitignore
+
+# Log
+*.log
+npm-debug.log*
+
+# IDE
+.vscode/
+.idea/
+.DS_Store
+
+# Shell scripts development
+*.sh
+
+# README
+*.md

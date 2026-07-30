@@ -1,0 +1,25 @@
+server
+*.exe
+
+# File environment
+.env
+.env.*
+
+# Git
+.git
+.gitignore
+
+# Test files
+*_test.go
+testdata/
+
+# IDE
+.vscode/
+.idea/
+
+# Log
+*.log
+
+# Dokumentasi
+*.md
+docs/
