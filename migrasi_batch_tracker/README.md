@@ -74,15 +74,15 @@ Berikut adalah contoh interaksi payload:
 
 ### 1. Endpoint Aksi (State Transition)
 Digunakan untuk memajukan status batch. Mayoritas menerima format JSON seragam (ID tunggal atau array).
-*   **POST** `/api/v1/action/kirim-ppic`
+*   **POST** `/api/v1/produksi/kirim-ppic`
     *   **Payload:** `{"id": [1, 2, 3], "ket": "Catatan tambahan"}`
-*   **POST** `/api/v1/action/compounding`
+*   **POST** `/api/v1/produksi/compounding`
     *   **Payload:** `{"id": 1, "tank_id": 5, "ket": "Mulai mixing"}`
 
 ### 2. Endpoint Data View
 Digunakan untuk menampilkan daftar batch pada stage tertentu. Tidak membutuhkan payload POST.
-*   **GET** `/api/v1/view/ppic`
-*   **GET** `/api/v1/view/potong-stock`
+*   **GET** `/api/v1/produksi/ppic`
+*   **GET** `/api/v1/produksi/potong-stock`
 *   **Response Standar:**
     ```json
     {
