@@ -1,1 +1,0 @@
-models/bestv8L.pt filter=lfs diff=lfs merge=lfs -text
