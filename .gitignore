@@ -1,59 +1,81 @@
-# Python bytecode and cache
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-.pytest_cache/
-.ipynb_checkpoints/
+# =============================================================================
+# EMERTRACK — Root .gitignore
+# =============================================================================
 
-# Virtual Environments
-venv/
-.venv/
-env/
-ENV/
 
-# YOLO weights / Model files (Too large for GitHub's 100MB file limit)
-models/*.pt
-*.pt
+# -----------------------------------------------------------------------------
+# Environment 
+# -----------------------------------------------------------------------------
+.env
+.env.*
+!.env.example
 
-# Whitelist specific model files so they can be pushed to GitHub
-!models/best1080.pt
-!models/best_safety_helmet_lisa.pt
-!models/best_latest_safety_dataset.pt
-!models/best640.pt
-!models/best.pt
-!models/bestv8L.pt
 
-# Datasets and archives (Too large and slow for git)
-Dataset/
-*.zip
-*.tar.gz
-*.tgz
-*.rar
+# -----------------------------------------------------------------------------
+# OS
+# -----------------------------------------------------------------------------
+.DS_Store
+Thumbbs.db
+Thumbs.db
 
-# Violation evidence recordings and local test videos
-bukti_pelanggaran/
-*.avi
-*.mp4
-*.mkv
 
-# Compiled binaries
-*.exe
-*.exe~
-*.dll
-*.so
-*.dylib
-server/server
-server/server.exe
-
-# IDEs and Editors
-.vscode/
-.claude/
+# -----------------------------------------------------------------------------
+# IDE
+# -----------------------------------------------------------------------------
 .idea/
+.vscode/
 *.swp
 *.swo
 
-# Operating System files
-Thumbs.db
-Desktop.ini
-.DS_Store
+
+# -----------------------------------------------------------------------------
+# Backend (Go)
+# -----------------------------------------------------------------------------
+backend/vendor/
+backend/*.exe
+backend/*.out
+backend/*.test
+backend/server
+backend/uploads/
+backend/mocks.zip
+backend/*.zip
+backend/mocks/
+
+
+# -----------------------------------------------------------------------------
+# Frontend (Next.js)
+# -----------------------------------------------------------------------------
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/build/
+frontend/.vercel
+frontend/*.tsbuildinfo
+frontend/next-env.d.ts
+frontend/coverage/
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+
+
+# -----------------------------------------------------------------------------
+# Docker
+# -----------------------------------------------------------------------------
+docker-compose.override.yml
+
+
+# -----------------------------------------------------------------------------
+# Misc
+# -----------------------------------------------------------------------------
+*.pem
+*.zip
+instructions.md
+
+# -----
+# AGENT
+# --
+frontend/AGENTS.md
+frontend/CLAUDE.md
+.aider*
+.clinerules
+.clineignore

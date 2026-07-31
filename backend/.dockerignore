@@ -1,0 +1,9 @@
+.git
+.gitignore
+*.md
+tmp/
+bin/
+.env
+mocks/
+mocks.zip
+sonar-project.properties
