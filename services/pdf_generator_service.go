@@ -19,6 +19,7 @@ import (
 
 type PDFGeneratorService struct {
 	db *gorm.DB
+	tr func(string) string
 }
 
 func NewPDFGeneratorService(db *gorm.DB) *PDFGeneratorService {
@@ -540,6 +541,7 @@ func isNumericKey(key string) bool {
 // ============================================
 func (s *PDFGeneratorService) createPDF(data *PDFData, usageID uint, mode string) (string, error) {
 	pdf := gofpdf.New("P", "mm", "A4", "")
+	s.tr = pdf.UnicodeTranslatorFromDescriptor("cp1252")
 	pdf.SetMargins(15, 10, 15)
 	pdf.SetAutoPageBreak(false, 0)
 
@@ -958,7 +960,7 @@ func (s *PDFGeneratorService) renderSmartTableHeader(pdf *gofpdf.Fpdf, cols []Ta
 	for _, col := range cols {
 		header := col.Header
 		if col.Unit != "" {
-			header = fmt.Sprintf("%s (%s)", col.Header, col.Unit)
+			header = s.tr(fmt.Sprintf("%s (%s)", col.Header, col.Unit))
 		}
 		pdf.CellFormat(col.Width*scale, 6, header, "1", 0, "C", true, 0, "")
 	}
@@ -989,7 +991,7 @@ func (s *PDFGeneratorService) renderSmartTableRow(pdf *gofpdf.Fpdf, result Resul
 		align := "R"
 		pdf.CellFormat(col.Width*scale, 5, value, "1", 0, align, true, 0, "")
 	}
-	pdf.CellFormat(timeW, 5, result.Timestamp.Format("02/01 15:04"), "1", 1, "C", true, 0, "")
+	pdf.CellFormat(timeW, 5, result.Timestamp.Format("02/01/2006 15:04"), "1", 1, "C", true, 0, "")
 }
 
 func (s *PDFGeneratorService) addSignature(pdf *gofpdf.Fpdf, data *PDFData) {
@@ -1193,7 +1195,7 @@ func (s *PDFGeneratorService) formatHeader(key string) string {
 }
 
 func (s *PDFGeneratorService) guessUnit(key string) string {
-	m := map[string]string{"brix": "%", "weight": "g", "moisture": "%", "temperature": "°C", "temp": "°C", "t": "°C", "ar": "°", "iss": "°"}
+	m := map[string]string{"brix": "%", "weight": "g", "moisture": "%", "temperature": "\xB0C", "temp": "°C", "t": "°C", "ar": "°", "iss": "°"}
 	return m[key]
 }
 
