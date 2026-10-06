@@ -44,13 +44,26 @@ var allowedStatusPM = map[string]struct{}{
 	"On Progress": {},
 	"Drop":        {},
 }
-var allowedStabtestStatus = map[string]struct{}{
-	"Reject":      {},
-	"Release":     {},
-	"On Progress": {},
-	"N/A":         {},
-	"":            {},
+
+var allowedStatusHasilPM = map[string]struct{}{
+	"Reject":                  {},
+	"Release":                 {},
+	"On Progress":             {},
+	"N/A":                     {},
+	"Accepted with variance": {},
+	"":                        {},
 }
+
+var allowedHasilAnalisa = map[string]struct{}{
+	"MS":                      {},
+	"TMS":                     {},
+	"OP":                      {},
+	"N/A":                     {},
+	"Accepted with variance": {},
+	"":                        {},
+}
+
+var allowedStabtestStatus = allowedStatusHasilPM
 
 type DiversifikasiPMHandler struct {
 	DB *sql.DB
@@ -61,7 +74,7 @@ func NewDiversifikasiPMHandler(db *sql.DB) *DiversifikasiPMHandler {
 }
 
 var errParentAlreadyLinked = errors.New("parent already linked")
-var errStaleOrMissing = errors.New("stale or missing record")
+var errStaleOrMissing      = errors.New("stale or missing record")
 
 type DiversifikasiPMListResponse struct {
 	Data []models.DiversifikasiPMListItem `json:"data"`
@@ -76,6 +89,7 @@ const selectColsPM = `
 	pm.trial_kode_produk, pm.trial_no_batch, pm.trial_hasil_final,
 	pm.link_file_diversifikasi, pm.kesimpulan,
 	pm.created_at, pm.updated_at, pm.created_by, pm.updated_by`
+
 const productAggPM = `
 	COALESCE(
 		json_agg(
@@ -110,8 +124,8 @@ func appLog(tid, op string, id any, msg string) {
 func logDBError(tid, op string, id any, err error) {
 	var pqErr *pq.Error
 	if errors.As(err, &pqErr) {
-		log.Printf("[PM] traceID=%s op=%s id=%v pgCode=%s constraint=%s detail=%s",
-			tid, op, id, pqErr.Code, pqErr.Constraint, pqErr.Detail)
+		log.Printf("[PM] traceID=%s op=%s id=%v pgCode=%s constraint=%s column=%s detail=%s msg=%s",
+			tid, op, id, pqErr.Code, pqErr.Constraint, pqErr.Column, pqErr.Detail, pqErr.Message)
 		return
 	}
 	log.Printf("[PM] traceID=%s op=%s id=%v err=%v", tid, op, id, err)
@@ -162,6 +176,7 @@ func validateMaxLen(field, s string, maxLen int) string {
 	}
 	return ""
 }
+
 func validatePMFields(
 	kodeItem, namaMaterial, statusProject, manufacture,
 	noBatch, pmHasil, pmKet, trialKode, trialNoBatch, trialHasil, link, kesimpulan string,
@@ -174,7 +189,17 @@ func validatePMFields(
 	}
 	if statusProject != "" {
 		if _, ok := allowedStatusPM[statusProject]; !ok {
-			return "Nilai status tidak valid"
+			return "Nilai status project tidak valid"
+		}
+	}
+	if pmHasil != "" {
+		if _, ok := allowedStatusHasilPM[pmHasil]; !ok {
+			return "Nilai PM Hasil Analisa tidak valid"
+		}
+	}
+	if trialHasil != "" {
+		if _, ok := allowedHasilAnalisa[trialHasil]; !ok {
+			return "Nilai Trial Hasil Final tidak valid"
 		}
 	}
 	for _, ch := range []struct {
@@ -200,6 +225,7 @@ func validatePMFields(
 	}
 	return ""
 }
+
 func validateProducts(products []models.DiversifikasiProdukPM) string {
 	if len(products) > maxProductsPerReq {
 		return fmt.Sprintf("Maksimal %d produk per request", maxProductsPerReq)
@@ -228,12 +254,43 @@ func validateProducts(products []models.DiversifikasiProdukPM) string {
 				return msg
 			}
 		}
-		if _, ok := allowedStabtestStatus[p.StabtestStatus]; !ok {
+		if _, ok := allowedStatusHasilPM[p.StabtestStatus]; !ok {
 			return fmt.Sprintf("%s: nilai stabtest_status tidak valid", pfx)
+		}
+		for _, chk := range []struct {
+			field string
+			val   string
+		}{
+			{"Evaluasi As Kemasan", p.EvaluasiAsKemasan},
+			{"Produk Fisik", p.ProdukFisik},
+			{"Produk Kimia", p.ProdukKimia},
+			{"Produk Mikrobiologi", p.ProdukMikrobiologi},
+			{"Produk Sensori", p.ProdukSensori},
+			{"Produk Cek Karakteristik", p.ProdukCekKarakteristik},
+			{"Stabtest Fisik", p.StabtestFisik},
+			{"Stabtest Kimia", p.StabtestKimia},
+			{"Stabtest Mikrobiologi", p.StabtestMikrobiologi},
+			{"Stabtest Sensori DFCT", p.StabtestSensoriDFCT},
+		} {
+			if chk.val != "" {
+				if _, ok := allowedHasilAnalisa[chk.val]; !ok {
+					return fmt.Sprintf("%s %s: nilai tidak valid", pfx, chk.field)
+				}
+			}
 		}
 	}
 	return ""
 }
+
+type pmDateFilter struct {
+	TglPenerimaanDari   string
+	TglPenerimaanSampai string
+	TglAnalisaDari      string
+	TglAnalisaSampai    string
+	TglReportDari       string
+	TglReportSampai     string
+}
+
 func buildPMBaseWhere(search string) (string, []any) {
 	clauses := []string{"deleted_at IS NULL", "parent_id IS NULL"}
 	args := []any{}
@@ -247,8 +304,10 @@ func buildPMBaseWhere(search string) (string, []any) {
 	}
 	return "WHERE " + strings.Join(clauses, " AND "), args
 }
-func buildPMFullWhere(search, status string) (string, []any) {
+
+func buildPMFullWhere(search, status string, df pmDateFilter) (string, []any) {
 	where, args := buildPMBaseWhere(search)
+
 	if status != "" && status != "all" {
 		if _, ok := allowedStatusPM[status]; ok {
 			n := len(args) + 1
@@ -256,8 +315,41 @@ func buildPMFullWhere(search, status string) (string, []any) {
 			args = append(args, status)
 		}
 	}
+
+	if df.TglPenerimaanDari != "" {
+		n := len(args) + 1
+		where += fmt.Sprintf(" AND tgl_penerimaan::date >= $%d::date", n)
+		args = append(args, df.TglPenerimaanDari)
+	}
+	if df.TglPenerimaanSampai != "" {
+		n := len(args) + 1
+		where += fmt.Sprintf(" AND tgl_penerimaan::date <= $%d::date", n)
+		args = append(args, df.TglPenerimaanSampai)
+	}
+	if df.TglAnalisaDari != "" {
+		n := len(args) + 1
+		where += fmt.Sprintf(" AND pm_tgl_analisa::date >= $%d::date", n)
+		args = append(args, df.TglAnalisaDari)
+	}
+	if df.TglAnalisaSampai != "" {
+		n := len(args) + 1
+		where += fmt.Sprintf(" AND pm_tgl_analisa::date <= $%d::date", n)
+		args = append(args, df.TglAnalisaSampai)
+	}
+	if df.TglReportDari != "" {
+		n := len(args) + 1
+		where += fmt.Sprintf(" AND pm_tgl_report::date >= $%d::date", n)
+		args = append(args, df.TglReportDari)
+	}
+	if df.TglReportSampai != "" {
+		n := len(args) + 1
+		where += fmt.Sprintf(" AND pm_tgl_report::date <= $%d::date", n)
+		args = append(args, df.TglReportSampai)
+	}
+
 	return where, args
 }
+
 func insertProductsPM(
 	ctx context.Context,
 	tx *sql.Tx,
@@ -301,6 +393,7 @@ func withTx(ctx context.Context, db *sql.DB, fn func(*sql.Tx) error) error {
 	}
 	return tx.Commit()
 }
+
 func (h *DiversifikasiPMHandler) GetAll(c *gin.Context) {
 	page, _ := strconv.Atoi(c.DefaultQuery("page", "1"))
 	limit, _ := strconv.Atoi(c.DefaultQuery("limit", "50"))
@@ -320,8 +413,38 @@ func (h *DiversifikasiPMHandler) GetAll(c *gin.Context) {
 			return
 		}
 	}
+
+	dateFilter := pmDateFilter{
+		TglPenerimaanDari:   strings.TrimSpace(c.Query("tglPenerimaanDari")),
+		TglPenerimaanSampai: strings.TrimSpace(c.Query("tglPenerimaanSampai")),
+		TglAnalisaDari:      strings.TrimSpace(c.Query("tglAnalisaDari")),
+		TglAnalisaSampai:    strings.TrimSpace(c.Query("tglAnalisaSampai")),
+		TglReportDari:       strings.TrimSpace(c.Query("tglReportDari")),
+		TglReportSampai:     strings.TrimSpace(c.Query("tglReportSampai")),
+	}
+
+	for _, d := range []struct {
+		name, val string
+	}{
+		{"tglPenerimaanDari", dateFilter.TglPenerimaanDari},
+		{"tglPenerimaanSampai", dateFilter.TglPenerimaanSampai},
+		{"tglAnalisaDari", dateFilter.TglAnalisaDari},
+		{"tglAnalisaSampai", dateFilter.TglAnalisaSampai},
+		{"tglReportDari", dateFilter.TglReportDari},
+		{"tglReportSampai", dateFilter.TglReportSampai},
+	} {
+		if d.val != "" {
+			if _, err := time.Parse("2006-01-02", d.val); err != nil {
+				middleware.RespondError(c, http.StatusBadRequest, "VALIDATION_ERROR",
+					"Format "+d.name+" harus YYYY-MM-DD")
+				return
+			}
+		}
+	}
+
 	baseWhere, baseArgs := buildPMBaseWhere(search)
-	fullWhere, fullArgs := buildPMFullWhere(search, status)
+	fullWhere, fullArgs := buildPMFullWhere(search, status, dateFilter)
+
 	ctx, cancel := newCtx(c)
 	defer cancel()
 
@@ -341,9 +464,11 @@ func (h *DiversifikasiPMHandler) GetAll(c *gin.Context) {
 		page = totalPages
 	}
 	offset := (page - 1) * limit
+
 	dataArgs := append(append([]any{}, fullArgs...), limit, offset)
 	limitN := len(dataArgs) - 1
 	offsetN := len(dataArgs)
+
 	rows, err := h.DB.QueryContext(ctx, fmt.Sprintf(`
 		SELECT
 			pm.id, pm.nomor_pm, pm.parent_id, pm.status_project,
@@ -382,7 +507,7 @@ func (h *DiversifikasiPMHandler) GetAll(c *gin.Context) {
 		LEFT  JOIN diversifikasi_produk_pm p ON p.diversifikasi_pm_id = pm.id
 		%s
 		GROUP BY pm.id
-		ORDER BY pm.created_at DESC
+		ORDER BY pm.updated_at DESC NULLS LAST, pm.id DESC
 		LIMIT  $%d OFFSET $%d`, fullWhere, limitN, offsetN),
 		dataArgs...,
 	)
@@ -424,6 +549,7 @@ func (h *DiversifikasiPMHandler) GetAll(c *gin.Context) {
 		handleDBError(c, "GetAll.rows", "-", err)
 		return
 	}
+
 	statusRows, err := h.DB.QueryContext(ctx,
 		`SELECT status_project, COUNT(*) FROM diversifikasi_pm `+
 			baseWhere+` GROUP BY status_project`,
@@ -451,6 +577,7 @@ func (h *DiversifikasiPMHandler) GetAll(c *gin.Context) {
 		handleDBError(c, "GetAll.statusRows", "-", err)
 		return
 	}
+
 	c.JSON(http.StatusOK, DiversifikasiPMListResponse{
 		Data: data,
 		PaginationMeta: models.PaginationMeta{
@@ -462,37 +589,7 @@ func (h *DiversifikasiPMHandler) GetAll(c *gin.Context) {
 		StatusCounts: statusCounts,
 	})
 }
-func unmarshalProductsForList(data []byte) []models.DiversifikasiProdukPM {
-	if len(data) == 0 || string(data) == "null" || string(data) == "[]" {
-		return []models.DiversifikasiProdukPM{}
-	}
-	var raw []productJSON
-	if err := json.Unmarshal(data, &raw); err != nil {
-		log.Printf("[PM] unmarshalProductsForList json error: %v", err)
-		return []models.DiversifikasiProdukPM{}
-	}
-	out := make([]models.DiversifikasiProdukPM, 0, len(raw))
-	for _, r := range raw {
-		out = append(out, models.DiversifikasiProdukPM{
-			ID:                     r.ID,
-			DiversifikasiPMID:      r.DiversifikasiPmId,
-			KodeProduk:             r.KodeProduk,
-			EvaluasiAsKemasan:      r.EvaluasiAsKemasan,
-			ProdukFisik:            r.ProdukFisik,
-			ProdukKimia:            r.ProdukKimia,
-			ProdukMikrobiologi:     r.ProdukMikrobiologi,
-			ProdukSensori:          r.ProdukSensori,
-			ProdukCekKarakteristik: r.ProdukCekKarakteristik,
-			StabtestFisik:          r.StabtestFisik,
-			StabtestKimia:          r.StabtestKimia,
-			StabtestMikrobiologi:   r.StabtestMikrobiologi,
-			StabtestSensoriDFCT:    r.StabtestSensoriDFCT,
-			StabtestKeterangan:     r.StabtestKeterangan,
-			StabtestStatus:         r.StabtestStatus,
-		})
-	}
-	return out
-}
+
 func (h *DiversifikasiPMHandler) GetProducts(c *gin.Context) {
 	id, err := strconv.Atoi(c.Param("id"))
 	if err != nil || id <= 0 {
@@ -564,6 +661,7 @@ func (h *DiversifikasiPMHandler) GetProducts(c *gin.Context) {
 	}
 	c.JSON(http.StatusOK, gin.H{"data": products, "total": len(products)})
 }
+
 func (h *DiversifikasiPMHandler) Create(c *gin.Context) {
 	var req models.CreateDiversifikasiPMRequest
 	if err := c.ShouldBindJSON(&req); err != nil {
@@ -741,6 +839,7 @@ func generateNomorPMInTx(ctx context.Context, tx *sql.Tx, month, year int) (stri
 	}
 	return fmt.Sprintf("%s%03d", prefix, next), nil
 }
+
 func (h *DiversifikasiPMHandler) Update(c *gin.Context) {
 	id, err := strconv.Atoi(c.Param("id"))
 	if err != nil || id <= 0 {
@@ -1060,4 +1159,36 @@ func unmarshalProductsPM(data []byte) []models.DiversifikasiProdukPM {
 		})
 	}
 	return products
+}
+
+func unmarshalProductsForList(data []byte) []models.DiversifikasiProdukPM {
+	if len(data) == 0 || string(data) == "null" || string(data) == "[]" {
+		return []models.DiversifikasiProdukPM{}
+	}
+	var raw []productJSON
+	if err := json.Unmarshal(data, &raw); err != nil {
+		log.Printf("[PM] unmarshalProductsForList json error: %v", err)
+		return []models.DiversifikasiProdukPM{}
+	}
+	out := make([]models.DiversifikasiProdukPM, 0, len(raw))
+	for _, r := range raw {
+		out = append(out, models.DiversifikasiProdukPM{
+			ID:                     r.ID,
+			DiversifikasiPMID:      r.DiversifikasiPmId,
+			KodeProduk:             r.KodeProduk,
+			EvaluasiAsKemasan:      r.EvaluasiAsKemasan,
+			ProdukFisik:            r.ProdukFisik,
+			ProdukKimia:            r.ProdukKimia,
+			ProdukMikrobiologi:     r.ProdukMikrobiologi,
+			ProdukSensori:          r.ProdukSensori,
+			ProdukCekKarakteristik: r.ProdukCekKarakteristik,
+			StabtestFisik:          r.StabtestFisik,
+			StabtestKimia:          r.StabtestKimia,
+			StabtestMikrobiologi:   r.StabtestMikrobiologi,
+			StabtestSensoriDFCT:    r.StabtestSensoriDFCT,
+			StabtestKeterangan:     r.StabtestKeterangan,
+			StabtestStatus:         r.StabtestStatus,
+		})
+	}
+	return out
 }

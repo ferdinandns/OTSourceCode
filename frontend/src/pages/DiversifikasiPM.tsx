@@ -13,7 +13,7 @@ import ExportPMModal from "./ExportPM"
 const DRAFT_KEY_PM = "draft-diversifikasi-pm"
 const HEADER_ROW1_HEIGHT = 34
 
-const HASIL_OPTIONS: HasilAnalisa[]    = ["MS", "TMS", "OP", "N/A"]
+const HASIL_OPTIONS: HasilAnalisa[]    = ["MS", "TMS", "OP", "N/A", "Accepted with variance"]
 const STATUS_HASIL_OPTIONS: StatusRM[] = ["Reject", "Release", "On Progress", "N/A"]
 const STATUS_PROJECT_OPTIONS: StatusProject[] = ["Done", "Drop", "On Progress"]
 
@@ -190,6 +190,7 @@ const BADGE_MAP_HASIL: Record<string, string> = {
   TMS:   "bg-red-100 text-red-800 dark:bg-red-950 dark:text-red-300",
   OP:    "bg-yellow-100 text-yellow-800 dark:bg-yellow-950 dark:text-yellow-300",
   "N/A": "bg-gray-100 text-gray-600 dark:bg-neutral-800 dark:text-gray-300",
+  "Accepted with variance": "bg-orange-100 text-orange-800 dark:bg-orange-950 dark:text-orange-300",
 }
 const BADGE_MAP_STATUS_HASIL: Record<string, string> = {
   Reject:        "bg-red-700 text-white dark:bg-red-800 dark:text-red-100",
@@ -384,10 +385,8 @@ function ProductListEditor({ products, onChange, canEditProd, onSaveProduk, refr
   const upd = (i: number, field: keyof DiversifikasiProdukPM, val: string) => {
     const next = [...products]
     if (field === "produkTglKirimQC" || field === "produkTglKeluarHasil") {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ;(next[i] as any)[field] = val ? val : null
     } else {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ;(next[i] as any)[field] = val
     }
     onChange(next)
@@ -615,8 +614,6 @@ export default function DiversifikasiPMPage() {
 
   const [data, setData]           = useState<DiversifikasiPM[]>([])
 
-  // Measure the actual rendered height of the first sticky header row so the
-  // second header row sticks at the correct offset (avoids relying on a hardcoded px value).
   const headerRow1Ref = useRef<HTMLTableRowElement>(null)
   const [headerRow1Height, setHeaderRow1Height] = useState(HEADER_ROW1_HEIGHT)
   useLayoutEffect(() => {
@@ -641,6 +638,13 @@ export default function DiversifikasiPMPage() {
   const [searchInput, setSearchInput] = useState("")
   const [search, setSearch]           = useState("")
   const [activeFilter, setActiveFilter] = useState<"all" | StatusProject>("all")
+
+  const [tglPenerimaanDari,   setTglPenerimaanDari]   = useState("")
+  const [tglPenerimaanSampai, setTglPenerimaanSampai] = useState("")
+  const [tglAnalisaDari,      setTglAnalisaDari]      = useState("")
+  const [tglAnalisaSampai,    setTglAnalisaSampai]    = useState("")
+  const [tglReportDari,       setTglReportDari]       = useState("")
+  const [tglReportSampai,     setTglReportSampai]     = useState("")
 
   const [showExport, setShowExport] = useState(false)
   const [showModal, setShowModal]   = useState(false)
@@ -669,10 +673,18 @@ export default function DiversifikasiPMPage() {
   useEffect(() => {
     const t = setTimeout(() => {
       setSearch(searchInput)
-      setCurrentPage(1)     
+      setCurrentPage(1)
     }, 300)
     return () => clearTimeout(t)
   }, [searchInput])
+
+  useEffect(() => {
+    setCurrentPage(1)
+  }, [
+    tglPenerimaanDari, tglPenerimaanSampai,
+    tglAnalisaDari, tglAnalisaSampai,
+    tglReportDari, tglReportSampai,
+  ])
 
   const handleFilterChange = (val: "all" | StatusProject) => {
     setActiveFilter(val)
@@ -690,8 +702,14 @@ export default function DiversifikasiPMPage() {
       const params = new URLSearchParams({
         page:  String(currentPage),
         limit: "50",
-        ...(search.trim()              ? { search }              : {}),
-        ...(activeFilter !== "all"     ? { status: activeFilter } : {}),
+        ...(search.trim()          ? { search }              : {}),
+        ...(activeFilter !== "all" ? { status: activeFilter } : {}),
+        ...(tglPenerimaanDari   ? { tglPenerimaanDari   } : {}),
+        ...(tglPenerimaanSampai ? { tglPenerimaanSampai } : {}),
+        ...(tglAnalisaDari      ? { tglAnalisaDari      } : {}),
+        ...(tglAnalisaSampai    ? { tglAnalisaSampai    } : {}),
+        ...(tglReportDari       ? { tglReportDari       } : {}),
+        ...(tglReportSampai     ? { tglReportSampai     } : {}),
       })
       const res = await fetch(`${API_BASE}/diversifikasi-pm?${params}`)
       if (!res.ok) throw new Error()
@@ -709,7 +727,12 @@ export default function DiversifikasiPMPage() {
       setData([])
     }
     setLoading(false)
-  }, [currentPage, search, activeFilter])
+  }, [
+    currentPage, search, activeFilter,
+    tglPenerimaanDari, tglPenerimaanSampai,
+    tglAnalisaDari, tglAnalisaSampai,
+    tglReportDari, tglReportSampai,
+  ])
 
   useEffect(() => { fetchData() }, [fetchData])
 
@@ -872,6 +895,20 @@ export default function DiversifikasiPMPage() {
     division === "TS"   ? { text: "TS",   color: "bg-emerald-50 border-emerald-200 text-emerald-700 dark:bg-emerald-950/40 dark:border-emerald-800 dark:text-emerald-300" } :
     null
 
+  const hasAnyFilter = !!search || activeFilter !== "all"
+    || !!tglPenerimaanDari || !!tglPenerimaanSampai
+    || !!tglAnalisaDari    || !!tglAnalisaSampai
+    || !!tglReportDari     || !!tglReportSampai
+
+  const resetAllFilters = () => {
+    setSearchInput(""); setSearch("")
+    setActiveFilter("all")
+    setTglPenerimaanDari("");   setTglPenerimaanSampai("")
+    setTglAnalisaDari("");      setTglAnalisaSampai("")
+    setTglReportDari("");       setTglReportSampai("")
+    setCurrentPage(1)
+  }
+
   const renderRow = (row: DiversifikasiPM, idx: number, isRevision = false) => {
     const hasRevisions = !isRevision && (row.revisions?.length ?? 0) > 0
     const revExpanded  = expandedRevisions.has(row.nomorPM)
@@ -1003,7 +1040,7 @@ export default function DiversifikasiPMPage() {
             </svg>
             Export XLSX
           </button>
-        
+
           <button
             onClick={openAdd}
             className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#2e3192] hover:bg-[#252880] text-white text-sm font-semibold transition-colors shadow-sm"
@@ -1035,22 +1072,68 @@ export default function DiversifikasiPMPage() {
         })}
       </div>
 
-      <div className="bg-white dark:bg-neutral-900 border border-gray-200 dark:border-neutral-800 rounded-xl px-5 py-4 mb-5 flex flex-wrap gap-3 items-center transition-colors duration-300">
-        <div className="relative flex-1 min-w-[280px]">
-          <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"><SearchIcon /></span>
-          <input id="pm-search" name="pmSearch" type="text" value={searchInput} onChange={e => setSearchInput(e.target.value)}
-            placeholder="Cari nomor PM, kode item, nama material, manufacture..."
-            className="w-full pl-9 pr-9 py-2 text-sm border border-gray-200 dark:border-neutral-700 rounded-lg bg-white dark:bg-neutral-800 text-gray-700 dark:text-gray-200 placeholder-gray-400 focus:outline-none focus:border-[#2e3192] dark:focus:border-indigo-400 transition-colors" />
-          {searchInput && (
-            <button onClick={() => { setSearchInput(""); setSearch(""); setCurrentPage(1) }}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-red-500 transition-colors">
-              <CloseIcon />
-            </button>
+      <div className="bg-white dark:bg-neutral-900 border border-gray-200 dark:border-neutral-800 rounded-xl px-5 py-4 mb-5 space-y-3 transition-colors duration-300">
+        <div className="flex flex-wrap gap-3 items-center">
+          <div className="relative flex-1 min-w-[280px]">
+            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"><SearchIcon /></span>
+            <input id="pm-search" name="pmSearch" type="text" value={searchInput} onChange={e => setSearchInput(e.target.value)}
+              placeholder="Cari nomor PM, kode item, nama material, manufacture..."
+              className="w-full pl-9 pr-9 py-2 text-sm border border-gray-200 dark:border-neutral-700 rounded-lg bg-white dark:bg-neutral-800 text-gray-700 dark:text-gray-200 placeholder-gray-400 focus:outline-none focus:border-[#2e3192] dark:focus:border-indigo-400 transition-colors" />
+            {searchInput && (
+              <button onClick={() => { setSearchInput(""); setSearch(""); setCurrentPage(1) }}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-red-500 transition-colors">
+                <CloseIcon />
+              </button>
+            )}
+          </div>
+          <span className="text-sm text-gray-400 ml-auto">
+            <strong className="text-gray-600 dark:text-gray-300">{pagination.total}</strong> data
+          </span>
+        </div>
+
+        <div className="pt-3 border-t border-gray-100 dark:border-neutral-800 grid grid-cols-1 md:grid-cols-3 gap-3">
+          <div>
+            <label className="block text-[10px] font-semibold text-gray-500 dark:text-gray-400 mb-1 uppercase tracking-wider">Tgl Penerimaan</label>
+            <div className="flex items-center gap-2">
+              <input type="date" value={tglPenerimaanDari} onChange={e => setTglPenerimaanDari(e.target.value)}
+                className="flex-1 px-2 py-1.5 text-xs border border-gray-200 dark:border-neutral-700 rounded-lg bg-white dark:bg-neutral-800 text-gray-700 dark:text-gray-200 focus:outline-none focus:border-[#2e3192] transition-colors" />
+              <span className="text-gray-400 text-xs">—</span>
+              <input type="date" value={tglPenerimaanSampai} onChange={e => setTglPenerimaanSampai(e.target.value)}
+                className="flex-1 px-2 py-1.5 text-xs border border-gray-200 dark:border-neutral-700 rounded-lg bg-white dark:bg-neutral-800 text-gray-700 dark:text-gray-200 focus:outline-none focus:border-[#2e3192] transition-colors" />
+            </div>
+          </div>
+
+          <div>
+            <label className="block text-[10px] font-semibold text-gray-500 dark:text-gray-400 mb-1 uppercase tracking-wider">Tgl Analisa</label>
+            <div className="flex items-center gap-2">
+              <input type="date" value={tglAnalisaDari} onChange={e => setTglAnalisaDari(e.target.value)}
+                className="flex-1 px-2 py-1.5 text-xs border border-gray-200 dark:border-neutral-700 rounded-lg bg-white dark:bg-neutral-800 text-gray-700 dark:text-gray-200 focus:outline-none focus:border-[#2e3192] transition-colors" />
+              <span className="text-gray-400 text-xs">—</span>
+              <input type="date" value={tglAnalisaSampai} onChange={e => setTglAnalisaSampai(e.target.value)}
+                className="flex-1 px-2 py-1.5 text-xs border border-gray-200 dark:border-neutral-700 rounded-lg bg-white dark:bg-neutral-800 text-gray-700 dark:text-gray-200 focus:outline-none focus:border-[#2e3192] transition-colors" />
+            </div>
+          </div>
+
+          <div>
+            <label className="block text-[10px] font-semibold text-gray-500 dark:text-gray-400 mb-1 uppercase tracking-wider">Tgl Report</label>
+            <div className="flex items-center gap-2">
+              <input type="date" value={tglReportDari} onChange={e => setTglReportDari(e.target.value)}
+                className="flex-1 px-2 py-1.5 text-xs border border-gray-200 dark:border-neutral-700 rounded-lg bg-white dark:bg-neutral-800 text-gray-700 dark:text-gray-200 focus:outline-none focus:border-[#2e3192] transition-colors" />
+              <span className="text-gray-400 text-xs">—</span>
+              <input type="date" value={tglReportSampai} onChange={e => setTglReportSampai(e.target.value)}
+                className="flex-1 px-2 py-1.5 text-xs border border-gray-200 dark:border-neutral-700 rounded-lg bg-white dark:bg-neutral-800 text-gray-700 dark:text-gray-200 focus:outline-none focus:border-[#2e3192] transition-colors" />
+            </div>
+          </div>
+
+          {hasAnyFilter && (
+            <div className="md:col-span-3 flex justify-end">
+              <button type="button" onClick={resetAllFilters}
+                className="px-3 py-1.5 text-xs font-medium rounded-lg border border-gray-200 dark:border-neutral-700 text-gray-500 hover:border-red-400 hover:text-red-500 transition-colors">
+                Reset Semua Filter
+              </button>
+            </div>
           )}
         </div>
-        <span className="text-sm text-gray-400 ml-auto">
-          <strong className="text-gray-600 dark:text-gray-300">{pagination.total}</strong> data
-        </span>
       </div>
 
       <div className="bg-white dark:bg-neutral-900 border border-gray-200 dark:border-neutral-800 rounded-xl overflow-hidden shadow-sm">
@@ -1096,12 +1179,12 @@ export default function DiversifikasiPMPage() {
                     <div className="flex flex-col items-center justify-center py-20 gap-3 text-gray-400 dark:text-gray-500">
                       <span className="opacity-30"><EmptyIcon /></span>
                       <span className="text-sm font-medium">
-                        {search || activeFilter !== "all" ? "Tidak ada data yang sesuai filter" : "Belum ada data diversifikasi PM"}
+                        {hasAnyFilter ? "Tidak ada data yang sesuai filter" : "Belum ada data diversifikasi PM"}
                       </span>
-                      {(search || activeFilter !== "all") && (
-                        <button onClick={() => { setSearchInput(""); setSearch(""); setActiveFilter("all"); setCurrentPage(1) }}
+                      {hasAnyFilter && (
+                        <button onClick={resetAllFilters}
                           className="text-xs text-[#2e3192] dark:text-indigo-400 hover:underline">
-                          Reset filter
+                          Reset semua filter
                         </button>
                       )}
                     </div>

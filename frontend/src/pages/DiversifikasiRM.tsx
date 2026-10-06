@@ -13,7 +13,7 @@ import ExportRMModal from "./ExportRM"
 const DRAFT_KEY_RM = "draft-diversifikasi-rm"
 const HEADER_ROW1_HEIGHT = 34
 
-const HASIL_OPTIONS: HasilAnalisa[] = ["MS", "TMS", "OP", "N/A"]
+const HASIL_OPTIONS: HasilAnalisa[] = ["MS", "TMS", "OP", "N/A", "Accepted with variance"]
 const STATUS_RM_OPTIONS: StatusRM[] = ["Reject", "Release", "On Progress", "N/A"]
 const STATUS_PROJECT_OPTIONS: StatusProject[] = ["Done", "Drop", "On Progress"]
 
@@ -140,6 +140,7 @@ const BADGE_MAP_HASIL: Record<string, string> = {
   TMS:   "bg-red-100 text-red-800 dark:bg-red-950 dark:text-red-300",
   OP:    "bg-yellow-100 text-yellow-800 dark:bg-yellow-950 dark:text-yellow-300",
   "N/A": "bg-gray-100 text-gray-600 dark:bg-neutral-800 dark:text-gray-300",
+  "Accepted with variance": "bg-orange-100 text-orange-800 dark:bg-orange-950 dark:text-orange-300",
 }
 const BADGE_MAP_STATUS: Record<string, string> = {
   Reject:        "bg-red-700 text-white dark:bg-red-800 dark:text-red-100",
@@ -598,8 +599,6 @@ export default function DiversifikasiRMPage() {
   const [data, setData]         = useState<DiversifikasiRM[]>([])
   const [loading, setLoading]   = useState(false)
 
-  // Measure the actual rendered height of the first sticky header row so the
-  // second header row sticks at the correct offset (avoids relying on a hardcoded px value).
   const headerRow1Ref = useRef<HTMLTableRowElement>(null)
   const [headerRow1Height, setHeaderRow1Height] = useState(HEADER_ROW1_HEIGHT)
   useLayoutEffect(() => {
@@ -624,6 +623,11 @@ export default function DiversifikasiRMPage() {
   const [searchInput, setSearchInput] = useState("")
   const [search, setSearch]           = useState("")
   const [activeFilter, setActiveFilter] = useState<"all" | StatusProject>("all")
+
+  const [tglKirimCProDari,   setTglKirimCProDari]   = useState("")
+  const [tglKirimCProSampai, setTglKirimCProSampai] = useState("")
+  const [tglTerimaTSDari,    setTglTerimaTSDari]    = useState("")
+  const [tglTerimaTSSampai,  setTglTerimaTSSampai]  = useState("")
 
   const [showExport, setShowExport] = useState(false)
 
@@ -658,6 +662,10 @@ export default function DiversifikasiRMPage() {
     return () => clearTimeout(t)
   }, [searchInput])
 
+  useEffect(() => {
+    setCurrentPage(1)
+  }, [tglKirimCProDari, tglKirimCProSampai, tglTerimaTSDari, tglTerimaTSSampai])
+
   const handleFilterChange = (val: "all" | StatusProject) => {
     setActiveFilter(val)
     setCurrentPage(1)
@@ -684,6 +692,10 @@ export default function DiversifikasiRMPage() {
         limit: "50",
         ...(search.trim()          ? { search }              : {}),
         ...(activeFilter !== "all" ? { status: activeFilter } : {}),
+        ...(tglKirimCProDari   ? { tglKirimCProDari   } : {}),
+        ...(tglKirimCProSampai ? { tglKirimCProSampai } : {}),
+        ...(tglTerimaTSDari    ? { tglTerimaTSDari    } : {}),
+        ...(tglTerimaTSSampai  ? { tglTerimaTSSampai  } : {}),
       })
       const res = await fetch(`${API_BASE}/diversifikasi-rm?${params}`)
       if (!res.ok) throw new Error()
@@ -701,7 +713,11 @@ export default function DiversifikasiRMPage() {
       setData([])
     }
     setLoading(false)
-  }, [currentPage, search, activeFilter])
+  }, [
+    currentPage, search, activeFilter,
+    tglKirimCProDari, tglKirimCProSampai,
+    tglTerimaTSDari, tglTerimaTSSampai,
+  ])
 
   useEffect(() => { fetchData() }, [fetchData])
 
@@ -711,6 +727,18 @@ export default function DiversifikasiRMPage() {
     { label: "Drop",        value: "Drop",        count: statusCounts["Drop"]        ?? 0 },
     { label: "On Progress", value: "On Progress", count: statusCounts["On Progress"] ?? 0 },
   ]
+
+  const hasAnyFilter = !!search || activeFilter !== "all"
+    || !!tglKirimCProDari || !!tglKirimCProSampai
+    || !!tglTerimaTSDari  || !!tglTerimaTSSampai
+
+  const resetAllFilters = () => {
+    setSearchInput(""); setSearch("")
+    setActiveFilter("all")
+    setTglKirimCProDari("");   setTglKirimCProSampai("")
+    setTglTerimaTSDari("");    setTglTerimaTSSampai("")
+    setCurrentPage(1)
+  }
 
   const set = (field: keyof FormData) => (val: string) =>
     setForm(p => ({ ...p, [field]: val }))
@@ -1045,22 +1073,57 @@ export default function DiversifikasiRMPage() {
         })}
       </div>
 
-      <div className="bg-white dark:bg-neutral-900 border border-gray-200 dark:border-neutral-800 rounded-xl px-5 py-4 mb-5 flex flex-wrap gap-3 items-center transition-colors duration-300">
-        <div className="relative flex-1 min-w-[280px]">
-          <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"><SearchIcon /></span>
-          <input id="rm-search" name="rmSearch" type="text" value={searchInput} onChange={e => setSearchInput(e.target.value)}
-            placeholder="Cari nomor RM, kode item, nama material, manufacture..."
-            className="w-full pl-9 pr-9 py-2 text-sm border border-gray-200 dark:border-neutral-700 rounded-lg bg-white dark:bg-neutral-800 text-gray-700 dark:text-gray-200 placeholder-gray-400 focus:outline-none focus:border-[#2e3192] dark:focus:border-indigo-400 transition-colors" />
-          {searchInput && (
-            <button onClick={() => { setSearchInput(""); setSearch(""); setCurrentPage(1) }}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-red-500 transition-colors">
-              <CloseIcon />
-            </button>
+      <div className="bg-white dark:bg-neutral-900 border border-gray-200 dark:border-neutral-800 rounded-xl px-5 py-4 mb-5 space-y-3 transition-colors duration-300">
+        <div className="flex flex-wrap gap-3 items-center">
+          <div className="relative flex-1 min-w-[280px]">
+            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"><SearchIcon /></span>
+            <input id="rm-search" name="rmSearch" type="text" value={searchInput} onChange={e => setSearchInput(e.target.value)}
+              placeholder="Cari nomor RM, kode item, nama material, manufacture..."
+              className="w-full pl-9 pr-9 py-2 text-sm border border-gray-200 dark:border-neutral-700 rounded-lg bg-white dark:bg-neutral-800 text-gray-700 dark:text-gray-200 placeholder-gray-400 focus:outline-none focus:border-[#2e3192] dark:focus:border-indigo-400 transition-colors" />
+            {searchInput && (
+              <button onClick={() => { setSearchInput(""); setSearch(""); setCurrentPage(1) }}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-red-500 transition-colors">
+                <CloseIcon />
+              </button>
+            )}
+          </div>
+          <span className="text-sm text-gray-400 ml-auto">
+            <strong className="text-gray-600 dark:text-gray-300">{pagination.total}</strong> data
+          </span>
+        </div>
+
+        <div className="pt-3 border-t border-gray-100 dark:border-neutral-800 grid grid-cols-1 md:grid-cols-2 gap-3">
+          <div>
+            <label className="block text-[10px] font-semibold text-gray-500 dark:text-gray-400 mb-1 uppercase tracking-wider">Tgl Kirim CPro</label>
+            <div className="flex items-center gap-2">
+              <input type="date" value={tglKirimCProDari} onChange={e => setTglKirimCProDari(e.target.value)}
+                className="flex-1 px-2 py-1.5 text-xs border border-gray-200 dark:border-neutral-700 rounded-lg bg-white dark:bg-neutral-800 text-gray-700 dark:text-gray-200 focus:outline-none focus:border-[#2e3192] transition-colors" />
+              <span className="text-gray-400 text-xs">—</span>
+              <input type="date" value={tglKirimCProSampai} onChange={e => setTglKirimCProSampai(e.target.value)}
+                className="flex-1 px-2 py-1.5 text-xs border border-gray-200 dark:border-neutral-700 rounded-lg bg-white dark:bg-neutral-800 text-gray-700 dark:text-gray-200 focus:outline-none focus:border-[#2e3192] transition-colors" />
+            </div>
+          </div>
+
+          <div>
+            <label className="block text-[10px] font-semibold text-gray-500 dark:text-gray-400 mb-1 uppercase tracking-wider">Tgl Terima TS</label>
+            <div className="flex items-center gap-2">
+              <input type="date" value={tglTerimaTSDari} onChange={e => setTglTerimaTSDari(e.target.value)}
+                className="flex-1 px-2 py-1.5 text-xs border border-gray-200 dark:border-neutral-700 rounded-lg bg-white dark:bg-neutral-800 text-gray-700 dark:text-gray-200 focus:outline-none focus:border-[#2e3192] transition-colors" />
+              <span className="text-gray-400 text-xs">—</span>
+              <input type="date" value={tglTerimaTSSampai} onChange={e => setTglTerimaTSSampai(e.target.value)}
+                className="flex-1 px-2 py-1.5 text-xs border border-gray-200 dark:border-neutral-700 rounded-lg bg-white dark:bg-neutral-800 text-gray-700 dark:text-gray-200 focus:outline-none focus:border-[#2e3192] transition-colors" />
+            </div>
+          </div>
+
+          {hasAnyFilter && (
+            <div className="md:col-span-2 flex justify-end">
+              <button type="button" onClick={resetAllFilters}
+                className="px-3 py-1.5 text-xs font-medium rounded-lg border border-gray-200 dark:border-neutral-700 text-gray-500 hover:border-red-400 hover:text-red-500 transition-colors">
+                Reset Semua Filter
+              </button>
+            </div>
           )}
         </div>
-        <span className="text-sm text-gray-400 ml-auto">
-          <strong className="text-gray-600 dark:text-gray-300">{pagination.total}</strong> data
-        </span>
       </div>
 
       <div className="bg-white dark:bg-neutral-900 border border-gray-200 dark:border-neutral-800 rounded-xl overflow-hidden shadow-sm">
@@ -1110,11 +1173,11 @@ export default function DiversifikasiRMPage() {
                     <div className="flex flex-col items-center justify-center py-20 gap-3 text-gray-400 dark:text-gray-500">
                       <span className="opacity-30"><EmptyIcon /></span>
                       <span className="text-sm font-medium">
-                        {search || activeFilter !== "all" ? "Tidak ada data yang sesuai filter" : "Belum ada data diversifikasi RM"}
+                        {hasAnyFilter ? "Tidak ada data yang sesuai filter" : "Belum ada data diversifikasi RM"}
                       </span>
-                      {(search || activeFilter !== "all") && (
-                        <button onClick={() => { setSearchInput(""); setSearch(""); handleFilterChange("all") }}
-                          className="text-xs text-[#2e3192] dark:text-indigo-400 hover:underline">Reset filter</button>
+                      {hasAnyFilter && (
+                        <button onClick={resetAllFilters}
+                          className="text-xs text-[#2e3192] dark:text-indigo-400 hover:underline">Reset semua filter</button>
                       )}
                     </div>
                   </td></tr>

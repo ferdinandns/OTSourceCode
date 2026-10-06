@@ -1,5 +1,5 @@
-export type HasilAnalisa = "MS" | "TMS" | "OP" | "N/A"
-export type StatusRM = "Reject" | "Release" | "On Progress" | "N/A"
+export type HasilAnalisa = "MS" | "TMS" | "OP" | "N/A" | "Accepted with variance"
+export type StatusRM = "Reject" | "Release" | "On Progress" | "N/A" | "Accepted with variance"
 export type StatusProject = "Done" | "Drop" | "On Progress"
 export type JenisScaleUp = "Pilot Scale" | "Commercial Scale"
 export type Division = "Admin" | "CPro" | "QC" | "TS" | "Andev"

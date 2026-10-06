@@ -31,13 +31,25 @@ var allowedStatusRM = map[string]struct{}{
 	"Drop":        {},
 }
 
-var allowedStabtestStatusRM = map[string]struct{}{
-	"Reject":      {},
-	"Release":     {},
-	"On Progress": {},
-	"N/A":         {},
-	"":            {},
+var allowedStatusHasilRM = map[string]struct{}{
+	"Reject":                  {},
+	"Release":                 {},
+	"On Progress":             {},
+	"N/A":                     {},
+	"Accepted with variance": {},
+	"":                        {},
 }
+
+var allowedHasilAnalisaRM = map[string]struct{}{
+	"MS":                      {},
+	"TMS":                     {},
+	"OP":                      {},
+	"N/A":                     {},
+	"Accepted with variance": {},
+	"":                        {},
+}
+
+var allowedStabtestStatusRM = allowedStatusHasilRM
 
 type DiversifikasiRMHandler struct {
 	DB *sql.DB
@@ -108,8 +120,16 @@ func buildRMBaseWhere(search string) (string, []any) {
 	return "WHERE " + strings.Join(clauses, " AND "), args
 }
 
-func buildRMFullWhere(search, status string) (string, []any) {
+type rmDateFilter struct {
+	TglKirimCProDari   string
+	TglKirimCProSampai string
+	TglTerimaTSDari    string
+	TglTerimaTSSampai  string
+}
+
+func buildRMFullWhere(search, status string, df rmDateFilter) (string, []any) {
 	where, args := buildRMBaseWhere(search)
+
 	if status != "" && status != "all" {
 		if _, ok := allowedStatusRM[status]; ok {
 			n := len(args) + 1
@@ -117,6 +137,28 @@ func buildRMFullWhere(search, status string) (string, []any) {
 			args = append(args, status)
 		}
 	}
+
+	if df.TglKirimCProDari != "" {
+		n := len(args) + 1
+		where += fmt.Sprintf(" AND rm.tgl_kirim_cpro::date >= $%d::date", n)
+		args = append(args, df.TglKirimCProDari)
+	}
+	if df.TglKirimCProSampai != "" {
+		n := len(args) + 1
+		where += fmt.Sprintf(" AND rm.tgl_kirim_cpro::date <= $%d::date", n)
+		args = append(args, df.TglKirimCProSampai)
+	}
+	if df.TglTerimaTSDari != "" {
+		n := len(args) + 1
+		where += fmt.Sprintf(" AND rm.tgl_terima_ts::date >= $%d::date", n)
+		args = append(args, df.TglTerimaTSDari)
+	}
+	if df.TglTerimaTSSampai != "" {
+		n := len(args) + 1
+		where += fmt.Sprintf(" AND rm.tgl_terima_ts::date <= $%d::date", n)
+		args = append(args, df.TglTerimaTSSampai)
+	}
+
 	return where, args
 }
 
@@ -156,6 +198,26 @@ func validateRMProducts(products []models.DiversifikasiProduk) string {
 		}
 		if _, ok := allowedStabtestStatusRM[p.StabtestStatus]; !ok {
 			return fmt.Sprintf("%s: nilai stabtest_status tidak valid", pfx)
+		}
+		for _, chk := range []struct {
+			field string
+			val   string
+		}{
+			{"Produk Fisik", p.ProdukFisik},
+			{"Produk Kimia", p.ProdukKimia},
+			{"Produk Mikrobiologi", p.ProdukMikrobiologi},
+			{"Produk Sensori", p.ProdukSensori},
+			{"Produk Cek Karakteristik", p.ProdukCekKarakteristik},
+			{"Stabtest Fisik", p.StabtestFisik},
+			{"Stabtest Kimia", p.StabtestKimia},
+			{"Stabtest Mikrobiologi", p.StabtestMikrobiologi},
+			{"Stabtest Sensori DFCT", p.StabtestSensoriDFCT},
+		} {
+			if chk.val != "" {
+				if _, ok := allowedHasilAnalisaRM[chk.val]; !ok {
+					return fmt.Sprintf("%s %s: nilai tidak valid", pfx, chk.field)
+				}
+			}
 		}
 	}
 	return ""
@@ -312,8 +374,32 @@ func (h *DiversifikasiRMHandler) GetAllPaginated(c *gin.Context) {
 		}
 	}
 
+	dateFilter := rmDateFilter{
+		TglKirimCProDari:   strings.TrimSpace(c.Query("tglKirimCProDari")),
+		TglKirimCProSampai: strings.TrimSpace(c.Query("tglKirimCProSampai")),
+		TglTerimaTSDari:    strings.TrimSpace(c.Query("tglTerimaTSDari")),
+		TglTerimaTSSampai:  strings.TrimSpace(c.Query("tglTerimaTSSampai")),
+	}
+
+	for _, d := range []struct {
+		name, val string
+	}{
+		{"tglKirimCProDari", dateFilter.TglKirimCProDari},
+		{"tglKirimCProSampai", dateFilter.TglKirimCProSampai},
+		{"tglTerimaTSDari", dateFilter.TglTerimaTSDari},
+		{"tglTerimaTSSampai", dateFilter.TglTerimaTSSampai},
+	} {
+		if d.val != "" {
+			if _, err := time.Parse("2006-01-02", d.val); err != nil {
+				middleware.RespondError(c, http.StatusBadRequest, "VALIDATION_ERROR",
+					"Format "+d.name+" harus YYYY-MM-DD")
+				return
+			}
+		}
+	}
+
 	baseWhere, baseArgs := buildRMBaseWhere(search)
-	fullWhere, fullArgs := buildRMFullWhere(search, status)
+	fullWhere, fullArgs := buildRMFullWhere(search, status, dateFilter)
 
 	ctx, cancel := newCtxRM(c)
 	defer cancel()
@@ -346,7 +432,7 @@ func (h *DiversifikasiRMHandler) GetAllPaginated(c *gin.Context) {
 		LEFT  JOIN diversifikasi_produk p ON p.diversifikasi_rm_id = rm.id
 		%s
 		GROUP BY rm.id
-		ORDER BY rm.created_at DESC
+		ORDER BY rm.updated_at DESC NULLS LAST, rm.id DESC
 		LIMIT  $%d OFFSET $%d`,
 		selectColsRM, productAggRM, fullWhere, limitN, offsetN,
 	)
@@ -504,7 +590,7 @@ func (h *DiversifikasiRMHandler) GetAll(c *gin.Context) {
 		LEFT JOIN diversifikasi_produk p ON p.diversifikasi_rm_id = rm.id
 		WHERE rm.parent_id IS NULL AND rm.deleted_at IS NULL
 		GROUP BY rm.id
-		ORDER BY rm.created_at DESC`, selectCols, productAgg)
+		ORDER BY rm.updated_at DESC NULLS LAST, rm.id DESC`, selectCols, productAgg)
 
 	rows, err := h.DB.Query(query)
 	if err != nil {
@@ -947,70 +1033,40 @@ func unmarshalProducts(data []byte) []models.DiversifikasiProduk {
 	if len(data) == 0 || string(data) == "null" || string(data) == "[]" {
 		return products
 	}
-	var raw []map[string]interface{}
+	var raw []productRMJSON
 	if err := json.Unmarshal(data, &raw); err != nil {
 		return products
 	}
-	for _, r := range raw {
-		p := models.DiversifikasiProduk{}
-		if v, ok := r["id"].(float64); ok {
-			p.ID = int(v)
-		}
-		if v, ok := r["diversifikasiRmId"].(float64); ok {
-			p.DiversifikasiRMID = int(v)
-		}
-		if v, ok := r["kodeProduk"].(string); ok {
-			p.KodeProduk = v
-		}
-		if v, ok := r["produkFisik"].(string); ok {
-			p.ProdukFisik = v
-		}
-		if v, ok := r["produkKimia"].(string); ok {
-			p.ProdukKimia = v
-		}
-		if v, ok := r["produkMikrobiologi"].(string); ok {
-			p.ProdukMikrobiologi = v
-		}
-		if v, ok := r["produkSensori"].(string); ok {
-			p.ProdukSensori = v
-		}
-		if v, ok := r["produkCekKarakteristik"].(string); ok {
-			p.ProdukCekKarakteristik = v
-		}
-		if v, ok := r["stabtestFisik"].(string); ok {
-			p.StabtestFisik = v
-		}
-		if v, ok := r["stabtestKimia"].(string); ok {
-			p.StabtestKimia = v
-		}
-		if v, ok := r["stabtestMikrobiologi"].(string); ok {
-			p.StabtestMikrobiologi = v
-		}
-		if v, ok := r["stabtestSensoriDFCT"].(string); ok {
-			p.StabtestSensoriDFCT = v
-		}
-		if v, ok := r["stabtestStatus"].(string); ok {
-			p.StabtestStatus = v
-		}
-		if v, ok := r["keterangan"].(string); ok {
-			p.Keterangan = v
-		}
-
-		parseDateField := func(key string) *time.Time {
-			v, ok := r[key].(string)
-			if !ok || v == "" {
-				return nil
-			}
-			for _, layout := range []string{time.RFC3339, "2006-01-02T15:04:05", "2006-01-02 15:04:05", "2006-01-02"} {
-				if t, err := time.Parse(layout, v); err == nil {
-					return &t
-				}
-			}
+	parseDatePtr := func(s *string) *time.Time {
+		if s == nil || *s == "" {
 			return nil
 		}
-		p.ProdukTglKirimQC = parseDateField("produkTglKirimQC")
-		p.ProdukTglKeluarHasil = parseDateField("produkTglKeluarHasil")
-		products = append(products, p)
+		for _, layout := range []string{time.RFC3339, "2006-01-02T15:04:05", "2006-01-02 15:04:05", "2006-01-02"} {
+			if t, err := time.Parse(layout, *s); err == nil {
+				return &t
+			}
+		}
+		return nil
+	}
+	for _, r := range raw {
+		products = append(products, models.DiversifikasiProduk{
+			ID:                     r.ID,
+			DiversifikasiRMID:      r.DiversifikasiRmId,
+			KodeProduk:             r.KodeProduk,
+			ProdukFisik:            r.ProdukFisik,
+			ProdukKimia:            r.ProdukKimia,
+			ProdukMikrobiologi:     r.ProdukMikrobiologi,
+			ProdukSensori:          r.ProdukSensori,
+			ProdukCekKarakteristik: r.ProdukCekKarakteristik,
+			StabtestFisik:          r.StabtestFisik,
+			StabtestKimia:          r.StabtestKimia,
+			StabtestMikrobiologi:   r.StabtestMikrobiologi,
+			StabtestSensoriDFCT:    r.StabtestSensoriDFCT,
+			StabtestStatus:         r.StabtestStatus,
+			Keterangan:             r.Keterangan,
+			ProdukTglKirimQC:       parseDatePtr(r.ProdukTglKirimQC),
+			ProdukTglKeluarHasil:   parseDatePtr(r.ProdukTglKeluarHasil),
+		})
 	}
 	return products
 }
