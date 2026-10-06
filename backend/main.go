@@ -68,6 +68,7 @@ func main() {
 	routes.SetupRecycleBinRoutes(router, db)
 	routes.SetupActivityLogRoutes(router, db)
 	routes.SetupDashboardRoutes(router, db)
+	routes.SetupVideotronRoutes(router, db)
 
 	port := getEnv("PORT", "8080")
 	log.Printf("Server running on http://localhost:%s", port)

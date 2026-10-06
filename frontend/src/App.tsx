@@ -9,7 +9,8 @@ import DiversifikasiPM from "./pages/DiversifikasiPM"
 import ActivityLog from "./pages/ActivityLog"
 import Dashboard from "./pages/Dashboard"
 import RecycleBin from "./pages/RecycleBin"
-  
+import VideotronPage from "./pages/VideotronPage"
+
 function App() {
   return (
     <BrowserRouter>
@@ -91,6 +92,8 @@ function App() {
             </ProtectedRoute>
           }
         />
+        
+        <Route path="/videotron" element={<VideotronPage />} />
       </Routes>
     </BrowserRouter>
   )
