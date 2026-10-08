@@ -96,10 +96,10 @@ function Header({
         </p>
       </div>
       <div className="text-right">
-        <div className="text-6xl font-black text-cyan-400 tabular-nums leading-none">
+        <div className="text-3xl font-black text-cyan-400 tabular-nums leading-none">
           {jam.toLocaleTimeString("id-ID", { hour: "2-digit", minute: "2-digit", second: "2-digit" })}
         </div>
-        <div className="text-gray-400 text-sm mt-2">
+        <div className="text-gray-400 text-sm mt-1">
           {jam.toLocaleDateString("id-ID", {
             weekday: "long", day: "numeric", month: "long", year: "numeric",
           })}
@@ -126,7 +126,7 @@ function StatsSection({ activeTab, data }: { activeTab: TabType; data: Videotron
   const pm = data?.pm
 
   return (
-    <section className="flex-shrink-0 px-10 py-6">
+    <section className="flex-shrink-0 px-10 py-3">
       <div className="flex items-center gap-4 mb-5">
         <div className={`px-5 py-2 rounded-full font-bold text-sm transition-all duration-500 ${
           activeTab === "RM" ? "bg-cyan-500 text-white shadow-lg shadow-cyan-500/30" : "bg-white/10 text-gray-400"
@@ -138,10 +138,6 @@ function StatsSection({ activeTab, data }: { activeTab: TabType; data: Videotron
         }`}>
           DIVERSIFIKASI PM
         </div>
-        {/* <div className="ml-auto text-xs text-gray-500 flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
-          Auto rotate setiap {ROTATE_INTERVAL_MS / 1000} detik
-        </div> */}
       </div>
 
       {activeTab === "RM" && (
@@ -179,7 +175,7 @@ function StatCard({
   const pct = total && total > 0 ? Math.round((value / total) * 100) : 0
 
   return (
-    <div className={`bg-gradient-to-br ${c.bg} border rounded-2xl p-6`}>
+    <div className={`bg-gradient-to-br ${c.bg} border rounded-2xl p-6 py-2 h-full flex flex-col` }>
       <div className="text-gray-300 text-xs font-bold uppercase tracking-widest mb-3">{label}</div>
       <div className="flex items-baseline gap-2">
         <div className={`text-6xl font-black tabular-nums leading-none ${c.text}`}>{value}</div>
@@ -315,11 +311,11 @@ function Footer({
 }: {
   lastUpdated: Date | null; activeTab: TabType; error: string | null
 }) {
-  const text = `📢 Menampilkan data ${activeTab === "RM" ? "Diversifikasi Raw Material" : "Diversifikasi Packaging Material"} — Update terakhir: ${lastUpdated?.toLocaleTimeString("id-ID") ?? "memuat..."}`
+  // const text = `📢 Menampilkan data ${activeTab === "RM" ? "Diversifikasi Raw Material" : "Diversifikasi Packaging Material"} — Update terakhir: ${lastUpdated?.toLocaleTimeString("id-ID") ?? "memuat..."}`
 
   return (
     <footer className="flex-shrink-0 bg-blue-900/40 border-t border-white/10">
-      <div className="h-14 flex items-center overflow-hidden">
+      {/* <div className="h-14 flex items-center overflow-hidden">
         {error ? (
           <div className="px-6 text-red-400 text-sm flex items-center gap-2">
             <span>⚠️</span> {error}
@@ -330,7 +326,7 @@ function Footer({
             <span className="text-white text-lg font-semibold mx-8">{text}</span>
           </div>
         )}
-      </div>
+      </div> */}
 
       <div className="h-8 px-6 bg-blue-950/60 border-t border-white/5 flex items-center justify-center gap-2">
         <span className="text-[11px] text-gray-500 tracking-wide">
