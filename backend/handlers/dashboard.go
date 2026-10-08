@@ -26,16 +26,30 @@ var allowedDashboardType = map[string]struct{}{
 	"RM": {},
 	"PM": {},
 }
+
 var allowedDashboardStatus = map[string]struct{}{
 	"Done":        {},
 	"On Progress": {},
 	"Drop":        {},
 }
 
+var allowedDashboardSortBy = map[string]struct{}{
+	"updated_at":    {},
+	"created_at":    {},
+	"nama_material": {},
+	"nomor":         {},
+}
+
+var allowedDashboardSortOrder = map[string]struct{}{
+	"asc":  {},
+	"desc": {},
+}
+
 type DashboardResponse struct {
 	DiverRM DashboardRM `json:"diverRM"`
 	DiverPM DashboardPM `json:"diverPM"`
 }
+
 type DashboardRM struct {
 	TotalDivers    int              `json:"totalDivers"`
 	AnalisaRM      CardStat         `json:"analisaRM"`
@@ -43,24 +57,29 @@ type DashboardRM struct {
 	StatusScaleUp  CardStat         `json:"statusScaleUp"`
 	TableData      DashboardRMTable `json:"tableData"`
 }
+
 type DashboardPM struct {
 	TotalDivers int              `json:"totalDivers"`
 	AnalisaPM   CardStat         `json:"analisaPM"`
 	StatusTrial CardStat         `json:"statusTrial"`
 	TableData   DashboardPMTable `json:"tableData"`
 }
+
 type DashboardRMTable struct {
 	Data []DashboardRMRow `json:"data"`
 	models.PaginationMeta
 }
+
 type DashboardPMTable struct {
 	Data []DashboardPMRow `json:"data"`
 	models.PaginationMeta
 }
+
 type CardStat struct {
 	Released int `json:"released"`
 	Total    int `json:"total"`
 }
+
 type DashboardRMRow struct {
 	ID              int                 `json:"id"`
 	NomorRM         string              `json:"nomorRM"`
@@ -75,6 +94,7 @@ type DashboardRMRow struct {
 	CreatedAt       string              `json:"createdAt"`
 	UpdatedAt       string              `json:"updatedAt"`
 }
+
 type DashboardPMRow struct {
 	ID              int                 `json:"id"`
 	NomorPM         string              `json:"nomorPM"`
@@ -89,10 +109,12 @@ type DashboardPMRow struct {
 	CreatedAt       string              `json:"createdAt"`
 	UpdatedAt       string              `json:"updatedAt"`
 }
+
 type ProductStatusItem struct {
 	KodeProduk string `json:"kodeProduk"`
 	Status     string `json:"status"`
 }
+
 type DashboardHandler struct {
 	db *sql.DB
 }
@@ -100,9 +122,11 @@ type DashboardHandler struct {
 func NewDashboardHandler(db *sql.DB) *DashboardHandler {
 	return &DashboardHandler{db: db}
 }
+
 func newCtxDashboard(c *gin.Context) (context.Context, context.CancelFunc) {
 	return context.WithTimeout(c.Request.Context(), 10*time.Second)
 }
+
 func handleDashboardDBError(c *gin.Context, op string, err error) bool {
 	if err == nil {
 		return false
@@ -119,19 +143,31 @@ func handleDashboardDBError(c *gin.Context, op string, err error) bool {
 	}
 	return true
 }
+
 func isCtxError(err error) bool {
 	return err == context.DeadlineExceeded || err == context.Canceled
 }
 
 type dashboardTableParams struct {
-	page   int
-	limit  int
-	typ    string
-	status string
+	page         int
+	limit        int
+	typ          string
+	status       string
+	manufacture  string
+	sortBy       string
+	sortOrder    string
 }
 
 func parseDashboardTableParams(c *gin.Context) (dashboardTableParams, string) {
-	p := dashboardTableParams{page: 1, limit: dashboardDefaultLimit, typ: "all", status: "all"}
+	p := dashboardTableParams{
+		page:        1,
+		limit:       dashboardDefaultLimit,
+		typ:         "all",
+		status:      "all",
+		manufacture: "",
+		sortBy:      "updated_at",
+		sortOrder:   "desc",
+	}
 
 	if v, err := strconv.Atoi(c.DefaultQuery("page", "1")); err == nil && v >= 1 {
 		p.page = v
@@ -156,11 +192,55 @@ func parseDashboardTableParams(c *gin.Context) (dashboardTableParams, string) {
 		}
 		p.status = s
 	}
+	if m := strings.TrimSpace(c.Query("manufacture")); m != "" {
+		p.manufacture = m
+	}
+
+	sortBy := strings.ToLower(strings.TrimSpace(c.Query("sortBy")))
+	if sortBy == "" {
+		sortBy = "updated_at"
+	}
+	switch sortBy {
+	case "updatedat", "updated":
+		sortBy = "updated_at"
+	case "createdat", "created":
+		sortBy = "created_at"
+	case "namamaterial", "nama":
+		sortBy = "nama_material"
+	case "nomor":
+		sortBy = "nomor"
+	}
+	if _, ok := allowedDashboardSortBy[sortBy]; !ok {
+		sortBy = "updated_at"
+	}
+	p.sortBy = sortBy
+
+	sortOrder := strings.ToLower(strings.TrimSpace(c.Query("sortOrder")))
+	if sortOrder == "" {
+		sortOrder = "desc"
+	}
+	switch sortOrder {
+	case "a-z", "az", "naik":
+		sortOrder = "asc"
+	case "z-a", "za", "turun":
+		sortOrder = "desc"
+	case "terbaru":
+		sortOrder = "desc"
+	case "terlama":
+		sortOrder = "asc"
+	}
+	if _, ok := allowedDashboardSortOrder[sortOrder]; !ok {
+		sortOrder = "desc"
+	}
+	p.sortOrder = sortOrder
+
 	return p, ""
 }
+
 func buildTableUnionWhere(
 	alias string,
 	status string,
+	manufacture string,
 	from, to time.Time,
 	baseArgOffset int,
 ) (string, []any) {
@@ -171,18 +251,36 @@ func buildTableUnionWhere(
 		fmt.Sprintf("%s.created_at <= $%d", alias, baseArgOffset+2),
 	}
 	args := []any{from, to}
+	nextN := baseArgOffset + 3
+
 	if status != "" && status != "all" {
 		if _, ok := allowedDashboardStatus[status]; ok {
 			clauses = append(
 				clauses,
-				fmt.Sprintf("%s.status_project = $%d", alias, baseArgOffset+3),
+				fmt.Sprintf("%s.status_project = $%d", alias, nextN),
 			)
 			args = append(args, status)
+			nextN++
 		}
 	}
+
+	if manufacture != "" {
+		clauses = append(
+			clauses,
+			fmt.Sprintf("%s.manufacture ILIKE $%d", alias, nextN),
+		)
+		args = append(args, "%"+manufacture+"%")
+		nextN++
+	}
+
 	return "WHERE " + strings.Join(clauses, " AND "), args
 }
-func buildUnionQuery(typ, status string, from, to time.Time) (countQuery, dataQuery string, args []any) {
+
+func buildUnionQuery(
+	typ, status, manufacture string,
+	from, to time.Time,
+	sortBy, sortOrder string,
+) (countQuery, dataQuery string, args []any) {
 	rmSelect := `
 		SELECT
 			rm.id                                        AS id,
@@ -232,31 +330,53 @@ func buildUnionQuery(typ, status string, from, to time.Time) (countQuery, dataQu
 			pm.updated_at
 		FROM diversifikasi_pm pm
 	`
+
 	var parts []string
 	args = []any{}
+
 	if typ == "all" || typ == "RM" {
-		whereRM, argsRM := buildTableUnionWhere("rm", status, from, to, 0)
+		whereRM, argsRM := buildTableUnionWhere("rm", status, manufacture, from, to, 0)
 		parts = append(parts, fmt.Sprintf("(%s %s)", rmSelect, whereRM))
 		args = append(args, argsRM...)
 	}
 	if typ == "all" || typ == "PM" {
 		pmArgOffset := len(args)
-		wherePM, argsPM := buildTableUnionWhere("pm", status, from, to, pmArgOffset)
+		wherePM, argsPM := buildTableUnionWhere("pm", status, manufacture, from, to, pmArgOffset)
 		parts = append(parts, fmt.Sprintf("(%s %s)", pmSelect, wherePM))
 		args = append(args, argsPM...)
 	}
+
 	unionSQL := strings.Join(parts, " UNION ALL ")
+
+	orderCol := "updated_at"
+	switch sortBy {
+	case "nama_material":
+		orderCol = "LOWER(nama_material)"
+	case "nomor":
+		orderCol = "LOWER(nomor)"
+	case "created_at":
+		orderCol = "created_at"
+	case "updated_at":
+		orderCol = "updated_at"
+	}
+
+	orderDir := "DESC"
+	if sortOrder == "asc" {
+		orderDir = "ASC"
+	}
+
 	countQuery = fmt.Sprintf(`SELECT COUNT(*) FROM (%s) AS u`, unionSQL)
 	limitN := len(args) + 1
 	offsetN := len(args) + 2
+
 	dataQuery = fmt.Sprintf(`
 		SELECT id, type, nomor, nama_material, manufacture, no_batch_material,
 		       status_project, hasil_analisa, hasil_scale_up, products_json,
 		       created_at, updated_at
 		FROM (%s) AS u
-		ORDER BY created_at DESC
+		ORDER BY %s %s NULLS LAST, id DESC
 		LIMIT $%d OFFSET $%d`,
-		unionSQL, limitN, offsetN,
+		unionSQL, orderCol, orderDir, limitN, offsetN,
 	)
 	return countQuery, dataQuery, args
 }
@@ -297,6 +417,7 @@ func scanDashboardUnionRow(rows *sql.Rows) (dashboardUnionRow, error) {
 	}
 	return r, nil
 }
+
 func unmarshalDashboardProducts(data []byte) []ProductStatusItem {
 	out := make([]ProductStatusItem, 0)
 	if len(data) == 0 || string(data) == "null" || string(data) == "[]" {
@@ -315,6 +436,7 @@ func unmarshalDashboardProducts(data []byte) []ProductStatusItem {
 	}
 	return out
 }
+
 func dashboardLabscaleStatus(products []ProductStatusItem) string {
 	if len(products) == 0 {
 		return ""
@@ -326,6 +448,7 @@ func dashboardLabscaleStatus(products []ProductStatusItem) string {
 	}
 	return "On Progress"
 }
+
 func (h *DashboardHandler) GetDashboard(c *gin.Context) {
 	ctx, cancel := newCtxDashboard(c)
 	defer cancel()
@@ -356,11 +479,13 @@ func (h *DashboardHandler) GetDashboard(c *gin.Context) {
 		}
 	}
 	toDate = time.Date(toDate.Year(), toDate.Month(), toDate.Day(), 23, 59, 59, 0, wib)
+
 	tableParams, validationMsg := parseDashboardTableParams(c)
 	if validationMsg != "" {
 		middleware.RespondError(c, http.StatusBadRequest, "VALIDATION_ERROR", validationMsg)
 		return
 	}
+
 	rmSummary, err := h.getRMSummary(ctx, fromDate, toDate)
 	if handleDashboardDBError(c, "GetDashboard.rmSummary", err) {
 		return
@@ -396,6 +521,7 @@ type rmSummaryResult struct {
 	statusLabscale CardStat
 	statusScaleUp  CardStat
 }
+
 type pmSummaryResult struct {
 	totalDivers int
 	analisaPM   CardStat
@@ -425,6 +551,7 @@ func (h *DashboardHandler) getRMSummary(ctx context.Context, from, to time.Time)
 		return result, err
 	}
 	defer rows.Close()
+
 	type rmStatRow struct {
 		id            int
 		rmStatus      string
@@ -450,6 +577,7 @@ func (h *DashboardHandler) getRMSummary(ctx context.Context, from, to time.Time)
 		return result, err
 	}
 	total := len(statRows)
+
 	labscaleTotalProducts := 0
 	labscaleReleasedProducts := 0
 	for _, sr := range statRows {
@@ -469,6 +597,7 @@ func (h *DashboardHandler) getRMSummary(ctx context.Context, from, to time.Time)
 	result.statusScaleUp = CardStat{Released: scaleUpReleasedCount, Total: total}
 	return result, nil
 }
+
 func (h *DashboardHandler) getPMSummary(ctx context.Context, from, to time.Time) (pmSummaryResult, error) {
 	result := pmSummaryResult{}
 
@@ -516,6 +645,7 @@ func (h *DashboardHandler) getPMSummary(ctx context.Context, from, to time.Time)
 	result.statusTrial = CardStat{Released: trialMSCount, Total: total}
 	return result, nil
 }
+
 func (h *DashboardHandler) getDashboardTable(
 	ctx context.Context,
 	p dashboardTableParams,
@@ -529,7 +659,11 @@ func (h *DashboardHandler) getDashboardTable(
 		Data:           make([]DashboardPMRow, 0),
 		PaginationMeta: models.PaginationMeta{Total: 0, Page: p.page, PerPage: p.limit, TotalPages: 1},
 	}
-	countQ, dataQ, baseArgs := buildUnionQuery(p.typ, p.status, from, to)
+	countQ, dataQ, baseArgs := buildUnionQuery(
+		p.typ, p.status, p.manufacture,
+		from, to,
+		p.sortBy, p.sortOrder,
+	)
 	var total int
 	if err := h.db.QueryRowContext(ctx, countQ, baseArgs...).Scan(&total); err != nil {
 		return emptyRM, emptyPM, err
@@ -605,6 +739,7 @@ func (h *DashboardHandler) getDashboardTable(
 	pmTable := DashboardPMTable{Data: pmRows, PaginationMeta: meta}
 	return rmTable, pmTable, nil
 }
+
 func (h *DashboardHandler) getRMProducts(ctx context.Context, rmID int) ([]ProductStatusItem, int, error) {
 	rows, err := h.db.QueryContext(ctx, `
 		SELECT COALESCE(kode_produk,''), COALESCE(stabtest_status,'')

@@ -66,20 +66,24 @@ interface DashboardRM {
   analisaRM: CardStat
   statusLabscale: CardStat
   statusScaleUp: CardStat
-  tableData: DashboardRMTable  
+  tableData: DashboardRMTable
 }
 
 interface DashboardPM {
   totalDivers: number
   analisaPM: CardStat
   statusTrial: CardStat
-  tableData: DashboardPMTable   
+  tableData: DashboardPMTable
 }
 
 interface DashboardData {
   diverRM: DashboardRM
   diverPM: DashboardPM
 }
+
+type SortByType    = "updated_at" | "nama_material" | "nomor" | "created_at"
+type SortOrderType = "asc" | "desc"
+type StatusFilter  = "all" | "Done" | "On Progress" | "Drop"
 
 const today = new Date()
 const fmt = (d: Date) => d.toISOString().split("T")[0]
@@ -116,6 +120,13 @@ const BADGE_HASIL: Record<string, string> = {
   OP:    "bg-yellow-100 text-yellow-800",
   "N/A": "bg-gray-100 text-gray-500",
 }
+
+const MANUFACTURE_PRESETS = [
+  "PT. Takasago Int. Indonesia",
+  "PT ANDALAN FURNINDO",
+  "DAYA CIPTA KEMASINDO",
+  "3M",
+]
 
 function StatusBadge({ value, map }: { value: string; map: Record<string, string> }) {
   if (!value) return <span className="text-gray-300 text-xs select-none">—</span>
@@ -406,6 +417,285 @@ function DateRangePicker({ value, onChange }: { value: DateRange; onChange: (r: 
   )
 }
 
+function SortDropdown({
+  sortBy, sortOrder, onChange,
+}: {
+  sortBy: SortByType
+  sortOrder: SortOrderType
+  onChange: (sortBy: SortByType, order: SortOrderType) => void
+}) {
+  const [open, setOpen] = useState(false)
+  const ref = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    function handler(e: MouseEvent) {
+      if (!ref.current?.contains(e.target as Node)) {
+        setOpen(false)
+      }
+    }
+    document.addEventListener("mousedown", handler)
+    return () => document.removeEventListener("mousedown", handler)
+  }, [])
+
+  const options: {
+    label: string
+    sub: string
+    sortBy: SortByType
+    sortOrder: SortOrderType
+  }[] = [
+    { label: "Terbaru",     sub: "Berdasarkan modifikasi terakhir", sortBy: "updated_at",    sortOrder: "desc" },
+    { label: "Terlama",     sub: "Berdasarkan modifikasi terakhir", sortBy: "updated_at",    sortOrder: "asc"  },
+    { label: "Nama A → Z",  sub: "Nama material",                   sortBy: "nama_material", sortOrder: "asc"  },
+    { label: "Nama Z → A",  sub: "Nama material",                   sortBy: "nama_material", sortOrder: "desc" },
+    { label: "Nomor A → Z", sub: "Nomor PM / RM",                   sortBy: "nomor",         sortOrder: "asc"  },
+    { label: "Nomor Z → A", sub: "Nomor PM / RM",                   sortBy: "nomor",         sortOrder: "desc" },
+    { label: "Dibuat ↓",    sub: "Tanggal dibuat terbaru",          sortBy: "created_at",    sortOrder: "desc" },
+    { label: "Dibuat ↑",    sub: "Tanggal dibuat terlama",          sortBy: "created_at",    sortOrder: "asc"  },
+  ]
+
+  const current = options.find(o => o.sortBy === sortBy && o.sortOrder === sortOrder) ?? options[0]
+
+  return (
+    <div ref={ref} className="relative">
+      <button
+        onClick={() => setOpen(o => !o)}
+        className="inline-flex items-center gap-2 px-4 py-2 rounded-xl border-2 border-gray-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 text-sm font-medium text-gray-700 dark:text-gray-200 hover:border-indigo-400 transition-colors"
+      >
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <line x1="4" y1="6" x2="20" y2="6" />
+          <line x1="4" y1="12" x2="14" y2="12" />
+          <line x1="4" y1="18" x2="9" y2="18" />
+        </svg>
+        <span className="text-gray-400">Urutkan:</span>
+        <span className="font-semibold">{current.label}</span>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className={`transition-transform ${open ? "rotate-180" : ""}`}>
+          <polyline points="6 9 12 15 18 9" />
+        </svg>
+      </button>
+
+      {open && (
+        <div className="absolute left-0 mt-2 w-64 bg-white dark:bg-neutral-900 border border-gray-200 dark:border-neutral-700 rounded-xl shadow-2xl z-50 overflow-hidden">
+          {options.map(o => {
+            const active = o.sortBy === sortBy && o.sortOrder === sortOrder
+            return (
+              <button
+                key={`${o.sortBy}-${o.sortOrder}`}
+                onClick={() => {
+                  onChange(o.sortBy, o.sortOrder)
+                  setOpen(false)
+                }}
+                className={`w-full text-left px-4 py-2.5 transition-colors flex items-center justify-between gap-3 ${
+                  active
+                    ? "bg-indigo-50 dark:bg-indigo-950/40 text-indigo-700 dark:text-indigo-300"
+                    : "text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-neutral-800"
+                }`}
+              >
+                <div className="min-w-0 flex-1">
+                  <div className={`text-sm ${active ? "font-semibold" : "font-medium"}`}>
+                    {o.label}
+                  </div>
+                  <div className="text-[11px] text-gray-400 mt-0.5">
+                    {o.sub}
+                  </div>
+                </div>
+                {active && (
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="flex-shrink-0">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                )}
+              </button>
+            )
+          })}
+        </div>
+      )}
+    </div>
+  )
+}
+
+function StatusFilterDropdown({
+  value, onChange,
+}: {
+  value: StatusFilter
+  onChange: (v: StatusFilter) => void
+}) {
+  const [open, setOpen] = useState(false)
+  const ref = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    function handler(e: MouseEvent) {
+      if (!ref.current?.contains(e.target as Node)) {
+        setOpen(false)
+      }
+    }
+    document.addEventListener("mousedown", handler)
+    return () => document.removeEventListener("mousedown", handler)
+  }, [])
+
+  const options: { value: StatusFilter; label: string; dot: string }[] = [
+    { value: "all",         label: "Semua Status",  dot: "bg-gray-400" },
+    { value: "On Progress", label: "On Progress",   dot: "bg-amber-500" },
+    { value: "Done",        label: "Done",          dot: "bg-green-600" },
+    { value: "Drop",        label: "Drop",          dot: "bg-red-600" },
+  ]
+
+  const current = options.find(o => o.value === value) ?? options[0]
+
+  return (
+    <div ref={ref} className="relative">
+      <button
+        onClick={() => setOpen(o => !o)}
+        className="inline-flex items-center gap-2 px-4 py-2 rounded-xl border-2 border-gray-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 text-sm font-medium text-gray-700 dark:text-gray-200 hover:border-indigo-400 transition-colors"
+      >
+        <span className={`w-2 h-2 rounded-full ${current.dot}`} />
+        <span className="text-gray-400">Status:</span>
+        <span className="font-semibold">{current.label}</span>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className={`transition-transform ${open ? "rotate-180" : ""}`}>
+          <polyline points="6 9 12 15 18 9" />
+        </svg>
+      </button>
+
+      {open && (
+        <div className="absolute left-0 mt-2 w-56 bg-white dark:bg-neutral-900 border border-gray-200 dark:border-neutral-700 rounded-xl shadow-2xl z-50 overflow-hidden">
+          {options.map(o => {
+            const active = o.value === value
+            return (
+              <button
+                key={o.value}
+                onClick={() => {
+                  onChange(o.value)
+                  setOpen(false)
+                }}
+                className={`w-full text-left px-4 py-2.5 text-sm transition-colors flex items-center justify-between ${
+                  active
+                    ? "bg-indigo-50 dark:bg-indigo-950/40 text-indigo-700 dark:text-indigo-300 font-semibold"
+                    : "text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-neutral-800"
+                }`}
+              >
+                <div className="flex items-center gap-2">
+                  <span className={`w-2 h-2 rounded-full ${o.dot}`} />
+                  {o.label}
+                </div>
+                {active && (
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                )}
+              </button>
+            )
+          })}
+        </div>
+      )}
+    </div>
+  )
+}
+
+function ManufactureFilterDropdown({
+  value, onChange,
+}: {
+  value: string
+  onChange: (v: string) => void
+}) {
+  const [open, setOpen] = useState(false)
+  const [search, setSearch] = useState("")
+  const ref = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    function handler(e: MouseEvent) {
+      if (!ref.current?.contains(e.target as Node)) {
+        setOpen(false)
+      }
+    }
+    document.addEventListener("mousedown", handler)
+    return () => document.removeEventListener("mousedown", handler)
+  }, [])
+
+  const allOptions = Array.from(new Set(MANUFACTURE_PRESETS))
+  const filtered = search
+    ? allOptions.filter(m => m.toLowerCase().includes(search.toLowerCase()))
+    : allOptions
+
+  const label = value || "Semua"
+
+  return (
+    <div ref={ref} className="relative">
+      <button
+        onClick={() => setOpen(o => !o)}
+        className="inline-flex items-center gap-2 px-4 py-2 rounded-xl border-2 border-gray-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 text-sm font-medium text-gray-700 dark:text-gray-200 hover:border-indigo-400 transition-colors max-w-[220px]"
+      >
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4" />
+        </svg>
+        <span className="text-gray-400">Manufaktur:</span>
+        <span className="font-semibold truncate">{label}</span>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className={`transition-transform ${open ? "rotate-180" : ""} flex-shrink-0`}>
+          <polyline points="6 9 12 15 18 9" />
+        </svg>
+      </button>
+
+      {open && (
+        <div className="absolute left-0 mt-2 w-72 bg-white dark:bg-neutral-900 border border-gray-200 dark:border-neutral-700 rounded-xl shadow-2xl z-50 overflow-hidden">
+          <div className="p-2 border-b border-gray-100 dark:border-neutral-800">
+            <input
+              type="text"
+              value={search}
+              onChange={e => setSearch(e.target.value)}
+              placeholder="Cari manufacture..."
+              className="w-full px-3 py-1.5 text-sm border border-gray-200 dark:border-neutral-700 rounded-lg bg-white dark:bg-neutral-800 text-gray-700 dark:text-gray-200 focus:outline-none focus:border-indigo-400"
+              autoFocus
+            />
+          </div>
+          <div className="max-h-64 overflow-y-auto">
+            <button
+              onClick={() => {
+                onChange("")
+                setOpen(false)
+                setSearch("")
+              }}
+              className={`w-full text-left px-4 py-2.5 text-sm transition-colors ${
+                !value
+                  ? "bg-indigo-50 dark:bg-indigo-950/40 text-indigo-700 dark:text-indigo-300 font-semibold"
+                  : "text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-neutral-800"
+              }`}
+            >
+              Semua Manufacture
+            </button>
+            {filtered.map(m => {
+              const active = m === value
+              return (
+                <button
+                  key={m}
+                  onClick={() => {
+                    onChange(m)
+                    setOpen(false)
+                    setSearch("")
+                  }}
+                  className={`w-full text-left px-4 py-2.5 text-sm transition-colors flex items-center justify-between gap-2 ${
+                    active
+                      ? "bg-indigo-50 dark:bg-indigo-950/40 text-indigo-700 dark:text-indigo-300 font-semibold"
+                      : "text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-neutral-800"
+                  }`}
+                >
+                  <span className="truncate">{m}</span>
+                  {active && (
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="flex-shrink-0">
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                  )}
+                </button>
+              )
+            })}
+            {filtered.length === 0 && (
+              <div className="px-4 py-3 text-xs text-gray-400 text-center">
+                Tidak ada match
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+    </div>
+  )
+}
+
 function StatCard({ title, stat, icon, accent, isTotal = false, totalValue }: {
   title: string
   stat?: CardStat
@@ -464,22 +754,39 @@ export default function Dashboard() {
   const [tablePage, setTablePage]     = useState(1)
   const TABLE_LIMIT = 25
 
-  useEffect(() => { setTablePage(1) }, [activeTab, dateRange])
+  const [sortBy, setSortBy]           = useState<SortByType>("updated_at")
+  const [sortOrder, setSortOrder]     = useState<SortOrderType>("desc")
+  const [statusFilter, setStatusFilter] = useState<StatusFilter>("all")
+  const [manufactureFilter, setManufactureFilter] = useState<string>("")
+
+  useEffect(() => { setTablePage(1) }, [activeTab, dateRange, sortBy, sortOrder, statusFilter, manufactureFilter])
 
   const fetchDashboard = useCallback(async (
     range: DateRange,
     tab: TabType,
     page: number,
+    sortField: SortByType,
+    sortDir: SortOrderType,
+    status: StatusFilter,
+    manuf: string,
   ) => {
     setLoading(true)
     try {
       const params = new URLSearchParams({
-        from:   range.from,
-        to:     range.to,
-        type:   tab,
-        page:   String(page),
-        limit:  String(TABLE_LIMIT),
+        from:      range.from,
+        to:        range.to,
+        type:      tab,
+        page:      String(page),
+        limit:     String(TABLE_LIMIT),
+        sortBy:    sortField,
+        sortOrder: sortDir,
       })
+      if (status !== "all") {
+        params.set("status", status)
+      }
+      if (manuf) {
+        params.set("manufacture", manuf)
+      }
       const res = await fetch(`${API_BASE}/dashboard?${params}`, {
         headers: { Authorization: `Bearer ${accessToken}` },
       })
@@ -494,8 +801,8 @@ export default function Dashboard() {
   }, [accessToken])
 
   useEffect(() => {
-    fetchDashboard(dateRange, activeTab, tablePage)
-  }, [dateRange, activeTab, tablePage, fetchDashboard])
+    fetchDashboard(dateRange, activeTab, tablePage, sortBy, sortOrder, statusFilter, manufactureFilter)
+  }, [dateRange, activeTab, tablePage, sortBy, sortOrder, statusFilter, manufactureFilter, fetchDashboard])
 
   const rm = data?.diverRM
   const pm = data?.diverPM
@@ -503,6 +810,8 @@ export default function Dashboard() {
   const activeTableMeta: PaginationMeta = activeTab === "RM"
     ? (rm?.tableData ?? { data: [], total: 0, page: 1, perPage: TABLE_LIMIT, totalPages: 1 })
     : (pm?.tableData ?? { data: [], total: 0, page: 1, perPage: TABLE_LIMIT, totalPages: 1 })
+
+  const hasActiveFilters = sortBy !== "updated_at" || sortOrder !== "desc" || statusFilter !== "all" || manufactureFilter !== ""
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-neutral-950 px-6 py-6 font-sans space-y-5 transition-colors duration-300">
@@ -549,6 +858,33 @@ export default function Dashboard() {
           <StatCard title="Status Trial Mesin" stat={pm?.statusTrial} icon={<IconTrend />} accent="#d97706" />
         </div>
       )}
+
+      <div className="flex items-center gap-2 flex-wrap">
+        <SortDropdown
+          sortBy={sortBy}
+          sortOrder={sortOrder}
+          onChange={(s, o) => { setSortBy(s); setSortOrder(o) }}
+        />
+        <StatusFilterDropdown value={statusFilter} onChange={setStatusFilter} />
+        <ManufactureFilterDropdown value={manufactureFilter} onChange={setManufactureFilter} />
+
+        {hasActiveFilters && (
+          <button
+            onClick={() => {
+              setSortBy("updated_at")
+              setSortOrder("desc")
+              setStatusFilter("all")
+              setManufactureFilter("")
+            }}
+            className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl border-2 border-gray-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 text-sm font-medium text-gray-500 hover:border-red-300 hover:text-red-500 transition-colors"
+          >
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+              <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+            Reset Filter
+          </button>
+        )}
+      </div>
 
       <TableSection
         activeTab={activeTab}
